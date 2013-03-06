@@ -96,7 +96,7 @@ class TraderProfile(models.Model):
 	is_active = models.BooleanField(default=False)
 	user = models.ForeignKey(User, unique=True)
 	title = models.CharField(_('Title'), max_length=20, default='trader')
-	#expertise
+	expertise = JSONField(_('Expertise'), blank=True, default={})
 
 	def __unicode__(self):
         return self.user.get_full_name()
@@ -130,7 +130,7 @@ class ContactProfile(models.Model):
 	email = models.EmailField(_('E-mail'), blank=True)
 	buy = models.BooleanField(_('Buys'), default=False)
 	sell = models.BooleanField(_('Sells'), default=False)
-	# expertise
+	expertise = JSONField(_('Expertise'), blank=True, default={})
 
 	def get_full_name(self):        
         return '%s %s' % (self.first_name, self.last_name)
@@ -149,16 +149,16 @@ class CorporateProfile(models.Model):
 	REGION_CHOICES = (
 		('ASIA', 'Asia'),
 		('EUROPE', 'Europe'),
-		('AMERICA', 'America'),
-		('NA', 'N/A'), # TODO
+		('NAMERICA', 'North America'),
+		('LAMERICA', 'Latin America'),
 		('OTHER', 'Other'),
 	)
 	CORPORATE_TYPE_CHOICES = (
 		('EU', 'End User'),
-		('IRS'. ''),
-		('NIRS', ''),
+		('IRS'. 'Inventory Carrying Reseller'),
+		('NIRS', 'Non-inventory Carrying Reseller'),
 		('OEM', 'Original Equipment Manufacturer'),
-		('SP', ''),
+		('SP', 'Service Provider'),
 		('RF', 'Refurbisher')
 		('OTHER', 'Other'),
 	)
@@ -211,9 +211,9 @@ class ListingProfile(models.Model):
 		return 'hello' # TODO
 
 class AbstractRequirement(models.Model):
-	features = JSONField(_('Feature Requirements'), blank=True, default='')
-	price = JSONField(_('Price Requirements'), blank=True, default='') # TODO: blank JSON Object
-	manufacture_date = JSONField(_('Manufacture Date Requirements'), blank=True, default='')
+	features = JSONField(_('Feature Requirements'), blank=True, default={})
+	price = JSONField(_('Price Requirements'), blank=True, default={}) # TODO: blank JSON Object
+	manufacture_date = JSONField(_('Manufacture Date Requirements'), blank=True, default={})
 
 	class Meta:
         abstract = True
