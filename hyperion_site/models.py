@@ -3,6 +3,16 @@ from django.contrib.auth.models import User
 from jsonfield import JSONField
 
 '''
+industry
+'''
+class IndustryCategory(models.Model):
+	category = models.CharField(_('Catogry'), max_length=50)
+	sub_category = models.CharField(_('Sub Catogry'), max_length=50, blank=True)
+	
+	def __unicode__(self):
+		return 'hello'
+
+'''
 Phone
 '''
 class AbstractPhone(models.Model):
@@ -122,15 +132,39 @@ class models.User
 Contact Information
 '''
 class ContactProfile(models.Model):
+	REGION_CHOICES = (
+		('ASIA', 'Asia'),
+		('EUROPE', 'Europe'),
+		('NAMERICA', 'North America'),
+		('LAMERICA', 'Latin America'),
+		('OTHER', 'Other'),
+	)
+	CONTACT_TYPE_CHOICES = (
+		('EU', 'End User'),
+		('IRS'. 'Inventory Carrying Reseller'),
+		('NIRS', 'Non-inventory Carrying Reseller'),
+		('OEM', 'Original Equipment Manufacturer'),
+		('SP', 'Service Provider'),
+		('RF', 'Refurbisher'),
+		('RD', 'R&D'),
+		('UNIV', 'University'),
+		('OTHER', 'Other'),
+	)
+
 	is_active = models.BooleanField(default=False)
 	first_name = models.CharField(_('First Name'), max_length=30, blank=True)
 	last_name = models.CharField(_('Last Name'), max_length=30, blank=True)
-	corporate = models.ForeignKey(_('Employer'), CorporateProfile, blank=True)
-	title = models.CharField(_('Title'), max_length=20, blank=True)
 	email = models.EmailField(_('E-mail'), blank=True)
+	corporate = models.ForeignKey(_('Employer'), CorporateProfile, blank=True)
+	department = models.CharField(_('Department'), max_length=20, blank=True)
+	title = models.CharField(_('Title'), max_length=20, blank=True)
 	buy = models.BooleanField(_('Buys'), default=False)
 	sell = models.BooleanField(_('Sells'), default=False)
+	region = models.CharField(_('Region'), max_length=10, choices=REGION_CHOICES, default='OTHER')
+	contact_type = models.CharField(_('Type'), max_length=10, choices=CONTACT_TYPE_CHOICES, default='OTHER')
+	industry = models.ManyToManyField(_('Industry'), IndustryCategory)
 	expertise = JSONField(_('Expertise'), blank=True, default={})
+	notes = models.TextField(_('Notes'), blank=True)
 
 	def get_full_name(self):        
         return '%s %s' % (self.first_name, self.last_name)
@@ -159,15 +193,19 @@ class CorporateProfile(models.Model):
 		('NIRS', 'Non-inventory Carrying Reseller'),
 		('OEM', 'Original Equipment Manufacturer'),
 		('SP', 'Service Provider'),
-		('RF', 'Refurbisher')
+		('RF', 'Refurbisher'),
+		('RD', 'R&D'),
+		('UNIV', 'University'),
 		('OTHER', 'Other'),
 	)
 	is_active = models.BooleanField(default=False)
 	name = models.CharField(_('Name'), max_length=50)
 	region = models.CharField(_('Region'), max_length=10, choices=REGION_CHOICES, default='OTHER')
+	industry = models.ManyToManyField(_('Industry'), IndustryCategory)
 	corporate_type = models.CharField(_('Type'), max_length=10, choices=CORPORATE_TYPE_CHOICES, default='OTHER')
 	website = models.URLField(_('Website'), max_length=200)
 	description = models.TextField(_('Description'), blank=True)
+	notes = models.TextField(_('Notes'), blank=True)
 
 	def __unicode__(self):
 		return self.name
@@ -179,7 +217,7 @@ Equipment Core + Profile
 class EquipmentCore(models.Model):
 	make = models.CharField(_('Make'), max_length=50, blank=True)
 	model = models.CharField(_('Model'), max_length=50, blank=True)
-	year = models.CharField(_('Year'), max_length=4, blank=True)
+	year = models.CharField(_('Year'), max_length=4, blank=True)	
 	description = models.TextField(_('Description'), blank=True)
 
 	def __unicode__(self):
@@ -187,11 +225,16 @@ class EquipmentCore(models.Model):
 
 class EquipmentProfile(models.Model):
 	is_active = models.BooleanField(default=False)
+	add_date = models.DateField(_('Date Added'), auto_now_add=True)
+	last_modified = models.DateField(_('Last Modified'), auto_now=True, null=True, blank=True)
 	core = models.ForeignKey(_('Make & Model'), EquipmentCore)
+	serial_number = models.CharField(_('Serial Number'), max_length=100, blank=True)
+	industry = models.ManyToManyField(_('Industry'), IndustryCategory)
 	corporate = models.ForeignKey(_('Property of'), CorporateProfile, blank=True)
 	contact = models.ForeignKey(_('Contact'), ContactProfile, blank=True) # can only be owned by 1 contact
 	manufacture_date = models.DateField(_('Manufacture Date'), auto_now=False, auto_now_add=False, blank=True)
 	description = models.TextField(_('Description'), blank=True)
+	notes = models.TextField(_('Notes'), blank=True)
 
 	def __unicode__(self):
 		return 'hello' # TODO
@@ -213,7 +256,7 @@ class ListingProfile(models.Model):
 class AbstractRequirement(models.Model):
 	features = JSONField(_('Feature Requirements'), blank=True, default={})
 	price = JSONField(_('Price Requirements'), blank=True, default={}) # TODO: blank JSON Object
-	manufacture_date = JSONField(_('Manufacture Date Requirements'), blank=True, default={})
+	manufacture_date = JSONField(_('Manufacture Date Requirements'), blank=True, default={})	
 
 	class Meta:
         abstract = True
@@ -222,6 +265,7 @@ class RequirementProfile(AbstractRequirement):
 	is_active = models.BooleanField(default=False)
 	contact = models.ForeignKey(_('Posted by'), ContactProfile)
 	trader = models.ForeignKey(_('Handled by'), TraderProfile)
+	industry = models.ManyToManyField(_('Industry'), IndustryCategory)
 	post_date = models.DateField(_('Posted on'), auto_now=False, auto_now_add=False, blank=True)
 	description = models.TextField(_('Description'), blank=True)
 
@@ -233,7 +277,7 @@ class RequirementRecommendation(models.Model):
 	requirement = models.ForeignKey(_('Requirement'), RequirementProfile)
 	core = models.ForeignKey(_('Make & Model'), EquipmentCore)
 	trader = models.ForeignKey(_('Proposed by'), TraderProfile)
-	description = models.TextField(_('Description'), blank=True)
+	notes = models.TextField(_('Notes'), blank=True)
 
 	def __unicode__(self):
 		return 'hello' # TODO
