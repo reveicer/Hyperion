@@ -20,8 +20,7 @@ class AbstractPhone(models.Model):
         ('HOME', 'Home'),
         ('WORK', 'Work'),
         ('MOBILE', 'Mobile'),
-        ('HOME_FAX', 'Fax (home)'),
-        ('WORK_FAX', 'Fax (work)'),
+        ('FAX', 'Fax'),
         ('OTHER', 'Other'),
     )
     phone_type = models.CharField(_('Type'), maxlength=10, choices=PHONE_TYPE_CHOICES, default='OTHER')
@@ -162,7 +161,7 @@ class ContactProfile(models.Model):
 	sell = models.BooleanField(_('Sells'), default=False)
 	region = models.CharField(_('Region'), max_length=10, choices=REGION_CHOICES, default='OTHER')
 	contact_type = models.CharField(_('Type'), max_length=10, choices=CONTACT_TYPE_CHOICES, default='OTHER')
-	industry = models.ManyToManyField(_('Industry'), IndustryCategory)
+	category = models.ManyToManyField(_('Category'), IndustryCategory)
 	expertise = JSONField(_('Expertise'), blank=True, default={})
 	notes = models.TextField(_('Notes'), blank=True)
 
@@ -201,7 +200,7 @@ class CorporateProfile(models.Model):
 	is_active = models.BooleanField(default=False)
 	name = models.CharField(_('Name'), max_length=50)
 	region = models.CharField(_('Region'), max_length=10, choices=REGION_CHOICES, default='OTHER')
-	industry = models.ManyToManyField(_('Industry'), IndustryCategory)
+	category = models.ManyToManyField(_('Category'), IndustryCategory)
 	corporate_type = models.CharField(_('Type'), max_length=10, choices=CORPORATE_TYPE_CHOICES, default='OTHER')
 	website = models.URLField(_('Website'), max_length=200)
 	description = models.TextField(_('Description'), blank=True)
@@ -215,9 +214,12 @@ class CorporateProfile(models.Model):
 Equipment Core + Profile
 '''
 class EquipmentCore(models.Model):
+	add_date = models.DateField(_('Date Added'), auto_now_add=True)
+	last_modified = models.DateField(_('Last Modified'), auto_now=True, null=True, blank=True)
 	make = models.CharField(_('Make'), max_length=50, blank=True)
 	model = models.CharField(_('Model'), max_length=50, blank=True)
-	year = models.CharField(_('Year'), max_length=4, blank=True)	
+	year = models.CharField(_('Year'), max_length=4, blank=True)
+	price = models.DecimalField(_('Price'), max_digits=15, decimal_places=2, blank=True)
 	description = models.TextField(_('Description'), blank=True)
 
 	def __unicode__(self):
@@ -229,7 +231,7 @@ class EquipmentProfile(models.Model):
 	last_modified = models.DateField(_('Last Modified'), auto_now=True, null=True, blank=True)
 	core = models.ForeignKey(_('Make & Model'), EquipmentCore)
 	serial_number = models.CharField(_('Serial Number'), max_length=100, blank=True)
-	industry = models.ManyToManyField(_('Industry'), IndustryCategory)
+	category = models.ManyToManyField(_('Category'), IndustryCategory)
 	corporate = models.ForeignKey(_('Property of'), CorporateProfile, blank=True)
 	contact = models.ForeignKey(_('Contact'), ContactProfile, blank=True) # can only be owned by 1 contact
 	manufacture_date = models.DateField(_('Manufacture Date'), auto_now=False, auto_now_add=False, blank=True)
@@ -265,8 +267,8 @@ class RequirementProfile(AbstractRequirement):
 	is_active = models.BooleanField(default=False)
 	contact = models.ForeignKey(_('Posted by'), ContactProfile)
 	trader = models.ForeignKey(_('Handled by'), TraderProfile)
-	industry = models.ManyToManyField(_('Industry'), IndustryCategory)
-	post_date = models.DateField(_('Posted on'), auto_now=False, auto_now_add=False, blank=True)
+	category = models.ManyToManyField(_('Category'), IndustryCategory)
+	post_date = models.DateField(_('Posted on'), auto_now_add=True)
 	description = models.TextField(_('Description'), blank=True)
 
 	def __unicode__(self):
@@ -282,3 +284,17 @@ class RequirementRecommendation(models.Model):
 	def __unicode__(self):
 		return 'hello' # TODO
 
+##########################################################################################
+'''
+Transactions
+'''
+class Transactions(models.Model):
+	item = models.ForeignKey(_('Item'), ListingProfile)
+	buyer = models.ForeignKey(_('Buyer'), ContactProfile)
+	trader = models.ForeignKey(_('Trader'), TraderProfile, blank=True)	
+	price = models.DecimalField(_('Price'), max_digits=15, decimal_places=2)
+	transaction_date = models.DateField(_('Purchase Date'), auto_now_add=True)
+	notes = models.TextField(_('Notes'), blank=True)
+
+	def __unicode__(self):
+		return 'hello' # TODO
