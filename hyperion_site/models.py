@@ -180,11 +180,11 @@ Corporate Information
 '''
 class CorporateProfile(models.Model):
 	REGION_CHOICES = (
-		('ASIA', 'Asia'),
-		('EUROPE', 'Europe'),
-		('NAMERICA', 'North America'),
-		('LAMERICA', 'Latin America'),
-		('OTHER', 'Other'),
+		('AS', 'Asia'),
+		('EU', 'Europe'),
+		('NA', 'North America'),
+		('LA', 'Latin America'),
+		('OT', 'Other'),
 	)
 	CORPORATE_TYPE_CHOICES = (
 		('EU', 'End User'),
@@ -195,7 +195,7 @@ class CorporateProfile(models.Model):
 		('RF', 'Refurbisher'),
 		('RD', 'R&D'),
 		('UNIV', 'University'),
-		('OTHER', 'Other'),
+		('OT', 'Other'),
 	)
 	is_active = models.BooleanField(default=False)
 	name = models.CharField(_('Name'), max_length=50)
