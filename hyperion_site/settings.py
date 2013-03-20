@@ -156,4 +156,4 @@ LOGGING = {
 }
 
 # Enables get_profile() on User objects
-AUTH_PROFILE_MODULE = 'TraderProfile'
+AUTH_PROFILE_MODULE = 'trading.TraderProfile'
