@@ -26,22 +26,6 @@ class TraderProfile(models.Model):
 
 	def __unicode__(self):
 		return self.user.get_full_name()
-		
-'''
-class models.User
-	username
-	first_name
-	last_name
-	email
-	password
-	groups
-	user_permissions
-	is_staff
-	is_active
-	is_superuser
-	last_login
-	date_joined
-'''
 
 ##########################################################################################
 '''
@@ -105,7 +89,7 @@ class ContactProfile(models.Model):
 	first_name = models.CharField('First Name', max_length=30, blank=True)
 	last_name = models.CharField('Last Name', max_length=30, blank=True)
 	email = models.EmailField('E-mail', blank=True)
-	corporate = models.ForeignKey(CorporateProfile, blank=True)
+	corporate = models.ForeignKey(CorporateProfile, blank=True, verbose_name='Employer')
 	department = models.CharField('Department', max_length=20, blank=True)
 	title = models.CharField('Title', max_length=20, blank=True)
 	buy = models.BooleanField('Buys', default=False)
@@ -153,14 +137,14 @@ class AbstractPhone(models.Model):
 
 class ContactPhone(AbstractPhone):
 	is_active = models.BooleanField(default=False)
-	contact = models.ForeignKey(ContactProfile)
+	contact = models.ForeignKey(ContactProfile, verbose_name='Contact')
 
 	def __unicode__(self):
 		return '%s: %s' % (self.phone_type, self.number)
 
 class TraderPhone(AbstractPhone):    
 	is_active = models.BooleanField(default=False)
-	trader = models.ForeignKey(TraderProfile)
+	trader = models.ForeignKey(TraderProfile, verbose_name='Trader')
 
 	def __unicode__(self):
 		return '%s: %s' % (self.phone_type, self.number)
@@ -186,7 +170,7 @@ class AbstractAddress(models.Model):
 	zip_code = models.CharField('ZIP Code', max_length=20, blank=True)
 
 	class Meta:
-	    abstract = True
+		abstract = True
 
 	def get_concrete_address(self):
 		if hasattr(self, 'CorporateAddress'):
@@ -196,7 +180,7 @@ class AbstractAddress(models.Model):
 
 class CorporateAddress(AbstractAddress):
 	is_active = models.BooleanField(default=False)
-	corporate = models.ForeignKey(CorporateProfile)
+	corporate = models.ForeignKey(CorporateProfile, verbose_name='Corporate')
 
 	# TODO
 	def __unicode__(self):
@@ -204,7 +188,7 @@ class CorporateAddress(AbstractAddress):
 
 class ContactAddress(AbstractAddress):
 	is_active = models.BooleanField(default=False)
-	contact = models.ForeignKey(ContactProfile)
+	contact = models.ForeignKey(ContactProfile, verbose_name='Contact')
 
 	# TODO
 	def __unicode__(self):
@@ -230,11 +214,11 @@ class EquipmentProfile(models.Model):
 	is_active = models.BooleanField(default=False)
 	add_date = models.DateField('Date Added', auto_now_add=True)
 	last_modified = models.DateField('Last Modified', auto_now=True, null=True, blank=True)
-	core = models.ForeignKey(EquipmentCore)
+	core = models.ForeignKey(EquipmentCore, verbose_name='Make & Model')
 	serial_number = models.CharField('Serial Number', max_length=100, blank=True)
 	category = models.ManyToManyField(IndustryCategory)
-	corporate = models.ForeignKey(CorporateProfile, blank=True)
-	contact = models.ForeignKey(ContactProfile, blank=True) # can only be owned by 1 contact
+	corporate = models.ForeignKey(CorporateProfile, blank=True, verbose_name='Property of')
+	contact = models.ForeignKey(ContactProfile, blank=True, verbose_name='Contact') # can only be owned by 1 contact
 	manufacture_date = models.DateField('Manufacture Date', auto_now=False, auto_now_add=False, blank=True)
 	description = models.TextField('Description', blank=True)
 	notes = models.TextField('Notes', blank=True)
@@ -248,7 +232,7 @@ Listings + Requirements
 '''
 class ListingProfile(models.Model):
 	is_active = models.BooleanField(default=False)
-	equipment = models.ForeignKey(EquipmentProfile)
+	equipment = models.ForeignKey(EquipmentProfile, verbose_name='Equipment')
 	price = models.DecimalField('Price', max_digits=15, decimal_places=2)
 	post_date = models.DateField('Posted on', auto_now=False, auto_now_add=False, blank=True)
 	description = models.TextField('Description', blank=True)
@@ -266,8 +250,8 @@ class AbstractRequirement(models.Model):
 
 class RequirementProfile(AbstractRequirement):
 	is_active = models.BooleanField(default=False)
-	contact = models.ForeignKey(ContactProfile)
-	trader = models.ForeignKey(TraderProfile)
+	contact = models.ForeignKey(ContactProfile, verbose_name='Posted by')
+	trader = models.ForeignKey(TraderProfile, verbose_name='Handled by')
 	category = models.ManyToManyField(IndustryCategory)
 	post_date = models.DateField('Posted on', auto_now_add=True)
 	description = models.TextField('Description', blank=True)
@@ -277,22 +261,22 @@ class RequirementProfile(AbstractRequirement):
 
 class RequirementRecommendation(models.Model):
 	is_active = models.BooleanField(default=False)
-	requirement = models.ForeignKey(RequirementProfile)
-	core = models.ForeignKey(EquipmentCore)
-	trader = models.ForeignKey(TraderProfile)
+	requirement = models.ForeignKey(RequirementProfile, verbose_name='Requirement')
+	core = models.ForeignKey(EquipmentCore, verbose_name='Make & Model')
+	trader = models.ForeignKey(TraderProfile, verbose_name='Proposed by')
 	notes = models.TextField('Notes', blank=True)
 
 	def __unicode__(self):
 		return 'hello' # TODO
-		
+
 ##########################################################################################
 '''
 Transactions
 '''
 class Transactions(models.Model):
-	item = models.ForeignKey(ListingProfile)
-	buyer = models.ForeignKey(ContactProfile)
-	trader = models.ForeignKey(TraderProfile, blank=True)	
+	item = models.ForeignKey(ListingProfile, verbose_name='Item')
+	buyer = models.ForeignKey(ContactProfile, verbose_name='Buyer')
+	trader = models.ForeignKey(TraderProfile, blank=True, verbose_name='Trader')
 	price = models.DecimalField('Price', max_digits=15, decimal_places=2)
 	transaction_date = models.DateField('Purchase Date', auto_now_add=True)
 	notes = models.TextField('Notes', blank=True)
