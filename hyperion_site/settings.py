@@ -1,4 +1,6 @@
 # Django settings for hyperion_site project.
+import os.path
+PROJECT_DIR = os.path.dirname(__file__)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
