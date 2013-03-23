@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from jsonfield import JSONField
+#from jsonfield import JSONField
 
 ##########################################################################################
 '''
@@ -22,7 +22,8 @@ class TraderProfile(models.Model):
 	is_active = models.BooleanField(default=False)
 	user = models.ForeignKey(User, unique=True)
 	title = models.CharField('Title', max_length=20, default='trader')
-	expertise = JSONField('Expertise', blank=True, default={})
+	#expertise = JSONField('Expertise', blank=True, default={})
+	expertise = models.TextField('Expertise', blank=True)
 
 	def __unicode__(self):
 		return self.user.get_full_name()
@@ -97,7 +98,8 @@ class ContactProfile(models.Model):
 	region = models.CharField('Region', max_length=10, choices=REGION_CHOICES, default='OTHER')
 	contact_type = models.CharField('Type', max_length=10, choices=CONTACT_TYPE_CHOICES, default='OTHER')
 	category = models.ManyToManyField(IndustryCategory)
-	expertise = JSONField('Expertise', blank=True, default={})
+	#expertise = JSONField('Expertise', blank=True, default={})
+	expertise = models.TextField('Expertise', blank=True)
 	notes = models.TextField('Notes', blank=True)
 
 	def get_full_name(self):        
@@ -241,9 +243,12 @@ class ListingProfile(models.Model):
 		return 'hello' # TODO
 
 class AbstractRequirement(models.Model):
-	features = JSONField('Feature Requirements', blank=True, default={})
-	price = JSONField('Price Requirements', blank=True, default={}) # TODO: blank JSON Object
-	manufacture_date = JSONField('Manufacture Date Requirements', blank=True, default={})	
+	#features = JSONField('Feature Requirements', blank=True, default={})
+	#price = JSONField('Price Requirements', blank=True, default={}) # TODO: blank JSON Object
+	#manufacture_date = JSONField('Manufacture Date Requirements', blank=True, default={})	
+	features = models.TextField('Feature Requirements', blank=True)
+	price = models.TextField('Price Requirements', blank=True)
+	manufacture_data = models.TextField('Manufacture Data Requirements', blank=True)
 
 	class Meta:
 		abstract = True
