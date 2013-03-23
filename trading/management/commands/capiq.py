@@ -1,38 +1,83 @@
 from django.core.management.base import BaseCommand, CommandError
 from hyperion_site.settings import PROJECT_DIR
+import gdata.docs.client
+import gdata.docs.data
 import gdata.docs.service
 import gdata.spreadsheet.service
 import os.path
 import re
-
 import sys
-import getopt
-import getpass
-
-source = 'hyperion.capiq'
-email = 'hzhong62@gmail.com'
-password = 'hzhong0625'
-mTurk_file_title = 'mTurk Industry/Type'
-template_path = PROJECT_DIR + '/../externals/templates/ProfileTemplate.xlsx'
+import string
+from optparse import make_option
 
 class Command(BaseCommand):
 	
+	option_list = BaseCommand.option_list + (
+            make_option('--u',
+                        type=str,
+                        help="username"
+            ),
+            make_option('--p',
+                        type=str,
+                        help='password'
+            ),
+            make_option('--s',
+                        type=str,
+                        default='hyperion.capiq',
+                        help='APP_NAME'
+            ),
+            make_option('--source',
+                        type=str,
+                        help='capiq source file'
+            ),
+            make_option('--output',
+                        type=str,
+                        help='output folder'
+            ),
+            make_option('--template',
+                        type=str,
+                        default=PROJECT_DIR + '/../externals/templates/ProfileTemplate.xlsx',
+                        help='profile template directory'
+            )
+        )
+
 	def handle(self, *args, **options):
-		if self._VerifyTemplateMediaSource() is False:
-			self.stderr.write('Fatal: Exiting due to Template Error.')
+		if options['u'] is None or options['p'] is None or options['source'] is None or options['output'] is None:
+			self.stderr.write('Usage: python manage.py capiq --u [your username] --p [your password] --source [CapIQ file] --output [Output Folder (must not exist)]')
+			self.stderr.write('Example: python manage.py capiq --u hzhong62@gmail.com --p hzhong0625 --source \'mTurk Industry/Type\' --output output')
+			return
+		if self._VerifyTemplateMediaSource(options['template']) is False:
+			self.stderr.write('...Quiting')
 			return
 
-		gd_client = gdata.docs.service.DocsService()
-		gd_client.ClientLogin(email, password, source=source)
+		gl_client = gdata.docs.client.DocsClient()
+		gl_client.ClientLogin(options['u'], options['p'], source=options['s'])
 		gs_client = gdata.spreadsheet.service.SpreadsheetsService()		
-		gs_client.ClientLogin(email, password, source=source)
+		gs_client.ClientLogin(options['u'], options['p'], source=options['s'])
 
-		sdsht_entry = self._GetSpreadsheet(gs_client, mTurk_file_title)
-		wksht_feed = gs_client.GetWorksheetsFeed(self._GetEntryID(sdsht_entry))
+		self.stdout.write('> Locating spreadsheet: %s...' % options['source'])
+		sdsht_entry = self._GetSpreadsheet(gs_client, options['source'])
+		if sdsht_entry:
+			self.stdout.write('> ...Successful')
+		else:
+			self.stderr.write('...Quiting')		
 		
+		wksht_feed = gs_client.GetWorksheetsFeed(self._GetEntryID(sdsht_entry))
+		if len(wksht_feed.entry) > 0:
+			col = gdata.docs.data.Resource(type='folder', title=options['output'])
+  			col = gl_client.CreateResource(col)
+  			if col:
+				self.stdout.write('> Creating Folder: %s... Successful' % options['output'])
+			else:
+				self.stderr.write('Failed to create Folder: %s... Quiting' % options['output'])
+				return
+		else:
+			self.stderr.write('Failed to find worksheet in %s... Quiting' % options['source'])
+			return
+
 		for wksht_entry in wksht_feed.entry:
 			list_feed = gs_client.GetListFeed(self._GetEntryID(sdsht_entry), self._GetEntryID(wksht_entry))
-			self.stdout.write('> Processing %d company profiles from %s/%s...' % (len(list_feed.entry), sdsht_entry.title.text, wksht_entry.title.text))
+			self.stdout.write('> Processing %d company profiles from worksheet: %s...' % (len(list_feed.entry), wksht_entry.title.text))
 			for list_entry in list_feed.entry:
 				company_name = list_entry.custom['name'].text
 				company_website = list_entry.custom['website'].text
@@ -40,8 +85,12 @@ class Command(BaseCommand):
 				raw_address = list_entry.custom['address'].text
 				company_contact_book = self._ParseRawAddress(raw_address)
 
-				if self._UploadTemplate(gd_client, company_name) is True:
+				#if self._UploadTemplate(gl_client, col, company_name):
+				profile_sdsht_resource_id = self._UploadTemplate(gl_client, col, company_name, options['template'])
+				#self.stderr.write('upload resource id: %s' % profile_sdsht_resource_id)
+				if profile_sdsht_resource_id:
 					profile_sdsht_entry = self._GetSpreadsheet(gs_client, company_name)
+					#self.stderr.write('real doc id: %s' % self._GetEntryID(profile_sdsht_entry))
 					profile_wksht_id = 'od6'
 					company_name_cell = gs_client.UpdateCell(row='7', col='2', inputValue=company_name, key=self._GetEntryID(profile_sdsht_entry), wksht_id=profile_wksht_id)
 					company_website_cell = gs_client.UpdateCell(row='8', col='2', inputValue=company_website, key=self._GetEntryID(profile_sdsht_entry), wksht_id=profile_wksht_id)
@@ -54,15 +103,22 @@ class Command(BaseCommand):
 						company_faxes_cell = gs_client.UpdateCell(row='11', col='2', inputValue=company_contact_book['faxes'], key=self._GetEntryID(profile_sdsht_entry), wksht_id=profile_wksht_id)
 
 
-	def _GetSpreadsheet(self, gs_client, spreadsheet_title):
+	# Handle multiple file
+	def _GetSpreadsheet(self, gs_client, spreadsheet_title, resource_id=None):
 		query = gdata.spreadsheet.service.DocumentQuery()
 		query.title = spreadsheet_title
 		query.title_exact = 'True'
+		if resource_id is not None:
+			print resource_id
+			query.resource_id = resource_id
 		sdsht_feed = gs_client.GetSpreadsheetsFeed(query=query)
 		if len(sdsht_feed.entry) == 0:
-			self.stderr.write('Error: cannot find spreadsheet %s.' % spreadsheet_title)
+			self.stderr.write('> Failed to locate spreadsheet: %s...' % spreadsheet_title)
 			return False
-		return sdsht_feed.entry[0]
+		else:
+			sdsht_entry = sdsht_feed.entry[0]
+			#self.stderr.write('find resource id: %s' % sdsht_entry.ResourceId())
+			return sdsht_entry
 
 	def _GetWorksheet(self, gs_client, sdsht_entry, worksheet_title):
 		query = gdata.spreadsheet.service.DocumentQuery()
@@ -74,12 +130,12 @@ class Command(BaseCommand):
 			return False
 		return wksht_feed.entry[0]
 
-	def _VerifyTemplateMediaSource(self):
-		if not os.path.isfile(template_path):
+	def _VerifyTemplateMediaSource(self, template):
+		if not os.path.isfile(template):
 			self.stderr.write('Template Error: Not a valid file.')
 			return False
 		
-		file_name = os.path.basename(template_path)
+		file_name = os.path.basename(template)
 		ext = self._GetFileExtension(file_name)
 		if not ext or ext not in gdata.docs.service.SUPPORTED_FILETYPES:
 			self.stderr.write('Template Error: File type not supported. Check the file extension.')
@@ -90,28 +146,32 @@ class Command(BaseCommand):
 		else:
 			return True
 
-	def _UploadTemplate(self, gd_client, name):
-		file_name = os.path.basename(template_path)
+	# TODO return upload_sdsht
+	def _UploadTemplate(self, gl_client, col, name, template):
+		file_name = os.path.basename(template)
 		ext = self._GetFileExtension(file_name)
 		content_type = gdata.docs.service.SUPPORTED_FILETYPES[ext]
 		try:
-			ms = gdata.MediaSource(file_path=template_path, content_type=content_type)
-			entry = gd_client.Upload(ms, name)
-			if entry:
-				self.stdout.write('Upload Success: spreadsheet \'%s\'' % name)
-				return True
+			ms = gdata.MediaSource(file_path=template, content_type=content_type)
+			sdsht = gdata.docs.data.Resource(type='spreadsheet', title=name)
+			upload_sdsht = gl_client.CreateResource(sdsht, collection=col, media=ms)
+			if upload_sdsht:
+				self.stdout.write('> Generating spreadsheet: %s... Successful' % name)
+				return upload_sdsht.resource_id
 			else:
 				self.stderr.write('Upload Error: spreadsheet \'%s\'' % name)
 				return False
 		except IOError:
 			self.stderr.write('Upload Error: Problems reading template. Check permissions.')
-			return False		
+			return False
 
 	def _ParseRawAddress(self, raw_address):
 		contact_book = {}
 		address = None
 		phones = None
 		faxes = None
+		if raw_address is None:
+			return contact_book
 		lines = raw_address.split('\n')
 		for line in lines:			
 			if 'Phone' in line:
