@@ -106,7 +106,7 @@ class Command(BaseCommand):
 	# Handle multiple file
 	def _GetSpreadsheet(self, gs_client, spreadsheet_title, resource_id=None):
 		query = gdata.spreadsheet.service.DocumentQuery()
-		query.title = spreadsheet_title
+		query.title = spreadsheet_title.encode('utf8') 
 		query.title_exact = 'True'
 		if resource_id is not None:
 			print resource_id
@@ -153,7 +153,7 @@ class Command(BaseCommand):
 		content_type = gdata.docs.service.SUPPORTED_FILETYPES[ext]
 		try:
 			ms = gdata.MediaSource(file_path=template, content_type=content_type)
-			sdsht = gdata.docs.data.Resource(type='spreadsheet', title=name)
+			sdsht = gdata.docs.data.Resource(type='spreadsheet', title=name.encode('utf8'))
 			upload_sdsht = gl_client.CreateResource(sdsht, collection=col, media=ms)
 			if upload_sdsht:
 				self.stdout.write('> Generating spreadsheet: %s... Successful' % name)
