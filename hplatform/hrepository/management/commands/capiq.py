@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from hyperion_site.settings import PROJECT_DIR
+from hplatform.settings import PROJECT_DIR
 import gdata.docs.client
 import gdata.docs.data
 import gdata.docs.service
@@ -36,7 +36,7 @@ class Command(BaseCommand):
             ),
             make_option('--template',
                         type=str,
-                        default=PROJECT_DIR + '/../externals/templates/ProfileTemplate.xlsx',
+                        default=PROJECT_DIR + '/templates/ProfileTemplate.xlsx',
                         help='profile template directory'
             )
         )
