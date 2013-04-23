@@ -1,12 +1,13 @@
-# Django settings for hyperion_site project.
+# Django settings for hplatform project.
 import os.path
 PROJECT_DIR = os.path.dirname(__file__)
 
-DEBUG = True
+#DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Hongxia Zhong', 'hongxia.zhong@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -30,7 +31,7 @@ ALLOWED_HOSTS = []
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'America/Los_Angeles'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -84,7 +85,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'olb8#=p6rch4nru=n_8@4h$z58ebb+&sd)g46p9t#tsahvk*3='
+SECRET_KEY = 'dy-9z#&rmxq3hu)+refz%=-05(_9iza7vlc+pa5i6q%b+pl06!'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -103,10 +104,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'hyperion_site.urls'
+ROOT_URLCONF = 'hplatform.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'hyperion_site.wsgi.application'
+WSGI_APPLICATION = 'hplatform.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -121,11 +122,11 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'trading',
-    # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'django.contrib.admin',
+    'django.contrib.admindocs',
+    'htraders',
+    'hcustomers',
+    'hinventory',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -156,6 +157,3 @@ LOGGING = {
         },
     }
 }
-
-# Enables get_profile() on User objects
-AUTH_PROFILE_MODULE = 'trading.TraderProfile'
