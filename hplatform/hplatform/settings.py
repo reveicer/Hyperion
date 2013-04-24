@@ -156,3 +156,8 @@ LOGGING = {
         },
     }
 }
+
+
+import dj_database_url
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(default='postgres://hyperiondev:hyperionkey@localhost:5432/hyperiondb')
