@@ -1,6 +1,7 @@
-from django.template import Template
+from django.template import RequestContext, Context, loader
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, render_to_response
 
 def home(request):
-	return HttpResponse('Welcome to Hyperion!')
+	t = loader.get_template('home.html')
+	return HttpResponse(t.render(Context()))
