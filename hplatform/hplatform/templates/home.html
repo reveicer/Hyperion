@@ -4,14 +4,79 @@
 <html lang="en">
 <head>
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{% static 'stylesheets/base.css' %}" />
+    <!--<link rel="stylesheet" href="{% static 'stylesheets/base.css' %}" />-->
+    <style type="text/css">
+    	body
+		{
+			background-color: #000000;
+			color: #FFFFFF;
+		}
+
+		.centercontainer
+		{
+			width: 960px;
+			margin-top: 60px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.centercontent
+		{
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		#hometitle
+		{
+			font-family: 'Lato', sans-serif;
+			font-weight: 500;
+			font-size: 96px;
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+
+		#homedescription
+		{
+			font-family: 'Lato', sans-serif;
+			font-size: 36px;
+		}
+
+		#homecontact
+		{
+			font-family: 'Oxygen', sans-serif;
+			font-size: 20px;
+		}
+
+		.homeimg
+		{
+			max-width: 40%;
+			margin-top: 60px;
+			margin-bottom: 10px;
+		}
+
+		.emaillink a:visited {
+		    color: #FFFFFF;
+		}
+
+		.emaillink a:hover {
+		    color: #99CCFF;
+		}
+
+		.emaillink a:active {
+		    color: #FF0000;
+		}
+	</style>
     <title>Hyperion</title>
 </head>
 <body>
 	<div class='centercontainer'>
 		<div class='centercontent' id='hometitle'>Hyperion</div>
 		<div class='centercontent' id='homedescription'>The Equipment Markets</div>
-		<div class='centercontent'><img class='homeimg' src="{% static "images/background.jpeg" %}" alt="homepage_image"/></div>
+		<div class='centercontent'>
+			<!--<img class='homeimg' src="{% static "images/background.jpeg" %}" alt="homepage_image"/>-->
+			<img class='homeimg' src="https://mail.google.com/mail/u/0/?ui=2&ik=1f8684ff85&view=att&th=13e3b32756db084a&attid=0.1&disp=emb&realattid=ii_13e3b319551541b4&zw&atsh=1" alt="homepage_img" />
+		</div>
 		<div class='centercontent emaillink' id='homecontact'><a href="mailto:info@hyperionmarkets.net">info@hyperionmarkets.net</a></div>
 	</div>
 </body>
