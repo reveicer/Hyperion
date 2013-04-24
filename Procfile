@@ -1,1 +1,1 @@
-web: python hplatform/manage.py runserver 0.0.0.0: --noreload
+web: python hplatform/manage.py run_gunicorn
