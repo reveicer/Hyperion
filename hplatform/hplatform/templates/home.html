@@ -4,84 +4,124 @@
 <html lang="en">
 <head>
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Economica:400,400italic|Playfair+Display+SC&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Noto+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <!--<link rel="stylesheet" href="{% static 'stylesheets/base.css' %}" />-->
     <style type="text/css">
+
+		.whitetext
+		{
+			color: #FFFFFF;
+		}
+
     	body
 		{
 			background-color: #000000;
-			color: #FFFFFF;
 		}
 
-		.centercontainer
+		#centercontainer
 		{
 			width: 960px;
-			margin-top: 60px;
+			height: 260px;
+			margin-top: 165px;
 			margin-left: auto;
 			margin-right: auto;
 		}
 
-		.centercontent
+		#infocontainer
 		{
-			text-align: center;
+			float: left;
+			width: 560px;
+			height: 100%;
+			border-right: 1px solid #CCCCCC;
+		}
+
+		#logocontainer
+		{
+			float: right;
+			width: 370px;
+			height: 100%;
+		}
+
+		#logoimage
+		{
+			height: 250px;
+			display: block;
+			margin-top: 5px;
 			margin-left: auto;
 			margin-right: auto;
 		}
 
-		#hometitle
+		#title
 		{
-			font-family: 'Lato', sans-serif;
-			font-weight: 500;
-			font-size: 96px;
-			margin-top: 20px;
-			margin-bottom: 20px;
+			color: #CCCCCC;
+			padding-top: 0px;
+			padding-bottom: 0px;
+			padding-right: 24px;
+			text-align: right;
+			font-family: 'Playfair Display SC', serif;
+			font-weight: 400;
+			font-size: 68px;
+			/*background-color: blue;*/
 		}
 
-		#homedescription
+		#description
 		{
-			font-family: 'Lato', sans-serif;
-			font-size: 36px;
+			color: #CCCCCC;
+			padding-top: 5px;
+			padding-bottom: 10px;
+			padding-right: 24px;
+			text-align: right;
+			font-family: 'Economica', sans-serif;
+			font-size: 22px;
+		/*	background-color: green;*/
 		}
 
-		#homecontact
+		#contact
 		{
-			font-family: 'Oxygen', sans-serif;
-			font-size: 20px;
-		}
-
-		.homeimg
-		{
-			max-width: 40%;
-			margin-top: 60px;
-			margin-bottom: 10px;
-		}
-
-		.emaillink a {
 			color: #FFFFFF;
+			padding-top: 78px;
+			padding-bottom: 10px;
+			padding-right: 24px;
+			text-align: right;
+			font-family: 'Noto Sans', sans-serif;
+			font-size: 10px;
+			/*background-color: red;*/
 		}
 
-		.emaillink a:visited {
-		    color: #FFFFFF !important;
+		.email
+		{
+			font-size: 16px;
 		}
 
-		.emaillink a:hover {
+		a:link {
+			color: #99CCFF;
+		}
+
+		a:visited {
 		    color: #99CCFF;
 		}
 
-		.emaillink a:active {
+		a:hover {
+		    color: #0099FF;
+		}
+
+		a:active {
 		    color: #FF0000;
 		}
 	</style>
     <title>Hyperion</title>
 </head>
 <body>
-	<div class='centercontainer'>
-		<div class='centercontent' id='hometitle'>Hyperion</div>
-		<div class='centercontent' id='homedescription'>The Equipment Markets</div>
-		<div class='centercontent'>
-			<!--<img class='homeimg' src="{% static "images/background.jpeg" %}" alt="homepage_image"/>-->
-			<img class='homeimg' src="http://farm9.staticflickr.com/8261/8676992527_a458bdb60f_k.jpg" alt="homepage_img" />
+	<div id='centercontainer'>
+		<div id='infocontainer'>
+			<div id='title' class='whitetext'>Hyperion</div>
+			<div id='description' class='whitetext'>Hyperion provides high net worth clients access to capital equipment markets.</div>
+			<div id='contact' class='whitetext'>To request additional information, please contact:<br /><a class='email' href="mailto:info@hyperionmarkets.net">info@hyperionmarkets.net</a></div>
 		</div>
-		<div class='centercontent emaillink' id='homecontact'><a href="mailto:info@hyperionmarkets.net">info@hyperionmarkets.net</a></div>
+		<div id='logocontainer'>
+			<img id='logoimage' src="http://farm9.staticflickr.com/8261/8676992527_a458bdb60f_k.jpg" alt="logo" />
+		</div>
 	</div>
 </body>
 </html>

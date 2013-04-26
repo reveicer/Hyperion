@@ -46,9 +46,12 @@ body
 	margin-top: 60px;
 	margin-bottom: 10px;
 }
+.emaillink a {
+	color: #FFFFFF;
+}
 
 .emaillink a:visited {
-    color: #FFFFFF;
+    color: #FFFFFF !important;
 }
 
 .emaillink a:hover {
