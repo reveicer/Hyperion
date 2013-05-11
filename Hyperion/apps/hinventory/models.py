@@ -2,7 +2,7 @@ from django.db import models
 from Hyperion.apps.htraders.models import TraderProfile
 from Hyperion.apps.hcustomers.models import CompanyProfile, ContactProfile
 from Hyperion.apps.hcustomers.models import Category, SubCategory
-
+	
 class EquipmentCore(models.Model):
 	is_active = models.BooleanField(default=False)
 	make = models.CharField('Make', max_length=50, blank=True)

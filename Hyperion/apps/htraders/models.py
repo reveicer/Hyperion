@@ -6,7 +6,7 @@ class TraderProfile(models.Model):
 	is_active = models.BooleanField(default=False)
 	user = models.ForeignKey(User, unique=True)
 	title = models.CharField('Title', max_length=20)
-	expertise = models.TextField('Expertise', blank=True)
+	#expertise = models.TextField('Expertise', blank=True)
 
 	def __unicode__(self):
 		return self.user.get_full_name()
