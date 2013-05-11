@@ -48,8 +48,9 @@ class CompanyProfile(models.Model):
 	province = models.CharField('Province', max_length=100, blank=True)
 	country = models.CharField('Country', max_length=100, blank=True)
 	zip_code = models.CharField('ZIP Code', max_length=20, blank=True)
+	expertise_description = models.TextField('Expertise Description', blank=True)
 	industry_expertise = models.ManyToManyField(Industry, related_name='expert_company_profiles')
-	process_expertise = models.TextField('Process Expertise', blank=True)
+	category_expertise = models.ManyToManyField(SubCategory, related_name='expert_company_profiles')
 	core_expertise = models.ManyToManyField('hinventory.EquipmentCore', related_name='expert_company_profiles')
 	notes = models.TextField('Notes', blank=True)
 
@@ -71,8 +72,9 @@ class ContactProfile(models.Model):
 	title = models.CharField('Title', max_length=20, blank=True)
 	buy = models.BooleanField('Buys', default=False)
 	sell = models.BooleanField('Sells', default=False)
+	expertise_description = models.TextField('Expertise Description', blank=True)
 	industry_expertise = models.ManyToManyField(Industry, related_name='expert_contact_profiles')
-	process_expertise = models.TextField('Process Expertise', blank=True)
+	category_expertise = models.ManyToManyField(SubCategory, related_name='expert_contact_profiles')
 	core_expertise = models.ManyToManyField('hinventory.EquipmentCore', related_name='expert_contact_profiles')
 	notes = models.TextField('Notes', blank=True)
 
