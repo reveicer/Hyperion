@@ -1,0 +1,41 @@
+{% extends "site_base.html" %}
+
+{% block title %}
+Hyperion
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="large-12 columns">
+		<h2>Register Company</h2>
+	</div>
+	<div class="large-12 columns">
+		<form action="/profile/company/register/" method="post">
+			{% csrf_token %}
+			<fieldset>
+				
+				<div class="row">
+					<!--Company Name-->
+					<div class="large-9 columns">
+						{{ form.name.errors }}
+						<label for="id_name">Name:</label>
+						{{ form.name }} <!--placeholder-->
+					</div>
+					<div class="large-3 columns">
+						{{ form.region.errors }}
+						<label for="id_region">Region:</label>
+						{{ form.region }}
+					</div>
+					<div class="large-12 columns">
+						{{ form.about.errors }}
+						<label for="id_about">About:</label>
+						{{ form.about }}
+					</div>
+				</div>
+
+				<input type="submit" value="Register" />				
+			</fieldset>
+		</form>
+	</div>
+</div>
+{% endblock %}
