@@ -1,0 +1,415 @@
+{% extends "site_base.html" %}
+
+{% block title %}
+Hyperion
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="large-8 columns">
+		<h2>Company Name</h2>
+	</div>
+	<div class="large-4 columns text-right">
+		<a href="#" class="small button radius alert">Delete</a>
+	</div>
+</div>
+<div class="row">
+	<div data-magellan-expedition="fixed">
+		<dl class="sub-nav">
+			<dd data-magellan-arrival="overview">
+				<a href="#overview">Overview</a>
+			</dd>
+			<dd data-magellan-arrival="contacts">
+				<a href="#contacts">Contacts</a>
+			</dd>
+			<dd data-magellan-arrival="listings">
+				<a href="#listings">Listings</a>
+			</dd>
+		</dl>
+	</div>
+</div>
+
+<div class="row">
+	<hr />
+
+	<a name="overview"></a>
+	<div class="large-12 columns" data-magellan-destination="overview">
+		<!--Basic Info-->
+		<div class="row">
+			<div class="large-8 columns">
+				<h3>Overview</h3>
+			</div>
+			<div class="large-4 columns text-right">
+				<a href="#" class="small button radius">Edit</a>
+			</div>
+		</div>
+		<div class="row">
+			<blockquote>
+				This is a very potential company!
+				<cite>Some trader</cite>
+			</blockquote>
+		</div>
+
+		<!--Company Panel Left-->
+		<div class="large-5 columns">
+			<!--Basic Information-->
+			<div class="row">
+				<div class="large-12 columns">
+					<h4 class="subheader">Basic Information</h4>
+				</div>
+			</div>
+			<!--Phone-->
+			<div class="row">
+				<div class="large-3 columns">
+					<p>Phone:</p>
+				</div>
+				<div class="large-9 columns">
+					<p>(650)521-6339</p>
+				</div>
+			</div>
+			<!--Fax-->
+			<div class="row">
+				<div class="large-3 columns">
+					<p>Fax:</p>
+				</div>
+				<div class="large-9 columns">
+					<p>(650)521-6340</p>
+				</div>
+			</div>
+			<!--Email-->				
+			<div class="row">
+				<div class="large-3 columns">
+					<p>Email:</p>
+				</div>
+				<div class="large-9 columns">
+					<a href="#">someone@company.com</a>
+				</div>
+			</div>
+			<!--Website-->
+			<div class="row">
+				<div class="large-3 columns">
+					<p>Website:</p>
+				</div>
+				<div class="large-9 columns">				
+					<a href="#">www.company.com</a>
+				</div>
+			</div>
+			<!--Address-->
+			<div class="row">
+				<div class="large-3 columns">
+					<p>Address:</p>
+				</div>
+				<div class="large-9 columns">
+					<ul class="no-bullet">
+						<li>236 Santa Teresa Street</li>
+						<li>Schiff House, 300</li>
+						<li>Stanford, CA 94305</li>
+						<li>United States</li>
+					</ul>
+				</div>
+			</div>		
+			<!--Type-->
+			<div class="row">
+				<div class="large-3 columns">
+					<p>Type:</p>
+				</div>
+				<div class="large-9 columns">
+					<p><span>type1</span> (primary)</p>
+					<ul class="inline-list">						
+						<li>type2</li>
+						<li>type3</li>
+					</ul>
+				</div>
+			</div>
+			<!--Region-->				
+			<div class="row">
+				<div class="large-3 columns">
+					<p>Region:</p>
+				</div>
+				<div class="large-9 columns">
+					<p>ASIA</p>
+				</div>
+			</div>
+			<!--About Us-->
+			<div class="row">
+				<div class="large-3 columns">
+					<p>About:</p>
+				</div>
+				<div class="large-9 columns">
+					<p>This is a detailed, formal description of the roles of this company.</p>
+				</div>
+			</div>
+		</div>
+
+		<!--Company Panel Right-->
+		<div class="large-6 large-offset-1 columns">
+			<!--S&C-->
+			<div class="row">
+				<div class="large-12 columns">
+					<h4 class="subheader">Specialization & Classification</h4>
+				</div>
+			</div>
+			<!--Industries-->
+			<div class="row">
+				<div class="large-3 columns">
+					<p>Industries:</p>
+				</div>
+				<div class="large-9 columns">
+					<ul class="inline-list">
+						<li>industry1</li>
+						<li>industry2</li>
+					</ul>
+				</div>
+			</div>
+			<!--Categories-->
+			<div class="row">
+				<div class="large-3 columns">
+					<p>Categories:</p>
+				</div>
+				<div class="large-9 columns">		
+					<dl>
+						<dt>Category 1</dt>
+						<dd>
+							<ul class="inline-list">
+								<li>Subcategory 1</li>
+								<li>Subcategory 2</li>
+								<li>Subcategory 3</li>
+								<li>Subcategory 4</li>
+								<li>Subcategory 5</li>
+							</ul>
+						</dd>
+						<dt>Category 2</dt>					
+						<dt>Category 3</dt>
+						<dd>
+							<ul class="inline-list">
+								<li>Subcategory 1</li>
+								<li>Subcategory 2</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+			</div>
+			<!--Make/Model-->
+			<div class="row">
+				<div class="large-3 columns">
+					<p>Make/Models:</p>
+				</div>
+				<div class="large-9 columns">
+					<dl>
+						<dt>Make 1</dt>
+						<dd>
+							<ul class="inline-list">
+								<li>Model 1</li>
+								<li>Model 2</li>
+								<li>Model 3</li>
+								<li>Model 4</li>
+							</ul>
+						</dd>
+						<dt>Make 2</dt>
+					</dl>
+				</div>
+			</div>
+			<!--Expertise Description-->
+			<div class="row">
+				<div class="large-3 columns">
+					<p>Expertise:</p>
+				</div>
+				<div class="large-9 columns">
+					This will be a description of this company's expertise.
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	<hr />
+
+	<!--Contacts-->
+	<a name="contacts"></a>
+	<div class="large-12 columns" data-magellan-destination="contacts">	
+		<div class="row">
+			<div class="large-12 columns">
+				<h3>Contacts</h3>
+			</div>
+		</div>
+		<div class="row">
+			<blockquote>
+				6 contacts registered in this company.
+			</blockquote>
+		</div>
+		<div class="large-4 columns">
+			<div class="panel">
+				<ul class="no-bullet">
+					<li><strong><a href="#">First Last</a></strong></li>
+					<li>Job Title</li>
+					<li>(650)521-6339</li>
+					<li><a href="#">contact1@company.com</a></li>
+					<hr />
+					<li>Buyer, Seller</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="large-4 columns">
+			<div class="panel">
+				<ul class="no-bullet">
+					<li><strong><a href="#">First Last</a></strong></li>
+					<li>Job Title</li>
+					<li>(650)521-6339</li>
+					<li><a href="#">contact1@company.com</a></li>
+					<hr />
+					<li>Buyer, Seller</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="large-4 columns">
+			<div class="panel">
+				<ul class="no-bullet">
+					<li><strong><a href="#">First Last</a></strong></li>
+					<li>Job Title</li>
+					<li>(650)521-6339</li>
+					<li><a href="#">contact1@company.com</a></li>
+					<hr />
+					<li>Buyer</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="large-4 columns">
+			<div class="panel">
+				<ul class="no-bullet">
+					<li><strong><a href="#">First Last</a></strong></li>
+					<li>Job Title</li>
+					<li>(650)521-6339</li>
+					<li><a href="#">contact1@company.com</a></li>
+					<hr />
+					<li>Buyer, Seller</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="large-4 columns">
+			<div class="panel">
+				<ul class="no-bullet">
+					<li><strong><a href="#">First Last</a></strong></li>
+					<li>Job Title</li>
+					<li>(650)521-6339</li>
+					<li><a href="#">contact1@company.com</a></li>
+					<hr />
+					<li>Buyer, Seller</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="large-4 columns">
+			<div class="panel">
+				<ul class="no-bullet">
+					<li><strong><a href="#">First Last</a></strong></li>
+					<li>Job Title</li>
+					<li>(650)521-6339</li>
+					<li><a href="#">contact1@company.com</a></li>
+					<hr />
+					<li>Seller</li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+
+	<hr />
+
+	<!--Listings-->
+	<a name="listings"></a>
+	<div class="large-12 columns" data-magellan-destination="listings">	
+		<div class="row">
+			<div class="large-12 columns">
+				<h3>Listings</h3>
+			</div>
+		</div>
+		<div class="row">
+			<blockquote>
+				6 listings published by this company.
+				<br />
+				12 installed base found.
+			</blockquote>
+		</div>
+		<!--Tabs-->
+		<div class="section-container tabs" data-section="tabs">
+			<section>
+				<p class="title" data-section-title><a href="#">Listings</a></p>
+				<div class="content" data-section-content>
+					<!--Listings-->
+					<div class="row">
+						<div class="large-2 columns">
+							<a href="#">
+								<img src="http://placehold.it/150x150" />
+							</a>
+						</div>
+						<div class="large-7 columns">
+							<h5><a href="#">Make, Model, Year</a></h5>
+							<div class="large-6 columns"><p>$1000.00</p></div>
+							<div class="large-6 columns text-right"><p>5/6/2013<p></div>
+							<div class="large-12 columns">
+									This will be notes about this equipment.
+									<br />
+									The notes are normally quite extensive.
+									<br />
+									Multiple lines.
+							</div>
+						</div>
+						<div class="large-3 columns">
+							<div class="panel">
+								<ul class="no-bullet">
+									<li><strong><a href="#">First Last</a></strong></li>
+									<li>Job Title</li>
+									<li>(650)521-6339</li>
+									<li><a href="#">contact1@company.com</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--Another listing-->
+					<div class="row">
+						<div class="large-2 columns">
+							<a href="#">
+								<img src="http://placehold.it/150x150" />
+							</a>
+						</div>
+						<div class="large-7 columns">
+							<h5><a href="#">Make, Model, Year</a></h5>
+							<div class="large-6 columns"><p>$1000.00</p></div>
+							<div class="large-6 columns text-right"><p>5/6/2013<p></div>
+							<div class="large-12 columns">
+									This will be notes about this equipment.
+									<br />
+									The notes are normally quite extensive.
+									<br />
+									Multiple lines.
+							</div>
+						</div>
+						<div class="large-3 columns">
+							<div class="panel">
+								<ul class="no-bullet">
+									<li><strong><a href="#">First Last</a></strong></li>
+									<li>Job Title</li>
+									<li>(650)521-6339</li>
+									<li><a href="#">contact1@company.com</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<p class="title" data-section-title><a href="#">Installed Base</a></p>
+				<div class="content" data-section-content>
+					<!--Installed Base-->
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<hr />
+</div>
+{% endblock %}

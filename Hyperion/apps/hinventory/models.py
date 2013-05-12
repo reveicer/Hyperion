@@ -1,7 +1,6 @@
 from django.db import models
 from Hyperion.apps.htraders.models import TraderProfile
-from Hyperion.apps.hcustomers.models import CompanyProfile, ContactProfile
-from Hyperion.apps.hcustomers.models import Category, SubCategory
+from Hyperion.apps.hcustomers.models import CompanyProfile, ContactProfile, Category, SubCategory
 	
 class EquipmentCore(models.Model):
 	is_active = models.BooleanField(default=False)
@@ -18,7 +17,7 @@ class EquipmentCorePrice(models.Model):
 	price = models.DecimalField('Price', max_digits=15, decimal_places=2)
 	date_recorded = models.DateField('Date Recorded', auto_now_add=True)
 	notes = models.TextField('Notes', blank=True)
-	
+
 class EquipmentProfile(models.Model):
 	is_active = models.BooleanField(default=False)
 	date_created = models.DateField('Date Created', auto_now_add=True)
