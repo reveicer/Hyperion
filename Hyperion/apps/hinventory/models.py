@@ -6,7 +6,7 @@ class EquipmentCore(models.Model):
 	is_active = models.BooleanField(default=True)
 	make = models.CharField('Make', max_length=50, blank=True)
 	model = models.CharField('Model', max_length=50, blank=True)
-	year = models.CharField('Year', max_length=4, blank=True)
+	#year = models.CharField('Year', max_length=4, blank=True)
 	categories = models.ManyToManyField(Category, related_name='equipment_cores')
 	about = models.TextField('About', blank=True)
 

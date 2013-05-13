@@ -32,7 +32,8 @@ Hyperion
 		<form action="/profile/company/register/" method="post" class="custom">
 			{% csrf_token %}
 			<fieldset>
-				<div class="row">
+				<a name="basic"></a>
+				<div class="row" data-magellan-destination="basic">
 					<!--Company Name-->
 					<div class="large-7 columns">
 						{{ form.name.errors }}
@@ -98,7 +99,8 @@ Hyperion
 
 				<hr />
 
-				<div class="row">
+				<a name="address"></a>
+				<div class="row" data-magellan-destination="address">
 					<!--Address-->
 					<div class="large-12 columns">
 						<h4 class="subheader">Address:</h4>
@@ -174,7 +176,8 @@ Hyperion
 
 				<hr />
 
-				<div class="row">
+				<a name="types_industries"></a>
+				<div class="row" data-magellan-destination="types_industries">
 
 					<!--All Types-->
 					<div class="large-4 columns">
@@ -211,8 +214,10 @@ Hyperion
 
 
 				<hr />
+
+				<a name="categories"></a>
 				<!--Categories-->
-				<div class="row">				
+				<div class="row" data-magellan-destination="categories">				
 					<div class="large-12 columns">
 						<h4 class="subheader">Categories:</h4>
 						<div class="section-container tabs" data-section="tabs">
@@ -243,14 +248,15 @@ Hyperion
 				<hr />
 
 				<!--Expertise-->
-				<div class="row">
-					
+				<a name="expertise"></a>
+				<div class="row" data-magellan-destination="expertise">
+
 				</div>
 
 				<hr />
 
-				<div class="row">
-					<input type="submit" value="Register" />
+				<div class="row text-center">
+					<input type="submit" value="Register" class="button" />
 				</div>
 			</fieldset>
 		</form>

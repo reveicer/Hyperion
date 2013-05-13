@@ -20,10 +20,10 @@ class CompanyRegistrationForm(ModelForm):
 
 	class Meta:
 		model = CompanyProfile
-		# missing the three expertise fields
+		# missing the core expertise fields
 		fields = ('name', 'phone', 'fax', 'email', 'website', 'region', 'primary_type', 'all_types', 'about',
 				'street_line1', 'street_line2', 'street_line3', 'city', 'state_province', 'country', 'zip_code', # address info
-				'categories', 'expertise_description', 'notes')
+				'expertise_description', 'notes')
 		widgets = {
 			# uncomment this if reading fails.
 			'all_types': forms.CheckboxSelectMultiple(),
