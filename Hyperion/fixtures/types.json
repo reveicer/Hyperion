@@ -1,0 +1,83 @@
+[
+  {
+    "model": "hcustomers.Type",
+    "pk": 1,
+    "fields": {
+      "is_active": true,
+      "code": "EU",
+      "name": "End User"
+    }
+  },
+  {
+    "model": "hcustomers.Type",
+    "pk": 2,
+    "fields": {
+      "is_active": true,
+      "code": "IRS",
+      "name": "Inventory Carrying Reseller"
+    }
+  },
+  {
+    "model": "hcustomers.Type",
+    "pk": 3,
+    "fields": {
+      "is_active": true,
+      "code": "NIRS",
+      "name": "Non-Inventory Carrying Reseller"
+    }
+  },
+  {
+    "model": "hcustomers.Type",
+    "pk": 4,
+    "fields": {
+      "is_active": true,
+      "code": "OEM",
+      "name": "OEM"
+    }
+  },
+  {
+    "model": "hcustomers.Type",
+    "pk": 5,
+    "fields": {
+      "is_active": true,
+      "code": "SP",
+      "name": "Service Provider"
+    }
+  },
+  {
+    "model": "hcustomers.Type",
+    "pk": 6,
+    "fields": {
+      "is_active": true,
+      "code": "RF",
+      "name": "Refurbisher"
+    }
+  },
+  {
+    "model": "hcustomers.Type",
+    "pk": 7,
+    "fields": {
+      "is_active": true,
+      "code": "RD",
+      "name": "R&D"
+    }
+  },
+  {
+    "model": "hcustomers.Type",
+    "pk": 8,
+    "fields": {
+      "is_active": true,
+      "code": "UNIV",
+      "name": "University"
+    }
+  },
+  {
+    "model": "hcustomers.Type",
+    "pk": 9,
+    "fields": {
+      "is_active": true,
+      "code": "OT",
+      "name": "Other"
+    }
+  }
+]

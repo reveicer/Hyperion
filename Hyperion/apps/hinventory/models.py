@@ -1,25 +1,24 @@
 from django.db import models
 from Hyperion.apps.htraders.models import TraderProfile
-from Hyperion.apps.hcustomers.models import CompanyProfile, ContactProfile, Category, SubCategory
+from Hyperion.apps.hcustomers.models import CompanyProfile, ContactProfile, Category
 	
 class EquipmentCore(models.Model):
-	is_active = models.BooleanField(default=False)
+	is_active = models.BooleanField(default=True)
 	make = models.CharField('Make', max_length=50, blank=True)
 	model = models.CharField('Model', max_length=50, blank=True)
 	year = models.CharField('Year', max_length=4, blank=True)
 	categories = models.ManyToManyField(Category, related_name='equipment_cores')
-	subcategories = models.ManyToManyField(SubCategory, related_name='equipment_cores')
 	about = models.TextField('About', blank=True)
 
 class EquipmentCorePrice(models.Model):
-	is_active = models.BooleanField(default=False)
+	is_active = models.BooleanField(default=True)
 	core = models.ForeignKey(EquipmentCore, related_name='equipment_core_prices')
 	price = models.DecimalField('Price', max_digits=15, decimal_places=2)
 	date_recorded = models.DateField('Date Recorded', auto_now_add=True)
 	notes = models.TextField('Notes', blank=True)
 
 class EquipmentProfile(models.Model):
-	is_active = models.BooleanField(default=False)
+	is_active = models.BooleanField(default=True)
 	date_created = models.DateField('Date Created', auto_now_add=True)
 	core = models.ForeignKey(EquipmentCore, related_name='equipment_profiles')
 	serial_number = models.CharField('Serial Number', max_length=100, blank=True, null=True)
@@ -38,7 +37,7 @@ class EquipmentProfileUpdate(models.Model):
 	notes = models.TextField('Notes', blank=True)
 
 class ListingProfile(models.Model):
-	is_active = models.BooleanField(default=False)
+	is_active = models.BooleanField(default=True)
 	equipment = models.ForeignKey(EquipmentProfile, related_name='listing_profiles')
 	seller = models.ForeignKey(ContactProfile, related_name='listing_profiles')
 	price = models.DecimalField('Price', max_digits=15, decimal_places=2)
@@ -56,7 +55,7 @@ class Transaction(models.Model):
 	notes = models.TextField('Notes', blank=True)
 
 class RequirementProfile(models.Model):
-	is_active = models.BooleanField(default=False)
+	is_active = models.BooleanField(default=True)
 	description = models.TextField('Description', blank=True)
 	max_price = models.DecimalField('Max Price', max_digits=15, decimal_places=2)
 	min_price = models.DecimalField('Min Price', max_digits=15, decimal_places=2)
@@ -69,7 +68,6 @@ class RequirementProfile(models.Model):
 	trader = models.ForeignKey(TraderProfile, related_name='requirement_profiles')
 	date_posted = models.DateField('Posted on', auto_now_add=True)
 	categories = models.ManyToManyField(Category, related_name='requirement_profiles')
-	subcategories = models.ManyToManyField(SubCategory, related_name='requirement_profiles')
 	notes = models.TextField('Notes', blank=True)
 
 class RequirementProfileUpdate(models.Model):
@@ -80,7 +78,7 @@ class RequirementProfileUpdate(models.Model):
 	notes = models.TextField('Notes', blank=True)
 
 class RequirementRecommendation(models.Model):
-	is_active = models.BooleanField(default=False)
+	is_active = models.BooleanField(default=True)
 	requirement = models.ForeignKey(RequirementProfile, verbose_name='Requirement')
 	core = models.ForeignKey(EquipmentCore, related_name='requirement_recommendations')
 	trader = models.ForeignKey(TraderProfile, related_name='requirement_recommendations')

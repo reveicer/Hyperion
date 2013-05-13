@@ -7,33 +7,256 @@ Hyperion
 {% block content %}
 <div class="row">
 	<div class="large-12 columns">
-		<h2>Register Company</h2>
+		<h2>Company Registration Form</h2>
+		<div data-magellan-expedition="fixed">
+			<dl class="sub-nav">
+				<dd data-magellan-arrival="overview">
+					<a href="#overview">Overview</a>
+				</dd>
+				<dd data-magellan-arrival="contacts">
+					<a href="#contacts">Contacts</a>
+				</dd>
+				<dd data-magellan-arrival="listings">
+					<a href="#listings">Listings</a>
+				</dd>
+			</dl>
+		</div>
 	</div>
 	<div class="large-12 columns">
-		<form action="/profile/company/register/" method="post">
+		<form action="/profile/company/register/" method="post" class="custom">
 			{% csrf_token %}
 			<fieldset>
-				
 				<div class="row">
 					<!--Company Name-->
-					<div class="large-9 columns">
+					<div class="large-7 columns">
 						{{ form.name.errors }}
-						<label for="id_name">Name:</label>
-						{{ form.name }} <!--placeholder-->
+						<label for="id_name"><h4 class="subheader">Name:</h4></label>
+						{{ form.name }}
 					</div>
-					<div class="large-3 columns">
+
+					<!--Website-->
+					<div class="large-5 columns">
+						{{ form.website.errors }}
+						<label for="id_name"><h4 class="subheader">Website:</h4></label>
+						<div class="row collapse">
+							<div class="large-3 columns">
+								<span class="prefix">http://</span>
+							</div>
+							<div class="large-9 columns">{{ form.website }}</div>
+						</div>
+					</div>
+
+					<!--Region-->
+					<div class="large-2 columns">
 						{{ form.region.errors }}
-						<label for="id_region">Region:</label>
+						<label for="id_region"><h4 class="subheader">Region:</h4></label>
 						{{ form.region }}
 					</div>
-					<div class="large-12 columns">
+
+					<!--Primary Type-->
+					<div class="large-3 columns">
+						{{ form.primary_type.errors }}
+						<label for="id_primary_type"><h4 class="subheader">Primary Type:</h4></label>
+						{{ form.primary_type }}
+					</div>
+
+					<!--About-->
+					<div class="large-7 columns">
 						{{ form.about.errors }}
-						<label for="id_about">About:</label>
+						<label for="id_about"><h4 class="subheader">About:</h4></label>
 						{{ form.about }}
+					</div>
+
+					<!--Phone-->
+					<div class="large-4 columns">
+						{{ form.phone.errors }}
+						<label for="id_phone"><h4 class="subheader">Phone:</h4></label>
+						{{ form.phone }}
+					</div>
+
+					<!--Fax-->
+					<div class="large-4 columns">
+						{{ form.fax.errors }}
+						<label for="id_phone"><h4 class="subheader">Fax:</h4></label>
+						{{ form.fax }}
+					</div>
+
+					<!--Email-->
+					<div class="large-4 columns">
+						{{ form.email.errors }}
+						<label for="id_phone"><h4 class="subheader">E-mail:</h4></label>
+						{{ form.email }}
+					</div>
+
+				</div>
+
+				<hr />
+
+				<div class="row">
+					<!--Address-->
+					<div class="large-12 columns">
+						<h4 class="subheader">Address:</h4>
+					</div>
+					<!--left address-->
+					<div class="large-6 columns">
+						<div class="row collapse">
+							{{ form.street_line1.errors }}
+							<div class="large-2 columns">
+								<span class="prefix">Line 1:</span>
+							</div>
+							<div class="large-10 columns">
+								{{ form.street_line1 }}
+							</div>
+						</div>
+						<div class="row collapse">
+							{{ form.street_line2.errors }}
+							<div class="large-2 columns">
+								<span class="prefix">Line 2:</span>
+							</div>
+							<div class="large-10 columns">
+								{{ form.street_line2 }}
+							</div>
+						</div>
+						<div class="row collapse">
+							{{ form.street_line3.errors }}
+							<div class="large-2 columns">
+								<span class="prefix">Line 3:</span>
+							</div>
+							<div class="large-10 columns">
+								{{ form.street_line3 }}
+							</div>
+						</div>
+					</div>
+					<!--right address-->
+					<div class="large-6 columns">
+						<div class="row collapse">
+							{{ form.city.errors }}
+							<div class="large-2 columns">
+								<span class="prefix">City:</span>
+							</div>
+							<div class="large-10 columns">
+								{{ form.city }}
+							</div>
+						</div>
+						<div class="row collapse">
+							{{ form.state_province.errors }}
+							<div class="large-4 columns">
+								<span class="prefix">State/Province:</span>
+							</div>
+							<div class="large-8 columns">
+								{{ form.state_province }}
+							</div>
+						</div>
+						<div class="row collapse">
+							{{ form.country.errors }}
+							<div class="large-2 columns">
+								<span class="prefix">Country:</span>
+							</div>
+							<div class="large-4 columns">
+								{{ form.country }}
+							</div>
+							{{ form.zip_code.errors }}
+							<div class="large-2 large-offset-1 columns">
+								<span class="prefix">Zip:</span>
+							</div>
+							<div class="large-3 columns">
+								{{ form.zip_code }}
+							</div>
+						</div>
 					</div>
 				</div>
 
-				<input type="submit" value="Register" />				
+				<hr />
+
+				<div class="row">
+
+					<!--All Types-->
+					<div class="large-4 columns">
+						{{ form.all_types.errors }}
+						<label for="id_all_types">
+							<h4 class="subheader">All Types:</h4>
+						</label>
+						{% for pk, type in form.all_types.field.widget.choices %}
+							<div class="large-12 columns">
+								<label for="id_all_types_{{ pk }}">
+									<input type="checkbox" id="id_all_types_{{ pk }}" name="all_types" value="{{ pk }}" style="display: none;">
+									<span class="custom checkbox"></span>
+									{{ type }}
+								</label>
+							</div>
+						{% endfor %}
+					</div>
+					
+					<!--Industries-->
+					<div class="large-3 columns">
+						<h4 class="subheader">Industries:</h4>
+						{% for pk, industry in form.industries.field.widget.choices %}
+							<div class="large-12 columns">
+								<label for="id_industries_{{ pk }}">
+									<input type="checkbox" id="id_industries_{{ pk }}" name="industries" value="{{ pk }}" style="display: none;">
+									<input type="checkbox" id="id_industries_{{ pk }}" name="industries" value="{{ pk }}" style="display: none;">
+									<span class="custom checkbox"></span>
+									{{ industry }}
+								</label>
+							</div>
+						{% endfor %}	
+					</div>
+				</div>
+
+
+				<hr />
+				<!--Categories-->
+				<div class="row">				
+					<div class="large-12 columns">
+						<h4 class="subheader">Categories:</h4>
+						<div class="section-container tabs" data-section="tabs">
+							<!--Category 1-->
+							<section>
+								<p class="title" data-section-title><a href="#">Front End Processessing Equipment</a></p>
+								<div class="content" data-section-content>
+								<!--Installed Base-->
+								</div>
+							</section>
+							<!--Category 2-->
+							<section>
+								<p class="title" data-section-title><a href="#">Back End Processing Equipment</a></p>
+								<div class="content" data-section-content>
+								<!--Installed Base-->
+								</div>
+							</section>
+							<!--Category 3-->
+							<section>
+								<p class="title" data-section-title><a href="#">Lab Equipment</a></p>
+								<div class="content" data-section-content>
+								<!--Installed Base-->
+								</div>
+							</section>
+							<!--Category 4-->
+							<section>
+								<p class="title" data-section-title><a href="#">PCB</a></p>
+								<div class="content" data-section-content>
+								<!--Installed Base-->
+								</div>
+							</section>
+							<!--Category 5-->
+							<section>
+								<p class="title" data-section-title><a href="#">Facilities Equipment</a></p>
+								<div class="content" data-section-content>
+								<!--Installed Base-->
+								</div>
+							</section>
+						</div>
+					</div>
+				</div>
+			
+
+
+
+				<hr />
+
+				<div class="row">
+					<input type="submit" value="Register" />
+				</div>
 			</fieldset>
 		</form>
 	</div>

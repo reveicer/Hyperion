@@ -1,0 +1,119 @@
+[
+  {
+    "model": "hcustomers.Industry",
+    "pk": 1,
+    "fields": {
+      "is_active": true,
+      "code": "SC",
+      "name": "Semiconductor"
+    }
+  },
+  {
+    "model": "hcustomers.Industry",
+    "pk": 2,
+    "fields": {
+      "is_active": true,
+      "code": "SO",
+      "name": "Solar"
+    }
+  },
+  {
+    "model": "hcustomers.Industry",
+    "pk": 3,
+    "fields": {
+      "is_active": true,
+      "code": "PCB",
+      "name": "PCB"
+    }
+  },
+  {
+    "model": "hcustomers.Industry",
+    "pk": 4,
+    "fields": {
+      "is_active": true,
+      "code": "SMT",
+      "name": "SMT"
+    }
+  },
+  {
+    "model": "hcustomers.Industry",
+    "pk": 5,
+    "fields": {
+      "is_active": true,
+      "code": "PH",
+      "name": "Photonics"
+    }
+  },
+  {
+    "model": "hcustomers.Industry",
+    "pk": 6,
+    "fields": {
+      "is_active": true,
+      "code": "LE",
+      "name": "LED"
+    }
+  },
+  {
+    "model": "hcustomers.Industry",
+    "pk": 7,
+    "fields": {
+      "is_active": true,
+      "code": "TE",
+      "name": "TEST"
+    }
+  },
+  {
+    "model": "hcustomers.Industry",
+    "pk": 8,
+    "fields": {
+      "is_active": true,
+      "code": "LB",
+      "name": "Lab"
+    }
+  },
+  {
+    "model": "hcustomers.Industry",
+    "pk": 9,
+    "fields": {
+      "is_active": true,
+      "code": "MD",
+      "name": "Medical"
+    }
+  },
+  {
+    "model": "hcustomers.Industry",
+    "pk": 10,
+    "fields": {
+      "is_active": true,
+      "code": "IF",
+      "name": "Infrastructure"
+    }
+  },
+  {
+    "model": "hcustomers.Industry",
+    "pk": 11,
+    "fields": {
+      "is_active": true,
+      "code": "PA",
+      "name": "Pharmaceutical "
+    }
+  },
+  {
+    "model": "hcustomers.Industry",
+    "pk": 12,
+    "fields": {
+      "is_active": true,
+      "code": "OG",
+      "name": "Oil & Gas "
+    }
+  },
+  {
+    "model": "hcustomers.Industry",
+    "pk": 13,
+    "fields": {
+      "is_active": true,
+      "code": "OT",
+      "name": "Other"
+    }
+  }
+]
