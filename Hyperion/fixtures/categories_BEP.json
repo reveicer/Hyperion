@@ -6,8 +6,8 @@
       "is_active": true,
       "category_code": "BEP",
       "category_name": "Back-End",
-      "category_code": "BO",
-      "category_name": "Bonders"
+      "subcategory_code": "BO",
+      "subcategory_name": "Bonders"
     }
   },
   {
@@ -17,8 +17,8 @@
       "is_active": true,
       "category_code": "BEP",
       "category_name": "Back-End",
-      "category_code": "BS",
-      "category_name": "Burn-in Systems"
+      "subcategory_code": "BS",
+      "subcategory_name": "Burn-in Systems"
     }
   },
   {
@@ -28,8 +28,8 @@
       "is_active": true,
       "category_code": "BEP",
       "category_name": "Back-End",
-      "category_code": "DA",
-      "category_name": "Die Attachers"
+      "subcategory_code": "DA",
+      "subcategory_name": "Die Attachers"
     }
   },
   {
@@ -39,8 +39,8 @@
       "is_active": true,
       "category_code": "BEP",
       "category_name": "Back-End",
-      "category_code": "ET",
-      "category_name": "Electronic Test Equipment"
+      "subcategory_code": "ET",
+      "subcategory_name": "Electronic Test Equipment"
     }
   },
   {
@@ -50,8 +50,8 @@
       "is_active": true,
       "category_code": "BEP",
       "category_name": "Back-End",
-      "category_code": "FT",
-      "category_name": "Final Test"
+      "subcategory_code": "FT",
+      "subcategory_name": "Final Test"
     }
   },
   {
@@ -61,8 +61,8 @@
       "is_active": true,
       "category_code": "BEP",
       "category_name": "Back-End",
-      "category_code": "HA",
-      "category_name": "Handlers"
+      "subcategory_code": "HA",
+      "subcategory_name": "Handlers"
     }
   },
   {
@@ -72,8 +72,8 @@
       "is_active": true,
       "category_code": "BEP",
       "category_name": "Back-End",
-      "category_code": "LS",
-      "category_name": "Lasers"
+      "subcategory_code": "LS",
+      "subcategory_name": "Lasers"
     }
   },
   {
@@ -83,8 +83,8 @@
       "is_active": true,
       "category_code": "BEP",
       "category_name": "Back-End",
-      "category_code": "MM",
-      "category_name": "Marking Machines"
+      "subcategory_code": "MM",
+      "subcategory_name": "Marking Machines"
     }
   },
   {
@@ -94,8 +94,8 @@
       "is_active": true,
       "category_code": "BEP",
       "category_name": "Back-End",
-      "category_code": "OF",
-      "category_name": "Ovens/Furnaces"
+      "subcategory_code": "OF",
+      "subcategory_name": "Ovens/Furnaces"
     }
   },
   {
@@ -105,8 +105,8 @@
       "is_active": true,
       "category_code": "BEP",
       "category_name": "Back-End",
-      "category_code": "PA",
-      "category_name": "Packaging"
+      "subcategory_code": "PA",
+      "subcategory_name": "Packaging"
     }
   },
   {
@@ -116,8 +116,8 @@
       "is_active": true,
       "category_code": "BEP",
       "category_name": "Back-End",
-      "category_code": "PS",
-      "category_name": "Power Supplies"
+      "subcategory_code": "PS",
+      "subcategory_name": "Power Supplies"
     }
   },
   {
@@ -127,8 +127,8 @@
       "is_active": true,
       "category_code": "BEP",
       "category_name": "Back-End",
-      "category_code": "PR",
-      "category_name": "Probers"
+      "subcategory_code": "PR",
+      "subcategory_name": "Probers"
     }
   },
   {
@@ -138,8 +138,8 @@
       "is_active": true,
       "category_code": "BEP",
       "category_name": "Back-End",
-      "category_code": "SD",
-      "category_name": "Scribing/Dicing"
+      "subcategory_code": "SD",
+      "subcategory_name": "Scribing/Dicing"
     }
   },
   {
@@ -149,8 +149,8 @@
       "is_active": true,
       "category_code": "BEP",
       "category_name": "Back-End",
-      "category_code": "XR",
-      "category_name": "X-Ray"
+      "subcategory_code": "XR",
+      "subcategory_name": "X-Ray"
     }
   }
 ]

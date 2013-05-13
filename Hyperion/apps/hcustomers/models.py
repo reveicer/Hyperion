@@ -7,18 +7,24 @@ class Industry(models.Model):
 
 	def __unicode__(self):
 		return self.name
-'''
-class Category(models.Model):
-	is_active = models.BooleanField(default=True)
-	code = models.CharField('Code', max_length=4)
-	name = models.CharField('Name', max_length=50)
 
-class SubCategory(models.Model):
-	is_active = models.BooleanField(default=True)
-	code = models.CharField('Code', max_length=4)
-	name = models.CharField('Name', max_length=50)
-	category = models.ForeignKey(Category, related_name='subcategories')
-'''
+class CategoryManager(models.Manager):
+	def get_grouped_categories(self):
+		grouped_dict = {}
+
+		active_categories = self.filter(is_active=True)
+		for active_category in active_categories:
+			category_name = active_category.category_name
+			existing_list = grouped_dict.get(category_name)
+
+			if existing_list is None:
+				grouped_dict[category_name] = [active_category]
+			else:
+				existing_list.append(active_category)
+				grouped_dict[category_name] = existing_list
+
+		return grouped_dict
+
 
 class Category(models.Model):
 	is_active = models.BooleanField(default=True)
@@ -26,7 +32,11 @@ class Category(models.Model):
 	category_name = models.CharField('Category Name', max_length=50)
 	subcategory_code = models.CharField('SubCategory Code', max_length=4)
 	subcategory_name = models.CharField('SubCategory Name', max_length=50)
+	# custom manager
+	objects = CategoryManager()
 
+	def __unicode__(self):
+		return self.subcategory_name
 
 class Type(models.Model):
 	is_active = models.BooleanField(default=True)

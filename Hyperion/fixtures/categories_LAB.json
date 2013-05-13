@@ -6,8 +6,8 @@
       "is_active": true,
       "category_code": "LAB",
       "category_name": "Lab Equipment",
-      "category_code": "CF",
-      "category_name": "Centrifuges"
+      "subcategory_code": "CF",
+      "subcategory_name": "Centrifuges"
     }
   },
   {
@@ -17,8 +17,8 @@
       "is_active": true,
       "category_code": "LAB",
       "category_name": "Lab Equipment",
-      "category_code": "EL",
-      "category_name": "Ellipsometers"
+      "subcategory_code": "EL",
+      "subcategory_name": "Ellipsometers"
     }
   },  
   {
@@ -28,8 +28,8 @@
       "is_active": true,
       "category_code": "LAB",
       "category_name": "Lab Equipment",
-      "category_code": "EC",
-      "category_name": "Environmental Chambers"
+      "subcategory_code": "EC",
+      "subcategory_name": "Environmental Chambers"
     }
   },
   {
@@ -39,8 +39,8 @@
       "is_active": true,
       "category_code": "LAB",
       "category_name": "Lab Equipment",
-      "category_code": "GB",
-      "category_name": "Glove Box"
+      "subcategory_code": "GB",
+      "subcategory_name": "Glove Box"
     }
   },
   {
@@ -50,8 +50,8 @@
       "is_active": true,
       "category_code": "LAB",
       "category_name": "Lab Equipment",
-      "category_code": "LE",
-      "category_name": "Lab Equipment & Accessories"
+      "subcategory_code": "LE",
+      "subcategory_name": "Lab Equipment & Accessories"
     }
   },
   {
@@ -61,8 +61,8 @@
       "is_active": true,
       "category_code": "LAB",
       "category_name": "Lab Equipment",
-      "category_code": "LF",
-      "category_name": "Laminar Flow & Fume Hoods"
+      "subcategory_code": "LF",
+      "subcategory_name": "Laminar Flow & Fume Hoods"
     }
   },
   {
@@ -72,8 +72,8 @@
       "is_active": true,
       "category_code": "LAB",
       "category_name": "Lab Equipment",
-      "category_code": "LS",
-      "category_name": "Lasers"
+      "subcategory_code": "LS",
+      "subcategory_name": "Lasers"
     }
   },
   {
@@ -83,8 +83,8 @@
       "is_active": true,
       "category_code": "LAB",
       "category_name": "Lab Equipment",
-      "category_code": "LD",
-      "category_name": "Leak Detectors"
+      "subcategory_code": "LD",
+      "subcategory_name": "Leak Detectors"
     }
   },
   {
@@ -94,8 +94,8 @@
       "is_active": true,
       "category_code": "LAB",
       "category_name": "Lab Equipment",
-      "category_code": "MS",
-      "category_name": "Microscopes"
+      "subcategory_code": "MS",
+      "subcategory_name": "Microscopes"
     }
   },
   {
@@ -105,8 +105,8 @@
       "is_active": true,
       "category_code": "LAB",
       "category_name": "Lab Equipment",
-      "category_code": "OC",
-      "category_name": "Optical Comparators"
+      "subcategory_code": "OC",
+      "subcategory_name": "Optical Comparators"
     }
   },
   {
@@ -116,8 +116,8 @@
       "is_active": true,
       "category_code": "LAB",
       "category_name": "Lab Equipment",
-      "category_code": "OF",
-      "category_name": "Ovens/Furnaces"
+      "subcategory_code": "OF",
+      "subcategory_name": "Ovens/Furnaces"
     }
   },
   {
@@ -127,8 +127,8 @@
       "is_active": true,
       "category_code": "LAB",
       "category_name": "Lab Equipment",
-      "category_code": "PC",
-      "category_name": "Particle Counters"
+      "subcategory_code": "PC",
+      "subcategory_name": "Particle Counters"
     }
   },
   {
@@ -138,8 +138,8 @@
       "is_active": true,
       "category_code": "LAB",
       "category_name": "Lab Equipment",
-      "category_code": "PS",
-      "category_name": "Power Supplies"
+      "subcategory_code": "PS",
+      "subcategory_name": "Power Supplies"
     }
   },
   {
@@ -149,8 +149,8 @@
       "is_active": true,
       "category_code": "LAB",
       "category_name": "Lab Equipment",
-      "category_code": "RG",
-      "category_name": "Residual Gas Analyzers"
+      "subcategory_code": "RG",
+      "subcategory_name": "Residual Gas Analyzers"
     }
   },
   {
@@ -160,8 +160,8 @@
       "is_active": true,
       "category_code": "LAB",
       "category_name": "Lab Equipment",
-      "category_code": "SE",
-      "category_name": "Scanning Electron Microscopes"
+      "subcategory_code": "SE",
+      "subcategory_name": "Scanning Electron Microscopes"
     }
   },
   {
@@ -171,8 +171,8 @@
       "is_active": true,
       "category_code": "LAB",
       "category_name": "Lab Equipment",
-      "category_code": "SP",
-      "category_name": "Spare Parts"
+      "subcategory_code": "SP",
+      "subcategory_name": "Spare Parts"
     }
   },
   {
@@ -182,8 +182,8 @@
       "is_active": true,
       "category_code": "LAB",
       "category_name": "Lab Equipment",
-      "category_code": "ST",
-      "category_name": "Spectrometers"
+      "subcategory_code": "ST",
+      "subcategory_name": "Spectrometers"
     }
   },
   {
@@ -193,8 +193,8 @@
       "is_active": true,
       "category_code": "LAB",
       "category_name": "Lab Equipment",
-      "category_code": "XR",
-      "category_name": "X-Ray"
+      "subcategory_code": "XR",
+      "subcategory_name": "X-Ray"
     }
   }
 ]

@@ -15,8 +15,6 @@ def company_profile(request, company_id):
 	t = loader.get_template('company_profile.html')
 	return HttpResponse(t.render(Context()))
 
-#def contact_profile(request, contact_id):
-
 class CompanyRegistrationForm(ModelForm):
 	industries = forms.ModelMultipleChoiceField(Industry.objects.all(), widget=forms.CheckboxSelectMultiple(), required=False)
 
@@ -63,8 +61,11 @@ def register_company(request):
 	else:
 		form = CompanyRegistrationForm()
 
+
+	grouped_categories = Category.objects.get_grouped_categories()
 	return render(request, 'company_registration.html', {
 			'form' : form,
+			'grouped_categories' : grouped_categories,
 		})
 
 #def register_contact(request):

@@ -13,5 +13,5 @@ II. Clone Repository
 Development Procedures:
 =============================================
 1. (optional) python manage.py syncdb - clears database content
-2. (optional) python manage.py loaddata Hyperion/fixtures/*
+2. (optional) python manage.py loaddata Hyperion/fixtures/fixture_*
 3. python manage.py runserver 8000

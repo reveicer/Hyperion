@@ -10,14 +10,20 @@ Hyperion
 		<h2>Company Registration Form</h2>
 		<div data-magellan-expedition="fixed">
 			<dl class="sub-nav">
-				<dd data-magellan-arrival="overview">
-					<a href="#overview">Overview</a>
+				<dd data-magellan-arrival="basic">
+					<a href="#basic">Basic</a>
 				</dd>
-				<dd data-magellan-arrival="contacts">
-					<a href="#contacts">Contacts</a>
+				<dd data-magellan-arrival="address">
+					<a href="#adress">Address</a>
 				</dd>
-				<dd data-magellan-arrival="listings">
-					<a href="#listings">Listings</a>
+				<dd data-magellan-arrival="types_industries">
+					<a href="#types_industries">Types&amp;Industries</a>
+				</dd>
+				<dd data-magellan-arrival="categories">
+					<a href="#categories">Categories</a>
+				</dd>
+				<dd data-magellan-arrival="expertise">
+					<a href="#expertise">Expertise</a>
 				</dd>
 			</dl>
 		</div>
@@ -188,10 +194,10 @@ Hyperion
 					</div>
 					
 					<!--Industries-->
-					<div class="large-3 columns">
+					<div class="large-6 large-offset-2 columns">
 						<h4 class="subheader">Industries:</h4>
 						{% for pk, industry in form.industries.field.widget.choices %}
-							<div class="large-12 columns">
+							<div class="large-6 columns">
 								<label for="id_industries_{{ pk }}">
 									<input type="checkbox" id="id_industries_{{ pk }}" name="industries" value="{{ pk }}" style="display: none;">
 									<input type="checkbox" id="id_industries_{{ pk }}" name="industries" value="{{ pk }}" style="display: none;">
@@ -210,47 +216,36 @@ Hyperion
 					<div class="large-12 columns">
 						<h4 class="subheader">Categories:</h4>
 						<div class="section-container tabs" data-section="tabs">
-							<!--Category 1-->
-							<section>
-								<p class="title" data-section-title><a href="#">Front-End</a></p>
-								<div class="content" data-section-content>
-								<!--Installed Base-->
-								</div>
-							</section>
-							<!--Category 2-->
-							<section>
-								<p class="title" data-section-title><a href="#">Back-End</a></p>
-								<div class="content" data-section-content>
-								<!--Installed Base-->
-								</div>
-							</section>
-							<!--Category 3-->
-							<section>
-								<p class="title" data-section-title><a href="#">Lab</a></p>
-								<div class="content" data-section-content>
-								<!--Installed Base-->
-								</div>
-							</section>
-							<!--Category 4-->
-							<section>
-								<p class="title" data-section-title><a href="#">PCB</a></p>
-								<div class="content" data-section-content>
-								<!--Installed Base-->
-								</div>
-							</section>
-							<!--Category 5-->
-							<section>
-								<p class="title" data-section-title><a href="#">Facilities</a></p>
-								<div class="content" data-section-content>
-								<!--Installed Base-->
-								</div>
-							</section>
+							{% for category in grouped_categories.items %}
+								<section>
+									<p class="title" data-section-title>
+										<a href="#">{{ category.0 }}</a>
+									</p>
+									<div class="content" data-section-content>										
+										<div class="row">
+											{% for c in category.1 %}
+												<div class="large-6 columns">
+													<label for="id_category_{{ c.id }}">
+														<input type="checkbox" id="id_category_{{ c.id }}" name="categories" value="{{ c.id }}" style="display: none;" />
+														<span class="custom checkbox"></span>
+														{{ c.subcategory_name }}
+													</label>
+												</div>
+											{% endfor %}
+										</div>
+									</div>
+								</section>
+							{% endfor %}
 						</div>
 					</div>
 				</div>
 			
+				<hr />
 
-
+				<!--Expertise-->
+				<div class="row">
+					
+				</div>
 
 				<hr />
 

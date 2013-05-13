@@ -1,0 +1,948 @@
+[
+  {
+    "model": "hcustomers.Category",
+    "pk": 1,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "BC",
+      "subcategory_name": "Box Coaters"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 2,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "BW",
+      "subcategory_name": "Box Washers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 3,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "CG",
+      "subcategory_name": "Crystal Growing, Sawing & Slicing"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 4,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "DF",
+      "subcategory_name": "Diffusion Furnaces & Accessories"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 5,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "EA",
+      "subcategory_name": "Etchers/Ashers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 6,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "EV",
+      "subcategory_name": "Evaporators"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 7,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "ES",
+      "subcategory_name": "Exposure Systems"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 8,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "FP",
+      "subcategory_name": "Flat Panel Display"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 9,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "GB",
+      "subcategory_name": "Glove Box"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 10,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "II",
+      "subcategory_name": "Ion Implanters & Monitors"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 11,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "IM",
+      "subcategory_name": "Ion Milling"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 12,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "LS",
+      "subcategory_name": "Lasers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 13,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "MW",
+      "subcategory_name": "Mask & Wafer Inspection"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 14,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "MA",
+      "subcategory_name": "Mask Aligners"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 15,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "MB",
+      "subcategory_name": "Molecular Beam Epitaxy"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 16,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "OW",
+      "subcategory_name": "Other Wafer Processing"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 17,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "OF",
+      "subcategory_name": "Ovens/Furnaces"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 18,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "PH",
+      "subcategory_name": "Photoresist"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 19,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "PS",
+      "subcategory_name": "Power Supplies"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 20,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "RT",
+      "subcategory_name": "Rapid Thermal Processors"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 21,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "RE",
+      "subcategory_name": "Reactors"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 22,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "SE",
+      "subcategory_name": "Scanning Electron Microscopes"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 23,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "SO",
+      "subcategory_name": "Solar Production Equipment"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 24,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "SP",
+      "subcategory_name": "Spare Parts"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 25,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "ST",
+      "subcategory_name": "Spectrometers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 26,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "SS",
+      "subcategory_name": "Sputtering Systems"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 27,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "WM",
+      "subcategory_name": "Wafer & Mask Scrubbers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 28,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "WG",
+      "subcategory_name": "Wafer Grinding, Lapping & Polishing"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 29,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "WH",
+      "subcategory_name": "Wafer Handlers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 30,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "WA",
+      "subcategory_name": "Wafer Steppers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 31,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "WT",
+      "subcategory_name": "Wafer Testing & Metrology"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 32,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "WS",
+      "subcategory_name": "Wet Stations"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 33,
+    "fields": {
+      "is_active": true,
+      "category_code": "BEP",
+      "category_name": "Back-End",
+      "subcategory_code": "BO",
+      "subcategory_name": "Bonders"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 34,
+    "fields": {
+      "is_active": true,
+      "category_code": "BEP",
+      "category_name": "Back-End",
+      "subcategory_code": "BS",
+      "subcategory_name": "Burn-in Systems"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 35,
+    "fields": {
+      "is_active": true,
+      "category_code": "BEP",
+      "category_name": "Back-End",
+      "subcategory_code": "DA",
+      "subcategory_name": "Die Attachers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 36,
+    "fields": {
+      "is_active": true,
+      "category_code": "BEP",
+      "category_name": "Back-End",
+      "subcategory_code": "ET",
+      "subcategory_name": "Electronic Test Equipment"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 37,
+    "fields": {
+      "is_active": true,
+      "category_code": "BEP",
+      "category_name": "Back-End",
+      "subcategory_code": "FT",
+      "subcategory_name": "Final Test"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 38,
+    "fields": {
+      "is_active": true,
+      "category_code": "BEP",
+      "category_name": "Back-End",
+      "subcategory_code": "HA",
+      "subcategory_name": "Handlers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 39,
+    "fields": {
+      "is_active": true,
+      "category_code": "BEP",
+      "category_name": "Back-End",
+      "subcategory_code": "LS",
+      "subcategory_name": "Lasers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 40,
+    "fields": {
+      "is_active": true,
+      "category_code": "BEP",
+      "category_name": "Back-End",
+      "subcategory_code": "MM",
+      "subcategory_name": "Marking Machines"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 41,
+    "fields": {
+      "is_active": true,
+      "category_code": "BEP",
+      "category_name": "Back-End",
+      "subcategory_code": "OF",
+      "subcategory_name": "Ovens/Furnaces"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 42,
+    "fields": {
+      "is_active": true,
+      "category_code": "BEP",
+      "category_name": "Back-End",
+      "subcategory_code": "PA",
+      "subcategory_name": "Packaging"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 43,
+    "fields": {
+      "is_active": true,
+      "category_code": "BEP",
+      "category_name": "Back-End",
+      "subcategory_code": "PS",
+      "subcategory_name": "Power Supplies"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 44,
+    "fields": {
+      "is_active": true,
+      "category_code": "BEP",
+      "category_name": "Back-End",
+      "subcategory_code": "PR",
+      "subcategory_name": "Probers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 45,
+    "fields": {
+      "is_active": true,
+      "category_code": "BEP",
+      "category_name": "Back-End",
+      "subcategory_code": "SD",
+      "subcategory_name": "Scribing/Dicing"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 46,
+    "fields": {
+      "is_active": true,
+      "category_code": "BEP",
+      "category_name": "Back-End",
+      "subcategory_code": "XR",
+      "subcategory_name": "X-Ray"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 47,
+    "fields": {
+      "is_active": true,
+      "category_code": "PCB",
+      "category_name": "PCB",
+      "subcategory_code": "AM",
+      "subcategory_name": "PC Board Assembly & Manufacturing"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 48,
+    "fields": {
+      "is_active": true,
+      "category_code": "PCB",
+      "category_name": "PCB",
+      "subcategory_code": "IN",
+      "subcategory_name": "PC Board Inspection"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 49,
+    "fields": {
+      "is_active": true,
+      "category_code": "PCB",
+      "category_name": "PCB",
+      "subcategory_code": "SU",
+      "subcategory_name": "PC Board Support Equipment"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 50,
+    "fields": {
+      "is_active": true,
+      "category_code": "PCB",
+      "category_name": "PCB",
+      "subcategory_code": "TS",
+      "subcategory_name": "PC Board Test"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 51,
+    "fields": {
+      "is_active": true,
+      "category_code": "PCB",
+      "category_name": "PCB",
+      "subcategory_code": "SM",
+      "subcategory_name": "PCB Solder Machines"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 52,
+    "fields": {
+      "is_active": true,
+      "category_code": "PCB",
+      "category_name": "PCB",
+      "subcategory_code": "PM",
+      "subcategory_name": "Placement Machines"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 53,
+    "fields": {
+      "is_active": true,
+      "category_code": "PCB",
+      "category_name": "PCB",
+      "subcategory_code": "PS",
+      "subcategory_name": "Power Supplies"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 54,
+    "fields": {
+      "is_active": true,
+      "category_code": "PCB",
+      "category_name": "PCB",
+      "subcategory_code": "RO",
+      "subcategory_name": "Reflow Ovens"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 55,
+    "fields": {
+      "is_active": true,
+      "category_code": "PCB",
+      "category_name": "PCB",
+      "subcategory_code": "SC",
+      "subcategory_name": "Screen Printers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 56,
+    "fields": {
+      "is_active": true,
+      "category_code": "PCB",
+      "category_name": "PCB",
+      "subcategory_code": "SP",
+      "subcategory_name": "Spare Parts"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 57,
+    "fields": {
+      "is_active": true,
+      "category_code": "PCB",
+      "category_name": "PCB",
+      "subcategory_code": "XR",
+      "subcategory_name": "X-Ray"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 58,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "subcategory_code": "CF",
+      "subcategory_name": "Centrifuges"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 59,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "subcategory_code": "EL",
+      "subcategory_name": "Ellipsometers"
+    }
+  },  
+  {
+    "model": "hcustomers.Category",
+    "pk": 60,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "subcategory_code": "EC",
+      "subcategory_name": "Environmental Chambers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 61,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "subcategory_code": "GB",
+      "subcategory_name": "Glove Box"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 62,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "subcategory_code": "LE",
+      "subcategory_name": "Lab Equipment & Accessories"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 63,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "subcategory_code": "LF",
+      "subcategory_name": "Laminar Flow & Fume Hoods"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 64,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "subcategory_code": "LS",
+      "subcategory_name": "Lasers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 65,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "subcategory_code": "LD",
+      "subcategory_name": "Leak Detectors"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 66,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "subcategory_code": "MS",
+      "subcategory_name": "Microscopes"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 67,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "subcategory_code": "OC",
+      "subcategory_name": "Optical Comparators"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 68,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "subcategory_code": "OF",
+      "subcategory_name": "Ovens/Furnaces"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 69,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "subcategory_code": "PC",
+      "subcategory_name": "Particle Counters"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 70,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "subcategory_code": "PS",
+      "subcategory_name": "Power Supplies"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 71,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "subcategory_code": "RG",
+      "subcategory_name": "Residual Gas Analyzers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 72,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "subcategory_code": "SE",
+      "subcategory_name": "Scanning Electron Microscopes"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 73,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "subcategory_code": "SP",
+      "subcategory_name": "Spare Parts"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 74,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "subcategory_code": "ST",
+      "subcategory_name": "Spectrometers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 75,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "subcategory_code": "XR",
+      "subcategory_name": "X-Ray"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 76,
+    "fields": {
+      "is_active": true,
+      "category_code": "FAC",
+      "category_name": "Facilities Equipment",
+      "subcategory_code": "CI",
+      "subcategory_name": "Chillers-Industrial"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 77,
+    "fields": {
+      "is_active": true,
+      "category_code": "FAC",
+      "category_name": "Facilities Equipment",
+      "subcategory_code": "CH",
+      "subcategory_name": "Chillers-Heat Exchangers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 78,
+    "fields": {
+      "is_active": true,
+      "category_code": "FAC",
+      "category_name": "Facilities Equipment",
+      "subcategory_code": "FE",
+      "category_name": "Facilities Equipment"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 79,
+    "fields": {
+      "is_active": true,
+      "category_code": "FAC",
+      "category_name": "Facilities Equipment",
+      "subcategory_code": "GC",
+      "subcategory_name": "Gas Cabinets"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 80,
+    "fields": {
+      "is_active": true,
+      "category_code": "FAC",
+      "category_name": "Facilities Equipment",
+      "subcategory_code": "LD",
+      "subcategory_name": "Leak Detectors"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 81,
+    "fields": {
+      "is_active": true,
+      "category_code": "FAC",
+      "category_name": "Facilities Equipment",
+      "subcategory_code": "MT",
+      "subcategory_name": "Machine Tools"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 82,
+    "fields": {
+      "is_active": true,
+      "category_code": "FAC",
+      "category_name": "Facilities Equipment",
+      "subcategory_code": "PC",
+      "subcategory_name": "Particle Counters"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 83,
+    "fields": {
+      "is_active": true,
+      "category_code": "FAC",
+      "category_name": "Facilities Equipment",
+      "subcategory_code": "PS",
+      "subcategory_name": "Power Supplies"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 84,
+    "fields": {
+      "is_active": true,
+      "category_code": "FAC",
+      "category_name": "Facilities Equipment",
+      "subcategory_code": "PU",
+      "subcategory_name": "Pumps"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 85,
+    "fields": {
+      "is_active": true,
+      "category_code": "FAC",
+      "category_name": "Facilities Equipment",
+      "subcategory_code": "RG",
+      "subcategory_name": "Residual Gas Analyzers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 86,
+    "fields": {
+      "is_active": true,
+      "category_code": "FAC",
+      "category_name": "Facilities Equipment",
+      "subcategory_code": "SP",
+      "subcategory_name": "Spare Parts"
+    }
+  }
+] 
