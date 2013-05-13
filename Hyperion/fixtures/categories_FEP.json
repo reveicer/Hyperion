@@ -1,0 +1,354 @@
+[
+  {
+    "model": "hcustomers.Category",
+    "pk": 1,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "BC",
+      "subcategory_name": "Box Coaters"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 2,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "BW",
+      "subcategory_name": "Box Washers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 3,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "CG",
+      "subcategory_name": "Crystal Growing, Sawing & Slicing"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 4,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "DF",
+      "subcategory_name": "Diffusion Furnaces & Accessories"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 5,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "EA",
+      "subcategory_name": "Etchers/Ashers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 6,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "EV",
+      "subcategory_name": "Evaporators"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 7,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "ES",
+      "subcategory_name": "Exposure Systems"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 8,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "FP",
+      "subcategory_name": "Flat Panel Display"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 9,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "GB",
+      "subcategory_name": "Glove Box"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 10,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "II",
+      "subcategory_name": "Ion Implanters & Monitors"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 11,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "IM",
+      "subcategory_name": "Ion Milling"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 12,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "LS",
+      "subcategory_name": "Lasers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 13,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "MW",
+      "subcategory_name": "Mask & Wafer Inspection"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 14,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "MA",
+      "subcategory_name": "Mask Aligners"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 15,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "MB",
+      "subcategory_name": "Molecular Beam Epitaxy"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 16,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "OW",
+      "subcategory_name": "Other Wafer Processing"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 17,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "OF",
+      "subcategory_name": "Ovens/Furnaces"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 18,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "PH",
+      "subcategory_name": "Photoresist"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 19,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "PS",
+      "subcategory_name": "Power Supplies"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 20,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "RT",
+      "subcategory_name": "Rapid Thermal Processors"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 21,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "RE",
+      "subcategory_name": "Reactors"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 22,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "SE",
+      "subcategory_name": "Scanning Electron Microscopes"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 23,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "SO",
+      "subcategory_name": "Solar Production Equipment"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 24,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "SP",
+      "subcategory_name": "Spare Parts"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 25,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "ST",
+      "subcategory_name": "Spectrometers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 26,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "SS",
+      "subcategory_name": "Sputtering Systems"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 27,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "WM",
+      "subcategory_name": "Wafer & Mask Scrubbers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 28,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "WG",
+      "subcategory_name": "Wafer Grinding, Lapping & Polishing"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 29,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "WH",
+      "subcategory_name": "Wafer Handlers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 30,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "WA",
+      "subcategory_name": "Wafer Steppers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 31,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "WT",
+      "subcategory_name": "Wafer Testing & Metrology"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 32,
+    "fields": {
+      "is_active": true,
+      "category_code": "FEP",
+      "category_name": "Front-End",
+      "subcategory_code": "WS",
+      "subcategory_name": "Wet Stations"
+    }
+  }
+] 

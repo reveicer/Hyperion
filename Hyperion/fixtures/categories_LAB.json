@@ -1,0 +1,200 @@
+[
+  {
+    "model": "hcustomers.Category",
+    "pk": 1,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "category_code": "CF",
+      "category_name": "Centrifuges"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 2,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "category_code": "EL",
+      "category_name": "Ellipsometers"
+    }
+  },  
+  {
+    "model": "hcustomers.Category",
+    "pk": 3,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "category_code": "EC",
+      "category_name": "Environmental Chambers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 4,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "category_code": "GB",
+      "category_name": "Glove Box"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 5,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "category_code": "LE",
+      "category_name": "Lab Equipment & Accessories"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 6,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "category_code": "LF",
+      "category_name": "Laminar Flow & Fume Hoods"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 7,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "category_code": "LS",
+      "category_name": "Lasers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 8,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "category_code": "LD",
+      "category_name": "Leak Detectors"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 9,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "category_code": "MS",
+      "category_name": "Microscopes"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 10,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "category_code": "OC",
+      "category_name": "Optical Comparators"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 11,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "category_code": "OF",
+      "category_name": "Ovens/Furnaces"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 12,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "category_code": "PC",
+      "category_name": "Particle Counters"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 13,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "category_code": "PS",
+      "category_name": "Power Supplies"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 14,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "category_code": "RG",
+      "category_name": "Residual Gas Analyzers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 15,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "category_code": "SE",
+      "category_name": "Scanning Electron Microscopes"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 16,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "category_code": "SP",
+      "category_name": "Spare Parts"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 17,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "category_code": "ST",
+      "category_name": "Spectrometers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 18,
+    "fields": {
+      "is_active": true,
+      "category_code": "LAB",
+      "category_name": "Lab Equipment",
+      "category_code": "XR",
+      "category_name": "X-Ray"
+    }
+  }
+]

@@ -1,0 +1,123 @@
+[
+  {
+    "model": "hcustomers.Category",
+    "pk": 1,
+    "fields": {
+      "is_active": true,
+      "category_code": "FAC",
+      "category_name": "Facilities Equipment",
+      "category_code": "CI",
+      "category_name": "Chillers-Industrial"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 2,
+    "fields": {
+      "is_active": true,
+      "category_code": "FAC",
+      "category_name": "Facilities Equipment",
+      "category_code": "CH",
+      "category_name": "Chillers-Heat Exchangers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 3,
+    "fields": {
+      "is_active": true,
+      "category_code": "FAC",
+      "category_name": "Facilities Equipment",
+      "category_code": "FE",
+      "category_name": "Facilities Equipment"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 4,
+    "fields": {
+      "is_active": true,
+      "category_code": "FAC",
+      "category_name": "Facilities Equipment",
+      "category_code": "GC",
+      "category_name": "Gas Cabinets"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 5,
+    "fields": {
+      "is_active": true,
+      "category_code": "FAC",
+      "category_name": "Facilities Equipment",
+      "category_code": "LD",
+      "category_name": "Leak Detectors"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 6,
+    "fields": {
+      "is_active": true,
+      "category_code": "FAC",
+      "category_name": "Facilities Equipment",
+      "category_code": "MT",
+      "category_name": "Machine Tools"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 7,
+    "fields": {
+      "is_active": true,
+      "category_code": "FAC",
+      "category_name": "Facilities Equipment",
+      "category_code": "PC",
+      "category_name": "Particle Counters"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 8,
+    "fields": {
+      "is_active": true,
+      "category_code": "FAC",
+      "category_name": "Facilities Equipment",
+      "category_code": "PS",
+      "category_name": "Power Supplies"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 9,
+    "fields": {
+      "is_active": true,
+      "category_code": "FAC",
+      "category_name": "Facilities Equipment",
+      "category_code": "PU",
+      "category_name": "Pumps"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 10,
+    "fields": {
+      "is_active": true,
+      "category_code": "FAC",
+      "category_name": "Facilities Equipment",
+      "category_code": "RG",
+      "category_name": "Residual Gas Analyzers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 11,
+    "fields": {
+      "is_active": true,
+      "category_code": "FAC",
+      "category_name": "Facilities Equipment",
+      "category_code": "SP",
+      "category_name": "Spare Parts"
+    }
+  }
+]

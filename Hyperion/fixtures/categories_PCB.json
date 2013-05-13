@@ -1,0 +1,123 @@
+[
+  {
+    "model": "hcustomers.Category",
+    "pk": 1,
+    "fields": {
+      "is_active": true,
+      "category_code": "PCB",
+      "category_name": "PCB",
+      "subcategory_code": "AM",
+      "subcategory_name": "PC Board Assembly & Manufacturing"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 2,
+    "fields": {
+      "is_active": true,
+      "category_code": "PCB",
+      "category_name": "PCB",
+      "subcategory_code": "IN",
+      "subcategory_name": "PC Board Inspection"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 3,
+    "fields": {
+      "is_active": true,
+      "category_code": "PCB",
+      "category_name": "PCB",
+      "subcategory_code": "SU",
+      "subcategory_name": "PC Board Support Equipment"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 4,
+    "fields": {
+      "is_active": true,
+      "category_code": "PCB",
+      "category_name": "PCB",
+      "subcategory_code": "TS",
+      "subcategory_name": "PC Board Test"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 5,
+    "fields": {
+      "is_active": true,
+      "category_code": "PCB",
+      "category_name": "PCB",
+      "subcategory_code": "SM",
+      "subcategory_name": "PCB Solder Machines"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 6,
+    "fields": {
+      "is_active": true,
+      "category_code": "PCB",
+      "category_name": "PCB",
+      "subcategory_code": "PM",
+      "subcategory_name": "Placement Machines"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 7,
+    "fields": {
+      "is_active": true,
+      "category_code": "PCB",
+      "category_name": "PCB",
+      "subcategory_code": "PS",
+      "subcategory_name": "Power Supplies"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 8,
+    "fields": {
+      "is_active": true,
+      "category_code": "PCB",
+      "category_name": "PCB",
+      "subcategory_code": "RO",
+      "subcategory_name": "Reflow Ovens"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 9,
+    "fields": {
+      "is_active": true,
+      "category_code": "PCB",
+      "category_name": "PCB",
+      "subcategory_code": "SC",
+      "subcategory_name": "Screen Printers"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 10,
+    "fields": {
+      "is_active": true,
+      "category_code": "PCB",
+      "category_name": "PCB",
+      "subcategory_code": "SP",
+      "subcategory_name": "Spare Parts"
+    }
+  },
+  {
+    "model": "hcustomers.Category",
+    "pk": 11,
+    "fields": {
+      "is_active": true,
+      "category_code": "PCB",
+      "category_name": "PCB",
+      "subcategory_code": "XR",
+      "subcategory_name": "X-Ray"
+    }
+  }
+]
