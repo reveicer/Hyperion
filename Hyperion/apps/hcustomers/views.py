@@ -16,10 +16,14 @@ import sys
 class CompanyRegistrationForm(ModelForm):
 	# db calls for models
 	industry_models = Industry.objects.all()
+	category_models = Category.objects.all()
+	grouped_category_models = Category.objects.get_grouped_categories()
 
 	# customized form fields
 	industries = forms.ModelMultipleChoiceField(industry_models, widget=forms.CheckboxSelectMultiple(), required=False)
 	industry_expertise = forms.ModelMultipleChoiceField(industry_models, widget=forms.CheckboxSelectMultiple(), required=False)
+	categories = forms.ModelMultipleChoiceField(category_models, widget=forms.CheckboxSelectMultiple(), required=False)
+	category_expertise = forms.ModelMultipleChoiceField(category_models, widget=forms.CheckboxSelectMultiple(), required=False)
 
 	class Meta:
 		model = CompanyProfile
@@ -64,10 +68,6 @@ def register_company(request):
 	if request.method == 'POST':
 		form = CompanyRegistrationForm(request.POST)
 		if form.is_valid():
-			#print >> sys.stderr, ":: %s" % form.cleaned_data['name']
-			#for ie in form.cleaned_data['industry_expertise']:
-			#	print >> sys.stderr, ':: %s' % ie
-
 			# saves the company
 			new_company = form.save()
 			
@@ -82,17 +82,22 @@ def register_company(request):
 			CompanyInIndustry.objects.bulk_create(industry_batch)
 			
 			# save company_in_category
-
+			category_batch = []
+			category_expertise = form.cleaned_data['category_expertise']
+			for category in form.cleaned_data['categories']:
+				company_in_category = CompanyInCategory(company=new_company, category=category)
+				if category in category_expertise:
+					company_in_category.expertise = True
+				category_batch.append(company_in_category)
+			CompanyInCategory.objects.bulk_create(category_batch)
 
 			# redirect to company profile page
 			return HttpResponseRedirect('/profile/company/%d/' % new_company.id)
 	else:
 		form = CompanyRegistrationForm()
 
-	grouped_categories = Category.objects.get_grouped_categories()
 	return render(request, 'company_registration.html', {
 			'form' : form,
-			'grouped_categories' : grouped_categories,
 		})
 
 #def register_contact(request):

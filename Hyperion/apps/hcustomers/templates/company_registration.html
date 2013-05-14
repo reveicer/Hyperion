@@ -206,10 +206,10 @@ Hyperion
 							<div class="large-6 columns">
 								<div class="row collapse">
 									<div class="large-3 columns">
-										<label for="id_industry_expertise_{{ pk }}">										<kbd>Exp</kbd>
+										<label for="id_industry_expertise_{{ pk }}">
+											<kbd>Exp</kbd>
 											<input type="checkbox" id="id_industry_expertise_{{ pk }}" name="industry_expertise" value="{{ pk }}" style="display: none;">
 											<span class="custom checkbox"></span>
-											
 										</label>
 									</div>
 									<div class="large-9 columns">
@@ -234,20 +234,31 @@ Hyperion
 					<div class="large-12 columns">
 						<h4 class="subheader">Categories:</h4>
 						<div class="section-container tabs" data-section="tabs">
-							{% for category in grouped_categories.items %}
+							{% for category in form.grouped_category_models.items %}
 								<section>
 									<p class="title" data-section-title>
 										<a href="#">{{ category.0 }}</a>
 									</p>
-									<div class="content" data-section-content>										
+									<div class="content" data-section-content>
 										<div class="row">
 											{% for c in category.1 %}
 												<div class="large-6 columns">
-													<label for="id_category_{{ c.id }}">
-														<input type="checkbox" id="id_category_{{ c.id }}" name="categories" value="{{ c.id }}" style="display: none;" />
-														<span class="custom checkbox"></span>
-														{{ c.subcategory_name }}
-													</label>
+													<div class="row collapse">
+														<div class="large-2 columns text-right">
+															<label for="id_category_expertise_{{ c.id }}">
+																<kbd>Exp</kbd>
+																<input type="checkbox" id="id_category_expertise_{{ c.id }}" name="category_expertise" value="{{ c.id }}" style="display: none;" />
+																<span class="custom checkbox"></span>
+															</label>
+														</div>
+														<div class="large-10 columns">
+															<label for="id_categories_{{ c.id }}">
+																<input type="checkbox" id="id_categories_{{ c.id }}" name="categories" value="{{ c.id }}" style="display: none;" />
+																<span class="custom checkbox"></span>
+																{{ c.subcategory_name }}
+															</label>
+														</div>
+													</div>
 												</div>
 											{% endfor %}
 										</div>
