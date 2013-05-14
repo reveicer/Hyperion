@@ -10,22 +10,24 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, render_to_response
 from django.contrib.auth.decorators import login_required
 
-def company_profile(request, company_id):
-	#u = request.user
-	t = loader.get_template('company_profile.html')
-	return HttpResponse(t.render(Context()))
+# python imports
+import sys
 
 class CompanyRegistrationForm(ModelForm):
-	industries = forms.ModelMultipleChoiceField(Industry.objects.all(), widget=forms.CheckboxSelectMultiple(), required=False)
+	# db calls for models
+	industry_models = Industry.objects.all()
+
+	# customized form fields
+	industries = forms.ModelMultipleChoiceField(industry_models, widget=forms.CheckboxSelectMultiple(), required=False)
+	industry_expertise = forms.ModelMultipleChoiceField(industry_models, widget=forms.CheckboxSelectMultiple(), required=False)
 
 	class Meta:
 		model = CompanyProfile
-		# missing the core expertise fields
+		# TODO: missing the core expertise fields
 		fields = ('name', 'phone', 'fax', 'email', 'website', 'region', 'primary_type', 'all_types', 'about',
 				'street_line1', 'street_line2', 'street_line3', 'city', 'state_province', 'country', 'zip_code', # address info
 				'expertise_description', 'notes')
 		widgets = {
-			# uncomment this if reading fails.
 			'all_types': forms.CheckboxSelectMultiple(),
 		}
 	def __init__(self, *args, **kwargs):
@@ -45,22 +47,47 @@ class CompanyRegistrationForm(ModelForm):
 		self.fields['country'].widget.attrs = { 'placeholder':'Country' }
 		self.fields['zip_code'].widget.attrs = { 'placeholder':'Zip #' }
 		self.fields['primary_type'].empty_label = None
+		self.fields['notes'].widget.attrs = { 'placeholder':'Miscellaneous Comments'}
+
+def company_profile(request, company_id):
+	# TODO: handle 404 page if company is not found.
+	# TODO: edit company_profile.html to display model-bounded data
+	company = CompanyProfile.objects.get(id=company_id)
+
+	template = loader.get_template('company_profile.html')
+	context = RequestContext(request, {
+		'company' : company,	
+	})
+	return HttpResponse(template.render(context))
 
 def register_company(request):
 	if request.method == 'POST':
 		form = CompanyRegistrationForm(request.POST)
 		if form.is_valid():
-			company = form.save(commit=False)
-			# do something else
-			company.is_active = True
-			company.save()
-			form.save_m2m()
+			#print >> sys.stderr, ":: %s" % form.cleaned_data['name']
+			#for ie in form.cleaned_data['industry_expertise']:
+			#	print >> sys.stderr, ':: %s' % ie
+
+			# saves the company
+			new_company = form.save()
+			
+			# save company_in_industry
+			industry_batch = []
+			industry_expertise = form.cleaned_data['industry_expertise']
+			for industry in form.cleaned_data['industries']:								
+				company_in_industry = CompanyInIndustry(company=new_company, industry=industry)
+				if industry in industry_expertise:
+					company_in_industry.expertise = True
+				industry_batch.append(company_in_industry)
+			CompanyInIndustry.objects.bulk_create(industry_batch)
+			
+			# save company_in_category
+
 
 			# redirect to company profile page
-			return HttpResponseRedirect('/profile/company/' + company.id + '/')
+			return HttpResponseRedirect('/profile/company/%d/' % new_company.id)
 	else:
 		form = CompanyRegistrationForm()
-
 
 	grouped_categories = Category.objects.get_grouped_categories()
 	return render(request, 'company_registration.html', {

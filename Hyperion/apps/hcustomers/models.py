@@ -8,6 +8,9 @@ class Industry(models.Model):
 	def __unicode__(self):
 		return self.name
 
+	class Meta:
+		ordering = ['code']
+
 class CategoryManager(models.Manager):
 	def get_grouped_categories(self):
 		grouped_dict = {}
@@ -37,6 +40,9 @@ class Category(models.Model):
 
 	def __unicode__(self):
 		return self.subcategory_name
+		
+	class Meta:
+		ordering = ['category_code']
 
 class Type(models.Model):
 	is_active = models.BooleanField(default=True)
@@ -56,7 +62,7 @@ class Region(models.Model):
 
 class CompanyProfile(models.Model):
 	is_active = models.BooleanField(default=True)
-	name = models.CharField('Name', max_length=10)
+	name = models.CharField('Name', max_length=100)
 	phone = models.CharField('Phone', max_length=40)
 	fax = models.CharField('Fax', max_length=40, blank=True)
 	email = models.EmailField('E-mail', blank=True)
@@ -117,11 +123,17 @@ class CompanyInIndustry(models.Model):
 	industry = models.ForeignKey(Industry)
 	expertise = models.BooleanField(default=False)
 
+	class Meta:
+		ordering = ['company', 'expertise']
+
 class CompanyInCategory(models.Model):
 	is_active = models.BooleanField(default=True)
 	company = models.ForeignKey(CompanyProfile)
 	category = models.ForeignKey(Category)
 	expertise = models.BooleanField(default=False)
+
+	class Meta:
+		ordering = ['company', 'expertise']
 
 class ContactInIndustry(models.Model):
 	is_active = models.BooleanField(default=True)
@@ -129,8 +141,14 @@ class ContactInIndustry(models.Model):
 	industry = models.ForeignKey(Industry)
 	expertise = models.BooleanField(default=False)
 
+	class Meta:
+		ordering = ['contact', 'expertise']
+
 class ContactInCategory(models.Model):
 	is_active = models.BooleanField(default=True)
 	contact = models.ForeignKey(ContactProfile)
 	category = models.ForeignKey(Category)
 	expertise = models.BooleanField(default=False)
+
+	class Meta:
+		ordering = ['contact', 'expertise']
