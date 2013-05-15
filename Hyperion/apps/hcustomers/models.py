@@ -1,5 +1,7 @@
 from django.db import models
 
+import sys
+
 class Industry(models.Model):
 	is_active = models.BooleanField(default=True)
 	code = models.CharField('Code', max_length=4)
@@ -9,7 +11,7 @@ class Industry(models.Model):
 		return self.name
 
 	class Meta:
-		ordering = ['code']
+		ordering = ['id']
 
 class CategoryManager(models.Manager):
 	def get_grouped_categories(self):
@@ -42,7 +44,7 @@ class Category(models.Model):
 		return self.subcategory_name
 		
 	class Meta:
-		ordering = ['category_code']
+		ordering = ['category_name', 'subcategory_name']
 
 class Type(models.Model):
 	is_active = models.BooleanField(default=True)

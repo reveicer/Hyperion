@@ -17,7 +17,6 @@ class CompanyRegistrationForm(ModelForm):
 	# db calls for models
 	industry_models = Industry.objects.all()
 	category_models = Category.objects.all()
-	grouped_category_models = Category.objects.get_grouped_categories()
 
 	# customized form fields
 	industries = forms.ModelMultipleChoiceField(industry_models, widget=forms.CheckboxSelectMultiple(), required=False)
@@ -51,6 +50,7 @@ class CompanyRegistrationForm(ModelForm):
 		self.fields['country'].widget.attrs = { 'placeholder':'Country' }
 		self.fields['zip_code'].widget.attrs = { 'placeholder':'Zip #' }
 		self.fields['primary_type'].empty_label = None
+		self.fields['expertise_description'].widget.attrs = { 'placeholder':'Optional' }
 		self.fields['notes'].widget.attrs = { 'placeholder':'Miscellaneous Comments'}
 
 def company_profile(request, company_id):
@@ -96,8 +96,10 @@ def register_company(request):
 	else:
 		form = CompanyRegistrationForm()
 
+	grouped_category_models = Category.objects.get_grouped_categories()
 	return render(request, 'company_registration.html', {
 			'form' : form,
+			'grouped_category_models' : grouped_category_models,
 		})
 
 #def register_contact(request):
