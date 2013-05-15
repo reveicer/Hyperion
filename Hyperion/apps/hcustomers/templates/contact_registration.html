@@ -8,14 +8,12 @@ Hyperion
 <div class="row">
 	<!--Magellan-->
 	<div class="large-12 columns">
-		<h2>Company Registration Form</h2>
+		<h2>Contact Registration Form</h2>
+		<h3 class="subheader">from <a href="{{ company_profile_url }}">{{ company }}</a></h3>
 		<div data-magellan-expedition="fixed">
 			<dl class="sub-nav">
 				<dd data-magellan-arrival="basic">
 					<a href="#basic">Basic</a>
-				</dd>
-				<dd data-magellan-arrival="address">
-					<a href="#address">Address</a>
 				</dd>
 				<dd data-magellan-arrival="types_industries">
 					<a href="#types_industries">Types+Industries</a>
@@ -32,160 +30,97 @@ Hyperion
 			</dl>
 		</div>
 	</div>
+
 	<div class="large-12 columns">
 		<form action="{{ post_url }}" method="post" class="custom">
 			{% csrf_token %}
 			<fieldset>
+				<!--Basic-->
 				<a name="basic"></a>
 				<div class="row" data-magellan-destination="basic">
-					<!--Company Name-->
-					<div class="large-7 columns">
-						{{ form.name.errors }}
-						<label for="id_name"><h4 class="subheader">Name:</h4></label>
-						{{ form.name }}
+					<!--Name-->
+					<div class="large-3 columns">
+						<label for="id_first_name"><h4 class="subheader">First Name:</h4></label>
+						{{ form.first_name }}
 					</div>
-
-					<!--Website-->
-					<div class="large-5 columns">
-						{{ form.website.errors }}
-						<label for="id_name"><h4 class="subheader">Website:</h4></label>
-						<div class="row collapse">
-							<div class="large-3 columns">
-								<span class="prefix">http://</span>
-							</div>
-							<div class="large-9 columns">{{ form.website }}</div>
-						</div>
+					<div class="large-3 columns">
+						<label for="id_last_name"><h4 class="subheader">Last Name:</h4></label>
+						{{ form.last_name }}
 					</div>
 
 					<!--Region-->
-					<div class="large-2 columns">
-						{{ form.region.errors }}
+					<div class="large-2 large-offset-1 columns">
 						<label for="id_region"><h4 class="subheader">Region:</h4></label>
 						{{ form.region }}
 					</div>
 
 					<!--Primary Type-->
 					<div class="large-3 columns">
-						{{ form.primary_type.errors }}
 						<label for="id_primary_type"><h4 class="subheader">Primary Type:</h4></label>
 						{{ form.primary_type }}
 					</div>
 
-					<!--About-->
-					<div class="large-7 columns">
-						{{ form.about.errors }}
-						<label for="id_about"><h4 class="subheader">About:</h4></label>
-						{{ form.about }}
+					<!--Title-->
+					<div class="large-3 columns">
+						<label for="id_title"><h4 class="subheader">Title:</h4></label>
+						{{ form.title }}
+					</div>
+
+					<!--Department-->
+					<div class="large-4 columns">
+						<label for="id_department"><h4 class="subheader">Department:</h4></label>
+						{{ form.department }}
+					</div>
+
+					<!--Buy-->
+					<div class="large-2 columns">
+						<label for="id_buy"><h4 class="subheader">Buy:</h4></label>
+						<div class="switch" id="id_buy">
+							<input id="id_buy_true" name="buy" type="radio" value="True" />
+							<label for="id_buy_true" onclick="">Yes</label>
+							<input id="id_buy_false" name="buy" type="radio" value="False" checked />
+							<label for="id_buy_false" onclick="">No</label>
+							<span></span>
+						</div>
+					</div>
+
+					<!--Sell-->
+					<div class="large-2 columns">
+						<label for="id_sell"><h4 class="subheader">Sell:</h4></label>
+						<div class="switch" id="id_sell">
+							<input id="id_sell_true" name="sell" type="radio" value="True" />
+							<label for="id_sell_true" onclick="">Yes</label>
+							<input id="id_sell_false" name="sell" type="radio" value="False" checked />
+							<label for="id_sell_false" onclick="">No</label>
+							<span></span>
+						</div>
 					</div>
 
 					<!--Email-->
 					<div class="large-4 columns">
-						{{ form.email.errors }}
 						<label for="id_email"><h4 class="subheader">E-mail:</h4></label>
 						{{ form.email }}
 					</div>
 
 					<!--Phone-->
 					<div class="large-4 columns">
-						{{ form.phone.errors }}
 						<label for="id_phone"><h4 class="subheader">Phone:</h4></label>
 						{{ form.phone }}
 					</div>
 
 					<!--Fax-->
 					<div class="large-4 columns">
-						{{ form.fax.errors }}
 						<label for="id_fax"><h4 class="subheader">Fax:</h4></label>
 						{{ form.fax }}
 					</div>
-
 				</div>
-
 				<hr />
 
-				<a name="address"></a>
-				<div class="row" data-magellan-destination="address">
-					<!--Address-->
-					<div class="large-12 columns">
-						<h4 class="subheader">Address:</h4>
-					</div>
-					<!--left address-->
-					<div class="large-6 columns">
-						<div class="row collapse">
-							{{ form.street_line1.errors }}
-							<div class="large-2 columns">
-								<span class="prefix">Line 1:</span>
-							</div>
-							<div class="large-10 columns">
-								{{ form.street_line1 }}
-							</div>
-						</div>
-						<div class="row collapse">
-							{{ form.street_line2.errors }}
-							<div class="large-2 columns">
-								<span class="prefix">Line 2:</span>
-							</div>
-							<div class="large-10 columns">
-								{{ form.street_line2 }}
-							</div>
-						</div>
-						<div class="row collapse">
-							{{ form.street_line3.errors }}
-							<div class="large-2 columns">
-								<span class="prefix">Line 3:</span>
-							</div>
-							<div class="large-10 columns">
-								{{ form.street_line3 }}
-							</div>
-						</div>
-					</div>
-					<!--right address-->
-					<div class="large-6 columns">
-						<div class="row collapse">
-							{{ form.city.errors }}
-							<div class="large-2 columns">
-								<span class="prefix">City:</span>
-							</div>
-							<div class="large-10 columns">
-								{{ form.city }}
-							</div>
-						</div>
-						<div class="row collapse">
-							{{ form.state_province.errors }}
-							<div class="large-4 columns">
-								<span class="prefix">State/Province:</span>
-							</div>
-							<div class="large-8 columns">
-								{{ form.state_province }}
-							</div>
-						</div>
-						<div class="row collapse">
-							{{ form.country.errors }}
-							<div class="large-2 columns">
-								<span class="prefix">Country:</span>
-							</div>
-							<div class="large-4 columns">
-								{{ form.country }}
-							</div>
-							{{ form.zip_code.errors }}
-							<div class="large-2 large-offset-1 columns">
-								<span class="prefix">Zip:</span>
-							</div>
-							<div class="large-3 columns">
-								{{ form.zip_code }}
-							</div>
-						</div>
-					</div>
-				</div>
-
-
-				<hr />
-
+				<!--Types&Industries-->
 				<a name="types_industries"></a>
 				<div class="row" data-magellan-destination="types_industries">
 					<!--All Types-->
 					<div class="large-4 columns">
-						{{ form.all_types.errors }}
 						<label for="id_all_types">
 							<h4 class="subheader">All Types:</h4>
 						</label>
@@ -261,11 +196,10 @@ Hyperion
 					</div>
 				</div>
 
-
 				<hr />
 
-				<a name="categories"></a>
 				<!--Categories-->
+				<a name="categories"></a>
 				<div class="row" data-magellan-destination="categories">
 					<div class="large-12 columns">
 						<h4 class="subheader">Categories:</h4>
@@ -338,7 +272,7 @@ Hyperion
 						</div>
 					</div>
 				</div>
-			
+
 				<hr />
 
 				<!--Expertise-->
@@ -365,6 +299,7 @@ Hyperion
 				<div class="large-12 columns text-center">
 					<input type="submit" value="Register" class="button" />
 				</div>
+
 			</fieldset>
 		</form>
 	</div>

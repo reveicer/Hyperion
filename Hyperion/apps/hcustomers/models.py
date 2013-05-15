@@ -80,16 +80,18 @@ class CompanyProfile(models.Model):
 	state_province = models.CharField('State/Province', max_length=100, blank=True)
 	country = models.CharField('Country', max_length=100, blank=True)
 	zip_code = models.CharField('ZIP Code', max_length=20, blank=True)
-	#categories = models.ManyToManyField(Category, related_name='company_profiles')
-	#category_expertise = models.ManyToManyField(Category, related_name='expert_company_profiles')
-	#industries = models.ManyToManyField(Industry, related_name='company_profiles')
-	#industry_expertise = models.ManyToManyField(Industry, related_name='expert_company_profiles')
 	expertise_description = models.TextField('Expertise Description', blank=True)
 	core_expertise = models.ManyToManyField('hinventory.EquipmentCore', related_name='expert_company_profiles')
 	notes = models.TextField('Notes', blank=True)
 
 	def __unicode__(self):
 		return self.name
+
+	def get_profile_url(self):
+		return '/profile/company/%d/' % self.id
+
+	def get_contact_registration_url(self):
+		return '/profile/register/contact/%d/' % self.id
 
 class ContactProfile(models.Model):
 	is_active = models.BooleanField(default=True)
@@ -106,9 +108,6 @@ class ContactProfile(models.Model):
 	sell = models.BooleanField('Sells', default=False)
 	primary_type = models.ForeignKey(Type, related_name='primary_contact_profiles')
 	all_types = models.ManyToManyField(Type, related_name='all_contact_profiles')
-	#categories = models.ManyToManyField(Category, related_name='contact_profiles')
-	#industry_expertise = models.ManyToManyField(Industry, related_name='expert_contact_profiles')
-	#category_expertise = models.ManyToManyField(Category, related_name='expert_contact_profiles')
 	expertise_description = models.TextField('Expertise Description', blank=True)
 	core_expertise = models.ManyToManyField('hinventory.EquipmentCore', related_name='expert_contact_profiles')
 	notes = models.TextField('Notes', blank=True)

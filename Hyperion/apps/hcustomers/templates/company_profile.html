@@ -10,7 +10,10 @@ Hyperion
 		<h2>{{ company.name }}</h2>
 	</div>
 	<div class="large-4 columns text-right">
-		<a href="#" class="small button radius alert">Delete</a>
+
+		<a href="{{ contact_registration_url }}" class="small button">+ Contact</a>		
+		<!--<a href="{{ equipment_registration_url }}" class="small button">+ Equipment</a>-->
+		<a href="#" class="small button alert">Delete</a>
 	</div>
 </div>
 <div class="row">
@@ -38,16 +41,14 @@ Hyperion
 		<div class="row">
 			<div class="large-8 columns">
 				<h3>Overview</h3>
+				<blockquote>
+					This is a very potential company!
+					<cite>Some trader</cite>
+				</blockquote>
 			</div>
 			<div class="large-4 columns text-right">
-				<a href="#" class="small button radius">Edit</a>
+				<a href="#" class="small button">Edit</a>
 			</div>
-		</div>
-		<div class="row">
-			<blockquote>
-				This is a very potential company!
-				<cite>Some trader</cite>
-			</blockquote>
 		</div>
 
 		<!--Company Panel Left-->
@@ -146,7 +147,7 @@ Hyperion
 			<!--S&C-->
 			<div class="row">
 				<div class="large-12 columns">
-					<h4 class="subheader">Specialization & Classification</h4>
+					<h4 class="subheader">Specialization &amp; Classification</h4>
 				</div>
 			</div>
 			<!--Industries-->
@@ -228,14 +229,15 @@ Hyperion
 	<a name="contacts"></a>
 	<div class="large-12 columns" data-magellan-destination="contacts">	
 		<div class="row">
-			<div class="large-12 columns">
-				<h3>Contacts</h3>
+			<div class="large-8 columns">
+				<h3>Contacts</h3>				
+				<blockquote>
+					6 contacts registered in this company.
+				</blockquote>
+			</div>			
+			<div class="large-4 columns text-right">
+				<a href="{{ contact_registration_url }}" class="small button">+ Contact</a>
 			</div>
-		</div>
-		<div class="row">
-			<blockquote>
-				6 contacts registered in this company.
-			</blockquote>
 		</div>
 		<div class="large-4 columns">
 			<div class="panel">
@@ -324,16 +326,15 @@ Hyperion
 	<div class="large-12 columns" data-magellan-destination="listings">	
 		<div class="row">
 			<div class="large-12 columns">
-				<h3>Listings</h3>
+				<h3>Listings</h3>				
+				<blockquote>
+					6 listings published by this company.
+					<br />
+					12 installed base found.
+				</blockquote>
 			</div>
 		</div>
-		<div class="row">
-			<blockquote>
-				6 listings published by this company.
-				<br />
-				12 installed base found.
-			</blockquote>
-		</div>
+
 		<!--Tabs-->
 		<div class="section-container tabs" data-section="tabs">
 			<section>
