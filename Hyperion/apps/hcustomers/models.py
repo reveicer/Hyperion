@@ -2,17 +2,6 @@ from django.db import models
 
 import sys
 
-class Industry(models.Model):
-	is_active = models.BooleanField(default=True)
-	code = models.CharField('Code', max_length=4)
-	name = models.CharField('Name', max_length=50)
-
-	def __unicode__(self):
-		return self.name
-
-	class Meta:
-		ordering = ['id']
-
 class CategoryManager(models.Manager):
 	def get_grouped_categories(self):
 		grouped_dict = {}
@@ -30,6 +19,47 @@ class CategoryManager(models.Manager):
 
 		return grouped_dict
 
+class CompanyInIndustryManager(models.Manager):
+	def get_industries(self, company):
+		return Industry.objects.filter(companies_in_industry__is_active=True, companies_in_industry__company=company)
+
+	def get_industries_of_expertise(self, company):
+		return Industry.objects.filter(companies_in_industry__is_active=True, companies_in_industry__company=company, companies_in_industry__expertise=True)		
+
+class CompanyInCategoryManager(models.Manager):
+	def get_categories(self, company):
+		return Category.objects.filter(companies_in_category__is_active=True, companies_in_category__company=company)
+
+	def get_categories_of_expertise(self, company):
+		return Category.objects.filter(companies_in_category__is_active=True, companies_in_category__company=company, companies_in_category__expertise=True)
+
+	def get_grouped_categories(self, company):
+		grouped_dict = {}
+
+		active_company_categories = self.filter(is_active=True, company=company)
+		for active_company_category in active_company_categories:
+			category = active_company_category.category
+			category_name = category.category_name
+			existing_list = grouped_dict.get(category_name)
+
+			if existing_list is None:
+				grouped_dict[category_name] = [category]
+			else:
+				existing_list.append(category)
+				grouped_dict[category_name] = existing_list
+
+		return grouped_dict
+
+class Industry(models.Model):
+	is_active = models.BooleanField(default=True)
+	code = models.CharField('Code', max_length=4)
+	name = models.CharField('Name', max_length=50)
+
+	def __unicode__(self):
+		return self.name
+
+	class Meta:
+		ordering = ['id']
 
 class Category(models.Model):
 	is_active = models.BooleanField(default=True)
@@ -93,11 +123,35 @@ class CompanyProfile(models.Model):
 	def get_contact_registration_url(self):
 		return '/profile/register/contact/%d/' % self.id
 
+	def get_contact_count(self):
+		return len(self.contacts.filter(is_active=True))
+
+	def get_contacts(self):
+		return self.contacts.filter(is_active=True)
+
+	def get_all_types(self):
+		return self.all_types.filter(is_active=True)
+
+	def get_industries(self):
+		return CompanyInIndustry.objects.get_industries(self)
+
+	def get_industry_expertise(self):
+		return CompanyInIndustry.objects.get_industries_of_expertise(self)
+
+	def get_categories(self):
+		return CompanyInCategory.objects.get_categories(self)
+
+	def get_category_expertise(self):
+		return CompanyInCategory.objects.get_categories_of_expertise(self)
+
+	def get_grouped_categories(self):
+		return CompanyInCategory.objects.get_grouped_categories(self)
+
 class ContactProfile(models.Model):
 	is_active = models.BooleanField(default=True)
 	first_name = models.CharField('First Name', max_length=30, blank=True)
 	last_name = models.CharField('Last Name', max_length=30, blank=True)
-	company = models.ForeignKey(CompanyProfile, blank=True)
+	company = models.ForeignKey(CompanyProfile, blank=True, related_name='contacts')
 	department = models.CharField('Department', max_length=20, blank=True)
 	title = models.CharField('Title', max_length=20, blank=True)
 	phone = models.CharField('Phone', max_length=40)
@@ -121,8 +175,9 @@ class ContactProfile(models.Model):
 class CompanyInIndustry(models.Model):
 	is_active = models.BooleanField(default=True)
 	company = models.ForeignKey(CompanyProfile)
-	industry = models.ForeignKey(Industry)
+	industry = models.ForeignKey(Industry, related_name='companies_in_industry')
 	expertise = models.BooleanField(default=False)
+	objects = CompanyInIndustryManager()
 
 	class Meta:
 		ordering = ['company', 'expertise']
@@ -130,8 +185,9 @@ class CompanyInIndustry(models.Model):
 class CompanyInCategory(models.Model):
 	is_active = models.BooleanField(default=True)
 	company = models.ForeignKey(CompanyProfile)
-	category = models.ForeignKey(Category)
+	category = models.ForeignKey(Category, related_name='companies_in_category')
 	expertise = models.BooleanField(default=False)
+	objects = CompanyInCategoryManager()
 
 	class Meta:
 		ordering = ['company', 'expertise']

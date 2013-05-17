@@ -42,8 +42,7 @@ Hyperion
 			<div class="large-8 columns">
 				<h3>Overview</h3>
 				<blockquote>
-					This is a very potential company!
-					<cite>Some trader</cite>
+					{{ company.notes }}
 				</blockquote>
 			</div>
 			<div class="large-4 columns text-right">
@@ -65,7 +64,7 @@ Hyperion
 					<p>Phone:</p>
 				</div>
 				<div class="large-9 columns">
-					<p>(650)521-6339</p>
+					<p>{{ company.phone }}</p>
 				</div>
 			</div>
 			<!--Fax-->
@@ -74,7 +73,7 @@ Hyperion
 					<p>Fax:</p>
 				</div>
 				<div class="large-9 columns">
-					<p>(650)521-6340</p>
+					<p>{{ company.fax }}</p>
 				</div>
 			</div>
 			<!--Email-->				
@@ -83,7 +82,7 @@ Hyperion
 					<p>Email:</p>
 				</div>
 				<div class="large-9 columns">
-					<a href="#">someone@company.com</a>
+					<a href="#">{{ company.email }}</a>
 				</div>
 			</div>
 			<!--Website-->
@@ -92,7 +91,7 @@ Hyperion
 					<p>Website:</p>
 				</div>
 				<div class="large-9 columns">				
-					<a href="#">www.company.com</a>
+					<a href="#">{{ company.website }}</a>
 				</div>
 			</div>
 			<!--Address-->
@@ -102,10 +101,15 @@ Hyperion
 				</div>
 				<div class="large-9 columns">
 					<ul class="no-bullet">
-						<li>236 Santa Teresa Street</li>
-						<li>Schiff House, 300</li>
-						<li>Stanford, CA 94305</li>
-						<li>United States</li>
+						<li>{{ company.street_line1 }}</li>
+						{% if company.street_line2 != '' %}
+							<li>{{ company.street_line2 }}</li>
+						{% endif %}
+						{% if company.street_line3 != '' %}
+							<li>{{ company.street_line3 }}</li>
+						{% endif %}
+						<li>{{ company.city }}, {{ company.state_province }} {{ company.zip_code }}</li>
+						<li>{{ company.country }}</li>
 					</ul>
 				</div>
 			</div>		
@@ -115,10 +119,13 @@ Hyperion
 					<p>Type:</p>
 				</div>
 				<div class="large-9 columns">
-					<p><span>type1</span> (primary)</p>
-					<ul class="inline-list">						
-						<li>type2</li>
-						<li>type3</li>
+					<p><span>{{ company.primary_type }}</span> (primary)</p>
+					<ul class="inline-list">
+						{% for type in company.all_types.all %}
+							{% if type != company.primary_type %}
+								<li>{{ type }}</li>
+							{% endif %}
+						{% endfor %}
 					</ul>
 				</div>
 			</div>
@@ -128,7 +135,7 @@ Hyperion
 					<p>Region:</p>
 				</div>
 				<div class="large-9 columns">
-					<p>ASIA</p>
+					<p>{{ company.region }}</p>
 				</div>
 			</div>
 			<!--About Us-->
@@ -137,7 +144,7 @@ Hyperion
 					<p>About:</p>
 				</div>
 				<div class="large-9 columns">
-					<p>This is a detailed, formal description of the roles of this company.</p>
+					<p>{{ company.about }}</p>
 				</div>
 			</div>
 		</div>
@@ -157,8 +164,9 @@ Hyperion
 				</div>
 				<div class="large-9 columns">
 					<ul class="inline-list">
-						<li>industry1</li>
-						<li>industry2</li>
+						{% for industry in company_industries %}
+							<li>{{ industry.industry }}</li>
+						{% endfor %}
 					</ul>
 				</div>
 			</div>
@@ -169,24 +177,16 @@ Hyperion
 				</div>
 				<div class="large-9 columns">		
 					<dl>
-						<dt>Category 1</dt>
-						<dd>
-							<ul class="inline-list">
-								<li>Subcategory 1</li>
-								<li>Subcategory 2</li>
-								<li>Subcategory 3</li>
-								<li>Subcategory 4</li>
-								<li>Subcategory 5</li>
-							</ul>
-						</dd>
-						<dt>Category 2</dt>					
-						<dt>Category 3</dt>
-						<dd>
-							<ul class="inline-list">
-								<li>Subcategory 1</li>
-								<li>Subcategory 2</li>
-							</ul>
-						</dd>
+						{% for category_group in company_categories.items %}
+							<dt>{{ category_group.0 }}</dt>
+							<dd>
+								<ul class="inline-list">
+									{% for category in category_group.1 %}
+										<li>{{ category }}</li>
+									{% endfor %}
+								</ul>
+							</dd>
+						{% endfor %}
 					</dl>
 				</div>
 			</div>
@@ -216,7 +216,7 @@ Hyperion
 					<p>Expertise:</p>
 				</div>
 				<div class="large-9 columns">
-					This will be a description of this company's expertise.
+					{{ company.expertise_description }}
 				</div>
 			</div>
 		</div>
@@ -232,91 +232,39 @@ Hyperion
 			<div class="large-8 columns">
 				<h3>Contacts</h3>				
 				<blockquote>
-					6 contacts registered in this company.
+					{{ contacts|length }} contacts registered in this company.
 				</blockquote>
 			</div>			
 			<div class="large-4 columns text-right">
 				<a href="{{ contact_registration_url }}" class="small button">+ Contact</a>
 			</div>
 		</div>
-		<div class="large-4 columns">
-			<div class="panel">
-				<ul class="no-bullet">
-					<li><strong><a href="#">First Last</a></strong></li>
-					<li>Job Title</li>
-					<li>(650)521-6339</li>
-					<li><a href="#">contact1@company.com</a></li>
-					<hr />
-					<li>Buyer, Seller</li>
-				</ul>
-			</div>
-		</div>
 
-		<div class="large-4 columns">
-			<div class="panel">
-				<ul class="no-bullet">
-					<li><strong><a href="#">First Last</a></strong></li>
-					<li>Job Title</li>
-					<li>(650)521-6339</li>
-					<li><a href="#">contact1@company.com</a></li>
-					<hr />
-					<li>Buyer, Seller</li>
-				</ul>
+		{% for contact in contacts %}
+			<div class="large-4 columns">
+				<div class="panel">
+					<ul class="no-bullet">
+						<li><strong><a href="#">{{ contact.first_name }} {{ contact.last_name }}</a></strong></li>
+						<li>{{ contact.title }}</li>
+						<li>{{ contact.phone }}</li>
+						<li><a href="#">{{ contact.email }}</a></li>
+						<hr />
+						<li>
+							{% if contact.buy %}
+								Buy
+								{% if contact.sell %}
+									, Seller
+								{% endif %}
+							{% else %}
+								{% if contact.sell %}
+									Seller
+								{% endif %}
+							{% endif %}
+						</li>
+					</ul>
+				</div>
 			</div>
-		</div>
-
-		<div class="large-4 columns">
-			<div class="panel">
-				<ul class="no-bullet">
-					<li><strong><a href="#">First Last</a></strong></li>
-					<li>Job Title</li>
-					<li>(650)521-6339</li>
-					<li><a href="#">contact1@company.com</a></li>
-					<hr />
-					<li>Buyer</li>
-				</ul>
-			</div>
-		</div>
-
-		<div class="large-4 columns">
-			<div class="panel">
-				<ul class="no-bullet">
-					<li><strong><a href="#">First Last</a></strong></li>
-					<li>Job Title</li>
-					<li>(650)521-6339</li>
-					<li><a href="#">contact1@company.com</a></li>
-					<hr />
-					<li>Buyer, Seller</li>
-				</ul>
-			</div>
-		</div>
-
-		<div class="large-4 columns">
-			<div class="panel">
-				<ul class="no-bullet">
-					<li><strong><a href="#">First Last</a></strong></li>
-					<li>Job Title</li>
-					<li>(650)521-6339</li>
-					<li><a href="#">contact1@company.com</a></li>
-					<hr />
-					<li>Buyer, Seller</li>
-				</ul>
-			</div>
-		</div>
-
-		<div class="large-4 columns">
-			<div class="panel">
-				<ul class="no-bullet">
-					<li><strong><a href="#">First Last</a></strong></li>
-					<li>Job Title</li>
-					<li>(650)521-6339</li>
-					<li><a href="#">contact1@company.com</a></li>
-					<hr />
-					<li>Seller</li>
-				</ul>
-			</div>
-		</div>
-
+		{% endfor %}
 	</div>
 
 	<hr />

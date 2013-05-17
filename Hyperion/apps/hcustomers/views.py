@@ -15,8 +15,8 @@ import sys
 
 class CompanyRegistrationForm(ModelForm):
 	# db calls for models
-	industry_models = Industry.objects.all()
-	category_models = Category.objects.all()
+	industry_models = Industry.objects.filter(is_active=True)
+	category_models = Category.objects.filter(is_active=True)
 
 	# customized form fields
 	industries = forms.ModelMultipleChoiceField(industry_models, widget=forms.CheckboxSelectMultiple(), required=False)
@@ -65,6 +65,9 @@ def company_profile(request, company_id):
 	context = RequestContext(request, {
 		'company' : company,
 		'contact_registration_url': company.get_contact_registration_url(),
+		'company_industries': company.get_industries(),
+		'company_categories': company.get_grouped_categories(),
+		'contacts': company.get_contacts(),
 	})
 	return HttpResponse(template.render(context))
 
@@ -100,18 +103,17 @@ def register_company(request):
 	else:
 		form = CompanyRegistrationForm()
 
-	grouped_category_models = Category.objects.get_grouped_categories()
 	return render(request, 'company_registration.html', {
 		'form' : form,
-		'grouped_category_models' : grouped_category_models,
+		'grouped_category_models' : Category.objects.get_grouped_categories(),
 		'post_url': request.get_full_path,
 	})
 
 
 class ContactRegistrationForm(ModelForm):
 	# db calls for models
-	industry_models = Industry.objects.all()
-	category_models = Category.objects.all()
+	industry_models = Industry.objects.filter(is_active=True)
+	category_models = Category.objects.filter(is_active=True)
 
 	# customized form fields
 	industries = forms.ModelMultipleChoiceField(industry_models, widget=forms.CheckboxSelectMultiple(), required=False)
@@ -183,13 +185,21 @@ def register_contact(request, company_id):
 			# redirect to company profile page
 			return HttpResponseRedirect('/profile/contact/%d/' % new_contact.id)
 	else:
-		form = ContactRegistrationForm()
+		form = ContactRegistrationForm(initial={
+			'region': company.region,
+			'primary_type': company.primary_type,
+			'all_types': company.get_all_types(),
+			'industries': company.get_industries(),
+			'industry_expertise': company.get_industry_expertise(),
+			'categories': company.get_categories(),
+			'category_expertise': company.get_category_expertise(),
+		})
 
 	grouped_category_models = Category.objects.get_grouped_categories()
 	return render(request, 'contact_registration.html', {
 		'form' : form,
 		'grouped_category_models' : grouped_category_models,
 		'company': company,
-		'post_url': request.get_full_path,
+		'post_url': request.get_full_path(),
 		'company_profile_url': company.get_profile_url(),
 	})

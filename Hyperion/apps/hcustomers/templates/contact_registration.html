@@ -127,7 +127,11 @@ Hyperion
 						{% for pk, type in form.all_types.field.widget.choices %}
 							<div class="large-12 columns">
 								<label for="id_all_types_{{ pk }}">
-									<input type="checkbox" id="id_all_types_{{ pk }}" name="all_types" value="{{ pk }}" style="display: none;">
+									{% if pk in form.all_types.value %}
+										<input type="checkbox" id="id_all_types_{{ pk }}" name="all_types" value="{{ pk }}" style="display: none;" checked>
+									{% else %}
+										<input type="checkbox" id="id_all_types_{{ pk }}" name="all_types" value="{{ pk }}" style="display: none;">
+									{% endif %}
 									<span class="custom checkbox"></span>
 									{{ type }}
 								</label>
@@ -151,13 +155,21 @@ Hyperion
 									<div class="row collapse">
 										<div class="large-2 columns text-center">
 											<label for="id_industry_expertise_{{ pk }}">
-												<input type="checkbox" id="id_industry_expertise_{{ pk }}" name="industry_expertise" value="{{ pk }}" style="display: none;">
+												{% if pk in form.industry_expertise.value %}
+													<input type="checkbox" id="id_industry_expertise_{{ pk }}" name="industry_expertise" value="{{ pk }}" style="display: none;" checked>
+												{% else %}
+													<input type="checkbox" id="id_industry_expertise_{{ pk }}" name="industry_expertise" value="{{ pk }}" style="display: none;">
+												{% endif %}
 												<span class="custom checkbox"></span>
 											</label>
 										</div>
 										<div class="large-10 columns">
 											<label for="id_industries_{{ pk }}">
-												<input type="checkbox" id="id_industries_{{ pk }}" name="industries" value="{{ pk }}" style="display: none;">
+												{% if pk in form.industries.value %}
+													<input type="checkbox" id="id_industries_{{ pk }}" name="industries" value="{{ pk }}" style="display: none;" checked>
+												{% else %}
+													<input type="checkbox" id="id_industries_{{ pk }}" name="industries" value="{{ pk }}" style="display: none;">
+												{% endif %}
 												<span class="custom checkbox"></span>
 												{{ industry }}
 											</label>
@@ -178,13 +190,21 @@ Hyperion
 									<div class="row collapse">
 										<div class="large-2 columns text-center">
 											<label for="id_industry_expertise_{{ pk }}">
-												<input type="checkbox" id="id_industry_expertise_{{ pk }}" name="industry_expertise" value="{{ pk }}" style="display: none;">
+												{% if pk in form.industry_expertise.value %}
+													<input type="checkbox" id="id_industry_expertise_{{ pk }}" name="industry_expertise" value="{{ pk }}" style="display: none;" checked>
+												{% else %}
+													<input type="checkbox" id="id_industry_expertise_{{ pk }}" name="industry_expertise" value="{{ pk }}" style="display: none;">
+												{% endif %}
 												<span class="custom checkbox"></span>
 											</label>
 										</div>
 										<div class="large-10 columns">
 											<label for="id_industries_{{ pk }}">
-												<input type="checkbox" id="id_industries_{{ pk }}" name="industries" value="{{ pk }}" style="display: none;">
+												{% if pk in form.industries.value %}
+													<input type="checkbox" id="id_industries_{{ pk }}" name="industries" value="{{ pk }}" style="display: none;" checked>
+												{% else %}
+													<input type="checkbox" id="id_industries_{{ pk }}" name="industries" value="{{ pk }}" style="display: none;">
+												{% endif %}
 												<span class="custom checkbox"></span>
 												{{ industry }}
 											</label>
@@ -223,13 +243,21 @@ Hyperion
 														<div class="row collapse">
 															<div class="large-1 columns text-center">
 																<label for="id_category_expertise_{{ category.id }}">
-																	<input type="checkbox" id="id_category_expertise_{{ category.id }}" name="category_expertise" value="{{ category.id }}" style="display: none;" />
+																	{% if category.id in form.category_expertise.value %}
+																		<input type="checkbox" id="id_category_expertise_{{ category.id }}" name="category_expertise" value="{{ category.id }}" style="display: none;" checked>
+																	{% else %}
+																		<input type="checkbox" id="id_category_expertise_{{ category.id }}" name="category_expertise" value="{{ category.id }}" style="display: none;">
+																	{% endif %}
 																	<span class="custom checkbox"></span>
 																</label>
 															</div>
 															<div class="large-11 columns">
 																<label for="id_categories_{{ category.id }}">
-																	<input type="checkbox" id="id_categories_{{ category.id }}" name="categories" value="{{ category.id }}" style="display: none;" />
+																	{% if category.id in form.categories.value %}
+																		<input type="checkbox" id="id_categories_{{ category.id }}" name="categories" value="{{ category.id }}" style="display: none;" checked>
+																	{% else %}
+																		<input type="checkbox" id="id_categories_{{ category.id }}" name="categories" value="{{ category.id }}" style="display: none;">
+																	{% endif %}
 																	<span class="custom checkbox"></span>
 																	{{ category.subcategory_name }}
 																</label>
@@ -250,13 +278,21 @@ Hyperion
 														<div class="row collapse">
 															<div class="large-1 columns text-center">
 																<label for="id_category_expertise_{{ category.id }}">
-																	<input type="checkbox" id="id_category_expertise_{{ category.id }}" name="category_expertise" value="{{ category.id }}" style="display: none;" />
+																	{% if category.id in form.category_expertise.value %}
+																		<input type="checkbox" id="id_category_expertise_{{ category.id }}" name="category_expertise" value="{{ category.id }}" style="display: none;" checked>
+																	{% else %}
+																		<input type="checkbox" id="id_category_expertise_{{ category.id }}" name="category_expertise" value="{{ category.id }}" style="display: none;">
+																	{% endif %}
 																	<span class="custom checkbox"></span>
 																</label>
 															</div>
 															<div class="large-11 columns">
 																<label for="id_categories_{{ category.id }}">
-																	<input type="checkbox" id="id_categories_{{ category.id }}" name="categories" value="{{ category.id }}" style="display: none;" />
+																	{% if category.id in form.categories.value %}
+																		<input type="checkbox" id="id_categories_{{ category.id }}" name="categories" value="{{ category.id }}" style="display: none;" checked>
+																	{% else %}
+																		<input type="checkbox" id="id_categories_{{ category.id }}" name="categories" value="{{ category.id }}" style="display: none;">
+																	{% endif %}
 																	<span class="custom checkbox"></span>
 																	{{ category.subcategory_name }}
 																</label>
