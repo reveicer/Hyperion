@@ -160,7 +160,14 @@ def register_contact(request, company_id):
 		form = ContactRegistrationForm(request.POST)
 		if form.is_valid():
 			# saves the contact
-			new_contact = form.save()
+			new_contact = form.save(commit=False)
+			new_contact.company = company
+			new_contact.save()
+			form.save_m2m()
+
+			print >> sys.stderr, 'buy: %s' % new_contact.buy
+			print >> sys.stderr, 'sell: %s' % new_contact.sell
+			
 			
 			# save contact_in_industry
 			industry_batch = []
