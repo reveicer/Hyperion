@@ -1,5 +1,4 @@
 from django.db import models
-
 import sys
 
 class CategoryManager(models.Manager):

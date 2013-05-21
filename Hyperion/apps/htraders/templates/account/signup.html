@@ -1,0 +1,63 @@
+{% extends "site_base.html" %}
+
+{% block title %}
+Sign up
+{% endblock %}
+
+{% block content %}
+	<div class="row">
+		<div class="large-12 columns">
+			<h2>Trader Registration Form</h2>
+		</div>
+	    <div class="large-12 columns">
+	        <form id="signup_form" method="post" action="{% url 'account_signup' %}" class="custom">
+	            {% csrf_token %}
+				{% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+	            <fieldset>
+	            	<div class="large-6 columns">
+		            	<div class="large-12 columns">
+		            		{{ form.email.errors }}
+		            		<label for="id_email"><h4 class="subheader">E-mail:</h4></label>
+							{{ form.email }}
+		            	</div>
+		            	<div class="large-12 columns">
+		            		{{ form.title.errors }}
+		            		<label for="id_title"><h4 class="subheader">Title:</h4></label>
+							{{ form.title }}
+		            	</div>
+		            	<div class="large-12 columns">
+		            		{{ form.phone.errors }}
+		            		<label for="id_phone"><h4 class="subheader">Phone:</h4></label>
+							{{ form.phone }}
+		            	</div>
+		            	<div class="large-12 columns">
+		            		{{ form.fax.errors }}
+		            		<label for="id_fax"><h4 class="subheader">Fax:</h4></label>
+							{{ form.fax }}
+		            	</div>
+	            	</div>
+	            	<div class="large-6 columns">
+
+		            	<div class="large-12 columns">
+		            		{{ form.password.errors }}
+		            		<label for="id_password"><h4 class="subheader">Password:</h4></label>
+							{{ form.password }}
+		            	</div>
+		            	<div class="large-12 columns">
+		            		{{ form.password_confirm.errors }}
+		            		<label for="id_password_confirm"><h4 class="subheader">Confirm Password:</h4></label>
+							{{ form.password_confirm }}
+		            	</div>
+		            	<!--Not really sure what does code field do...-->
+		            	<div class="large-12 columns">{{ form.code }}</div>
+		                <div class="large-12 columns text-right">
+		                    <button type="submit" class="button">Register</button>
+		                </div>
+	            	</div>
+	            </fieldset>
+	        </form>
+	    </div>
+	</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "site_base.html" %}
+
+{% block title %}
+Sign up
+{% endblock %}
+
+{% block content %}
+	<div class="row">
+		<div class="large-12 columns">
+			<h2>Trader Login</h2>
+		</div>
+	    <div class="large-12 columns">
+	        <form id="login_form" method="post" action="{% url 'account_login' %}" class="custom">
+	            {% csrf_token %}
+	            {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+	            <fieldset>
+	            	<div class="large-6 columns">
+		            	<div class="large-12 columns">
+		            		<label for="id_email"><h4 class="subheader">E-mail:</h4></label>
+							{{ form.email }}
+		            	</div>
+		            	<div class="large-12 columns">
+		            		<label for="id_password"><h4 class="subheader">Password:</h4></label>
+							{{ form.password }}
+		            	</div>
+	            		<div class="large-6 columns">
+	            			<label for='id_remember'><h6 class="subheader">Remember Me:</h4></label>
+	            			{{ form.remember }}
+	            		</div>
+	            		<div class="large-6 columns text-right">
+			                <button type="submit" class="button">Login</button>
+		            		<a href="{% url "account_password_reset" %}" class="btn">
+		            			<h6 class="subheader">Forgot your password?</h6>
+		            		</a>
+	            		</div>
+	                </div>
+	            </fieldset>
+	        </form>
+	    </div>
+	</div>
+{% endblock %}

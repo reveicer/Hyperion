@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
 # Django settings for Hyperion project.
 
+# python imports
 import os.path
 import posixpath
 import sys
+
+# django imports
+from django.core.urlresolvers import reverse
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
@@ -100,6 +104,12 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    # account
+    'account.context_processors.account',
+)
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -108,6 +118,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # account
+    'account.middleware.LocaleMiddleware',
+    'account.middleware.TimezoneMiddleware',
 )
 
 ROOT_URLCONF = 'Hyperion.urls'
@@ -135,11 +149,28 @@ INSTALLED_APPS = (
 
     # external
     'gunicorn',
+    'account',
 
     # project
     'Hyperion.apps.htraders',
     'Hyperion.apps.hcustomers',
     'Hyperion.apps.hinventory',
+)
+
+# django-user-accounts
+ACCOUNT_EMAIL_UNIQUE = True
+ACCOUNT_EMAIL_CONFIRMATION_EMAIL = False
+ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = False
+ACCOUNT_OPEN_SIGNUP = True
+ACCOUNT_CREATE_ON_SAVE = False
+ACCOUNT_SIGNUP_REDIRECT_URL = reverse('account_login')
+ACCOUNT_LOGIN_REDIRECT_URL = reverse('dashboard')
+
+#LOGIN_URL = account_login
+#LOGOUT_URL = accout_logout
+
+AUTHENTICATION_BACKENDS = (
+    'account.auth_backends.EmailAuthenticationBackend',
 )
 
 FIXTURE_DIRS = [

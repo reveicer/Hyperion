@@ -33,7 +33,7 @@ Hyperion
 		</div>
 	</div>
 	<div class="large-12 columns">
-		<form action="{{ post_url }}" method="post" class="custom">
+		<form action="{% url 'Hyperion.apps.hcustomers.views.register_company' %}" method="post" class="custom">
 			{% csrf_token %}
 			<fieldset>
 				<a name="basic"></a>
@@ -106,7 +106,7 @@ Hyperion
 				<a name="address"></a>
 				<div class="row" data-magellan-destination="address">
 					<!--Address-->
-					<div class="large-12 columns">
+					<div class="large-6 columns">
 						<h4 class="subheader">Address:</h4>
 					</div>
 					<!--left address-->

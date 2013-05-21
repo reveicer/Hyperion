@@ -1,10 +1,10 @@
 # import models
 from Hyperion.apps.hcustomers.models import *
 
+# import forms
+from Hyperion.apps.hcustomers.forms import *
+
 # django imports
-from django import forms
-from django.forms import ModelForm
-from django.forms.widgets import CheckboxSelectMultiple, RadioSelect
 from django.template import RequestContext, Context, loader
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
 from django.shortcuts import render, render_to_response
@@ -12,46 +12,6 @@ from django.contrib.auth.decorators import login_required
 
 # python imports
 import sys
-
-class CompanyRegistrationForm(ModelForm):
-	# db calls for models
-	industry_models = Industry.objects.filter(is_active=True)
-	category_models = Category.objects.filter(is_active=True)
-
-	# customized form fields
-	industries = forms.ModelMultipleChoiceField(industry_models, widget=forms.CheckboxSelectMultiple(), required=False)
-	industry_expertise = forms.ModelMultipleChoiceField(industry_models, widget=forms.CheckboxSelectMultiple(), required=False)
-	categories = forms.ModelMultipleChoiceField(category_models, widget=forms.CheckboxSelectMultiple(), required=False)
-	category_expertise = forms.ModelMultipleChoiceField(category_models, widget=forms.CheckboxSelectMultiple(), required=False)
-
-	class Meta:
-		model = CompanyProfile
-		# TODO: missing the core expertise fields
-		fields = ('name', 'phone', 'fax', 'email', 'website', 'region', 'primary_type', 'all_types', 'about',
-				'street_line1', 'street_line2', 'street_line3', 'city', 'state_province', 'country', 'zip_code', # address info
-				'expertise_description', 'notes')
-		widgets = {
-			'all_types': forms.CheckboxSelectMultiple(),
-		}
-	def __init__(self, *args, **kwargs):
-		super(CompanyRegistrationForm, self).__init__(*args, **kwargs)
-		self.fields['name'].widget.attrs = { 'placeholder':'Required' }
-		self.fields['region'].empty_label = None
-		self.fields['about'].widget.attrs = { 'placeholder':'Optional' }
-		self.fields['phone'].widget.attrs = { 'placeholder':'(xxx) xxx-xxxx' }
-		self.fields['fax'].widget.attrs = { 'placeholder':'Optional' }
-		self.fields['email'].widget.attrs = { 'placeholder':'example@company.com' }
-		self.fields['website'].widget.attrs = { 'placeholder':'Optional' }
-		self.fields['street_line1'].widget.attrs = { 'placeholder':'Address Line 1' }
-		self.fields['street_line2'].widget.attrs = { 'placeholder':'Address Line 2' }
-		self.fields['street_line3'].widget.attrs = { 'placeholder':'Address Line 3' }
-		self.fields['city'].widget.attrs = { 'placeholder':'City' }
-		self.fields['state_province'].widget.attrs = { 'placeholder':'State/Province' }
-		self.fields['country'].widget.attrs = { 'placeholder':'Country' }
-		self.fields['zip_code'].widget.attrs = { 'placeholder':'Zip #' }
-		self.fields['primary_type'].empty_label = None
-		self.fields['expertise_description'].widget.attrs = { 'placeholder':'Optional' }
-		self.fields['notes'].widget.attrs = { 'placeholder':'Miscellaneous Comments'}
 
 def company_profile(request, company_id):
 	# TODO: handle 404 page if company is not found.
@@ -64,7 +24,6 @@ def company_profile(request, company_id):
 	template = loader.get_template('company_profile.html')
 	context = RequestContext(request, {
 		'company' : company,
-		'contact_registration_url': company.get_contact_registration_url(),
 		'company_industries': company.get_industries(),
 		'company_categories': company.get_grouped_categories(),
 		'contacts': company.get_contacts(),
@@ -106,46 +65,7 @@ def register_company(request):
 	return render(request, 'company_registration.html', {
 		'form' : form,
 		'grouped_category_models' : Category.objects.get_grouped_categories(),
-		'post_url': request.get_full_path,
 	})
-
-
-class ContactRegistrationForm(ModelForm):
-	# db calls for models
-	industry_models = Industry.objects.filter(is_active=True)
-	category_models = Category.objects.filter(is_active=True)
-
-	# customized form fields
-	industries = forms.ModelMultipleChoiceField(industry_models, widget=forms.CheckboxSelectMultiple(), required=False)
-	industry_expertise = forms.ModelMultipleChoiceField(industry_models, widget=forms.CheckboxSelectMultiple(), required=False)
-	categories = forms.ModelMultipleChoiceField(category_models, widget=forms.CheckboxSelectMultiple(), required=False)
-	category_expertise = forms.ModelMultipleChoiceField(category_models, widget=forms.CheckboxSelectMultiple(), required=False)
-
-	class Meta:
-		model = ContactProfile
-		# TODO: missing the core expertise fields
-		fields = ('first_name', 'last_name', 'department', 'title', 'phone', 'fax', 'email', 'region', 'buy', 'sell', 'primary_type', 'all_types',
-				'expertise_description', 'notes')
-		widgets = {
-			'all_types': forms.CheckboxSelectMultiple(), # preselect
-			'buy': forms.RadioSelect,
-			'sell': forms.RadioSelect,
-		}
-	def __init__(self, *args, **kwargs):
-		super(ContactRegistrationForm, self).__init__(*args, **kwargs)
-		self.fields['first_name'].widget.attrs = { 'placeholder':'Required' }
-		self.fields['last_name'].widget.attrs = { 'placeholder': 'Required' }
-		self.fields['department'].widget.attrs = { 'placeholder':'Optional' }
-		self.fields['title'].widget.attrs = { 'placeholder':'Optional' }
-		self.fields['phone'].widget.attrs = { 'placeholder':'(xxx) xxx-xxxx' }
-		self.fields['fax'].widget.attrs = { 'placeholder':'Optional' }
-		self.fields['email'].widget.attrs = { 'placeholder':'example@company.com' }
-		self.fields['region'].empty_label = None # preselect
-		self.fields['buy'].widget.choices = ((False, 'False'), (True, 'True'))
-		self.fields['sell'].widget.choices = ((False, 'False'), (True, 'True'))
-		self.fields['primary_type'].empty_label = None # preselect
-		self.fields['expertise_description'].widget.attrs = { 'placeholder':'Optional' }
-		self.fields['notes'].widget.attrs = { 'placeholder':'Optional' }
 
 def contact_profile(request, contact_id):
 	pass
@@ -164,10 +84,6 @@ def register_contact(request, company_id):
 			new_contact.company = company
 			new_contact.save()
 			form.save_m2m()
-
-			print >> sys.stderr, 'buy: %s' % new_contact.buy
-			print >> sys.stderr, 'sell: %s' % new_contact.sell
-			
 			
 			# save contact_in_industry
 			industry_batch = []
@@ -207,6 +123,4 @@ def register_contact(request, company_id):
 		'form' : form,
 		'grouped_category_models' : grouped_category_models,
 		'company': company,
-		'post_url': request.get_full_path(),
-		'company_profile_url': company.get_profile_url(),
 	})

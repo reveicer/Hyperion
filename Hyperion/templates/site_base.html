@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load account_tags %}
 
 <!DOCTYPE html>
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
@@ -8,7 +9,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
-	<title>{% block title %}Hyperion{% endblock %}</title>
+	<title>Hyperion-{% block title %}{% endblock %}</title>
 
 	<link rel="stylesheet" href="{% static 'foundation/css/normalize.css' %}" />
 	<!-- If you are using CSS version, add this -->
@@ -55,7 +56,7 @@
 					</li>
 					<li class="divider"></li>
 					<li class="has-form">
-						<a href="#" class="button secondary">Sign In</a>
+						<a href="{% url 'account_login' %}" class="button secondary">Login</a>
 					</li>
 					<li class="divider"></li>
 				</ul>

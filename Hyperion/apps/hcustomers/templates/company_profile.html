@@ -11,7 +11,7 @@ Hyperion
 	</div>
 	<div class="large-4 columns text-right">
 
-		<a href="{{ contact_registration_url }}" class="small button">+ Contact</a>		
+		<a href="{% url 'Hyperion.apps.hcustomers.views.register_contact' company.id %}" class="small button">+ Contact</a>		
 		<!--<a href="{{ equipment_registration_url }}" class="small button">+ Equipment</a>-->
 		<a href="#" class="small button alert">Delete</a>
 	</div>
@@ -236,7 +236,7 @@ Hyperion
 				</blockquote>
 			</div>			
 			<div class="large-4 columns text-right">
-				<a href="{{ contact_registration_url }}" class="small button">+ Contact</a>
+				<a href="{% url 'Hyperion.apps.hcustomers.views.register_contact' company.id %}" class="small button">+ Contact</a>
 			</div>
 		</div>
 

@@ -9,7 +9,7 @@ Hyperion
 	<!--Magellan-->
 	<div class="large-12 columns">
 		<h2>Contact Registration Form</h2>
-		<h3 class="subheader">from <a href="{{ company_profile_url }}">{{ company }}</a></h3>
+		<h3 class="subheader">from <a href="{% url 'Hyperion.apps.hcustomers.views.company_profile' company.id %}}">{{ company }}</a></h3>
 		<div data-magellan-expedition="fixed">
 			<dl class="sub-nav">
 				<dd data-magellan-arrival="basic">
@@ -32,7 +32,7 @@ Hyperion
 	</div>
 
 	<div class="large-12 columns">
-		<form action="{{ post_url }}" method="post" class="custom">
+		<form action="{% url 'Hyperion.apps.hcustomers.views.register_contact' company.id %}" method="post" class="custom">
 			{% csrf_token %}
 			<fieldset>
 				<!--Basic-->
