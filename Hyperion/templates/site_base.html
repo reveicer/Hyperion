@@ -67,7 +67,12 @@
 						<li class="has-dropdown {% active request 'account_logout' %}">
 							<a>{{ user.email }}</a>
 							<ul class="dropdown">
-								<li><a href="{% url 'account_logout' %}">Logout</a></li>
+								<li>
+									<a href="#" onclick="document.getElementById('logout_form').submit();">Logout</a>
+									<form display="none" id="logout_form" method="post" action="{% url 'account_logout' %}" class="custom">
+									{% csrf_token %}
+									</form>
+								</li>
 							</ul>
 						</li>
 					{% else %}
