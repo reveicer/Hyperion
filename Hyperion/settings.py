@@ -106,6 +106,7 @@ TEMPLATE_LOADERS = (
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.request',
     # account
     'account.context_processors.account',
 )
@@ -155,6 +156,7 @@ INSTALLED_APPS = (
     'Hyperion.apps.htraders',
     'Hyperion.apps.hcustomers',
     'Hyperion.apps.hinventory',
+    'Hyperion',
 )
 
 # django-user-accounts
@@ -164,7 +166,7 @@ ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = False
 ACCOUNT_OPEN_SIGNUP = True
 ACCOUNT_CREATE_ON_SAVE = True
 ACCOUNT_SIGNUP_REDIRECT_URL = reverse('account_login')
-ACCOUNT_LOGIN_REDIRECT_URL = reverse('dashboard')
+ACCOUNT_LOGIN_REDIRECT_URL = reverse('search')
 ACCOUNT_LOGOUT_REDIRECT_URL = reverse('account_login')
 
 LOGIN_URL = reverse('account_login')

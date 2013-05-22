@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load tags %}
 {% load account_tags %}
 
 <!DOCTYPE html>
@@ -33,11 +34,22 @@
 			<section class="top-bar-section">
 				<ul class="left">
 					<li class="divider"></li>
-					<li>
-						<a href="#">Dashboard</a>
+					<li class="{% active request 'search' %}">
+						<a href="{% url 'search' %}">Search</a>
 					</li>
 					<li class="divider"></li>
-					<li class="has-form">
+					<li class="{% active request 'register_company' %}">
+						<a href="{% url 'register_company' %}">+ Company</a>
+					</li>
+					<li class="divider"></li>
+					{% if company != None %}
+						<li class="{% active request 'register_contact' %}">
+							<a href="{% url 'register_contact' company.id %}">+ Contact</a>
+						</li>
+						<li class="divider"></li>
+					{% endif %}
+					
+					<!--<li class="has-form">
 						<div class="row collapse">
 							<div class="large-10 columns">
 								<input type="text" placeholder="Search...">
@@ -47,19 +59,19 @@
 							</div>
 						</div>
 					</li>
-					<li class="divider"></li>
+					<li class="divider"></li>-->
 				</ul>
 				<ul class="right">
 					<li class="divider"></li>
 					{% if user.is_authenticated %}
-						<li class="has-dropdown active">
+						<li class="has-dropdown {% active request 'account_logout' %}">
 							<a>{{ user.email }}</a>
 							<ul class="dropdown">
 								<li><a href="{% url 'account_logout' %}">Logout</a></li>
 							</ul>
 						</li>
 					{% else %}
-						<li class="active"><a href="{% url 'account_login' %}">Login</a></li>
+						<li class="{% active request 'account_login' %}"><a href="{% url 'account_login' %}">Login</a></li>
 					{% endif %}
 					<li class="divider"></li>
 				</ul>

@@ -14,11 +14,12 @@ import account.views
 from Hyperion.apps.htraders.forms import *
 
 @login_required
-def dashboard(request):
-	template = loader.get_template('dashboard.html')
+def search(request):
+	template = loader.get_template('search.html')
 	context = RequestContext(request, {})
 	return HttpResponse(template.render(context))
 
+#@login_required
 class SignupView(account.views.SignupView):
 	form_class = SignupForm
 
