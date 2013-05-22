@@ -8,6 +8,12 @@ from django import forms
 import account.forms
 
 class SignupForm(account.forms.SignupForm):
+	first_name = forms.CharField(
+		max_length=TraderProfile._meta.get_field('first_name').max_length,
+		required=not TraderProfile._meta.get_field('first_name').blank)
+	last_name = forms.CharField(
+		max_length=TraderProfile._meta.get_field('last_name').max_length,
+		required=not TraderProfile._meta.get_field('last_name').blank)
 	title = forms.CharField(
 		max_length=TraderProfile._meta.get_field('title').max_length, 
 		required=not TraderProfile._meta.get_field('title').blank)
@@ -24,6 +30,14 @@ class SignupForm(account.forms.SignupForm):
 		self.fields['email'].widget.attrs = { 'placeholder':'trader@hyperionmarkets.net' }
 		self.fields['password'].widget.attrs = { 'placeholder':'password' }
 		self.fields['password_confirm'].widget.attrs = { 'placeholder':'password again' }
+		self.fields['first_name'].widget.attrs = { 'placeholder':'First Name' }
+		self.fields['last_name'].widget.attrs = { 'placeholder':'Last Name' }
 		self.fields['title'].widget.attrs = { 'placeholder':'Optional' }
 		self.fields['phone'].widget.attrs = { 'placeholder':'(xxx) xxx-xxxx' }
 		self.fields['fax'].widget.attrs = { 'placeholder':'Optional' }
+
+class LoginEmailForm(account.forms.LoginEmailForm):
+	def __init__(self, *args, **kwargs):
+		super(LoginEmailForm, self).__init__(*args, **kwargs)
+		self.fields['email'].widget.attrs = { 'placeholder':'trader@hyperionmarkets.net' }
+		self.fields['password'].widget.attrs = { 'placeholder':'password' }

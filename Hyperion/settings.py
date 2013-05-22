@@ -162,12 +162,13 @@ ACCOUNT_EMAIL_UNIQUE = True
 ACCOUNT_EMAIL_CONFIRMATION_EMAIL = False
 ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = False
 ACCOUNT_OPEN_SIGNUP = True
-ACCOUNT_CREATE_ON_SAVE = False
+ACCOUNT_CREATE_ON_SAVE = True
 ACCOUNT_SIGNUP_REDIRECT_URL = reverse('account_login')
 ACCOUNT_LOGIN_REDIRECT_URL = reverse('dashboard')
+ACCOUNT_LOGOUT_REDIRECT_URL = reverse('account_login')
 
-#LOGIN_URL = account_login
-#LOGOUT_URL = accout_logout
+LOGIN_URL = reverse('account_login')
+LOGOUT_URL = reverse('account_logout')
 
 AUTHENTICATION_BACKENDS = (
     'account.auth_backends.EmailAuthenticationBackend',

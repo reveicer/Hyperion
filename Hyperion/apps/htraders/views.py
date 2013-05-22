@@ -13,10 +13,11 @@ import account.views
 # import forms
 from Hyperion.apps.htraders.forms import *
 
-#@login_required
+@login_required
 def dashboard(request):
-	t = loader.get_template('dashboard.html')
-	return HttpResponse(t.render(Context()))
+	template = loader.get_template('dashboard.html')
+	context = RequestContext(request, {})
+	return HttpResponse(template.render(context))
 
 class SignupView(account.views.SignupView):
 	form_class = SignupForm
@@ -27,6 +28,8 @@ class SignupView(account.views.SignupView):
 
 	def create_trader_profile(self, form):
 		profile = TraderProfile(user=self.created_user)
+		profile.first_name = form.cleaned_data['first_name']
+		profile.last_name = form.cleaned_data['last_name']
 		profile.title = form.cleaned_data['title']
 		profile.phone = form.cleaned_data['phone']
 		profile.fax = form.cleaned_data['fax']
@@ -37,5 +40,5 @@ class SignupView(account.views.SignupView):
 		return username
 
 class LoginView(account.views.LoginView):
-    form_class = account.forms.LoginEmailForm
+    form_class = LoginEmailForm
     

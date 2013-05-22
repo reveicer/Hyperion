@@ -23,24 +23,6 @@ Sign up
 							{{ form.email }}
 		            	</div>
 		            	<div class="large-12 columns">
-		            		{{ form.title.errors }}
-		            		<label for="id_title"><h4 class="subheader">Title:</h4></label>
-							{{ form.title }}
-		            	</div>
-		            	<div class="large-12 columns">
-		            		{{ form.phone.errors }}
-		            		<label for="id_phone"><h4 class="subheader">Phone:</h4></label>
-							{{ form.phone }}
-		            	</div>
-		            	<div class="large-12 columns">
-		            		{{ form.fax.errors }}
-		            		<label for="id_fax"><h4 class="subheader">Fax:</h4></label>
-							{{ form.fax }}
-		            	</div>
-	            	</div>
-	            	<div class="large-6 columns">
-
-		            	<div class="large-12 columns">
 		            		{{ form.password.errors }}
 		            		<label for="id_password"><h4 class="subheader">Password:</h4></label>
 							{{ form.password }}
@@ -50,6 +32,34 @@ Sign up
 		            		<label for="id_password_confirm"><h4 class="subheader">Confirm Password:</h4></label>
 							{{ form.password_confirm }}
 		            	</div>
+	            	</div>
+	            	<div class="large-6 columns">
+	            		<div class="large-6 columns">
+		            		{{ form.first_name.errors }}
+		            		<label for="id_title"><h4 class="subheader">First Name:</h4></label>
+							{{ form.first_name }}
+		            	</div>
+	            		<div class="large-6 columns">
+		            		{{ form.last_name.errors }}
+		            		<label for="id_title"><h4 class="subheader">Last Name:</h4></label>
+							{{ form.last_name }}
+		            	</div>
+		            	<div class="large-12 columns">
+		            		{{ form.title.errors }}
+		            		<label for="id_title"><h4 class="subheader">Title:</h4></label>
+							{{ form.title }}
+		            	</div>
+		            	<div class="large-6 columns">
+		            		{{ form.phone.errors }}
+		            		<label for="id_phone"><h4 class="subheader">Phone:</h4></label>
+							{{ form.phone }}
+		            	</div>
+		            	<div class="large-6 columns">
+		            		{{ form.fax.errors }}
+		            		<label for="id_fax"><h4 class="subheader">Fax:</h4></label>
+							{{ form.fax }}
+		            	</div>
+
 		            	<!--Not really sure what does code field do...-->
 		            	<div class="large-12 columns">{{ form.code }}</div>
 		                <div class="large-12 columns text-right">

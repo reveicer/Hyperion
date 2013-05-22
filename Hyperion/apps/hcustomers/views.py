@@ -13,6 +13,7 @@ from django.contrib.auth.decorators import login_required
 # python imports
 import sys
 
+@login_required
 def company_profile(request, company_id):
 	# TODO: handle 404 page if company is not found.
 	# TODO: edit company_profile.html to display model-bounded data
@@ -30,6 +31,7 @@ def company_profile(request, company_id):
 	})
 	return HttpResponse(template.render(context))
 
+@login_required
 def register_company(request):
 	if request.method == 'POST':
 		form = CompanyRegistrationForm(request.POST)
@@ -67,9 +69,11 @@ def register_company(request):
 		'grouped_category_models' : Category.objects.get_grouped_categories(),
 	})
 
+@login_required
 def contact_profile(request, contact_id):
 	pass
 
+@login_required
 def register_contact(request, company_id):
 	try: 
 		company = CompanyProfile.objects.get(id=company_id, is_active=True)
