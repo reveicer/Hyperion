@@ -24,6 +24,8 @@ urlpatterns = patterns('',
 
 	# POST request urls
 	url(r'^profile/contact/(?P<contact_id>\d+)/register/correspondence/$', 'Hyperion.apps.hcustomers.views.register_correspondence', name='register_correspondence'),
+	url(r'^search/company/$', 'Hyperion.apps.hcustomers.views.search_companies', name='search_companies'),
+	url(r'^search/contact/$', 'Hyperion.apps.hcustomers.views.search_contacts', name='search_contacts'),
 
 	# admin urls
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

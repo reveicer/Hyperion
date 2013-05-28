@@ -5,39 +5,42 @@
 {% block content %}
 <div class="row collapse">
 	<div class="large-10 columns">
-		<input type="text" placeholder="Search companies, contacts and equipments...">
+		<input id="search_text" type="text" placeholder="Search companies, contacts and equipments...">
 	</div>
 	<div class="large-2 columns">
-		<a href="#" class="button prefix">Search</a>
+        <input id="search_button" type="button" class="button prefix" value="Search"/>
 	</div>
 </div>
-<ul class="accordion">
-  <li class="active">
-    <div class="title">
-      <h5>Accordion Panel 1</h5>
+<div class="row">
+    <div class="section-container tabs" data-section="tabs">
+        <!-- Company -->
+        <section>
+            <p class="title" data-section-title><a href="#">Company</a></p>
+            <!-- Scroll Panel -->
+            <div class="content scroll-vertical" data-section-content>
+                <!-- An Example -->
+                <div class="row">
+                    <hr/>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section>
+            <p class="title" data-section-title><a href="#">Company</a></p>
+            <!-- Scroll Panel -->
+            <div class="content scroll-vertical" data-section-content>
+                <!-- An Example -->
+                <div class="row">
+                    <hr/>
+                </div>
+            </div>
+        </section>
     </div>
-    <div class="content">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    </div>
-  </li>
-  <li>
-    <div class="title">
-      <h5>Accordion Panel 2</h5>
-    </div>
-    <div class="content">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    </div>
-  </li>
-  <li>
-    <div class="title">
-      <h5>Accordion Panel 3</h5>
-    </div>
-    <div class="content">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    </div>
-  </li>
-</ul>
+</div>
+{% endblock %}
+
+{% load staticfiles %}
+{% block javascript %}
+    <script src="{% static 'htraders/search.js' %}"></script>
 {% endblock %}

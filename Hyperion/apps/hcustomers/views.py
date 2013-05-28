@@ -153,3 +153,19 @@ def register_correspondence(request, contact_id):
 		correspondence = Correspondence(contact_id=contact_id, trader=request.user.get_profile(), message=content)
 		correspondence.save()
 		return HttpResponse(correspondence.to_json(), content_type="application/json")
+
+@login_required
+@require_GET
+def search_companies(request):
+	key = request.GET.get('key')
+	if key == '':
+		return HttpResponse(status=500)
+	return HttpResponse(status=200)
+
+@login_required
+@require_GET
+def search_contacts(request):
+	key = request.GET.get('key')
+	if key == '':
+		return HttpResponse(status=500)
+	return HttpResponse(status=200)
