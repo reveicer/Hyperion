@@ -13,9 +13,8 @@
 	<title>Hyperion-{% block title %}{% endblock %}</title>
 
 	<link rel="stylesheet" href="{% static 'foundation/css/normalize.css' %}" />
-	<!-- If you are using CSS version, add this -->
-	<link rel="stylesheet" href="{% static 'foundation/css/foundation.css' %}" />
-	<link rel="stylesheet" href="{% static 'foundation/css/app.css' %}" />
+	<link rel="stylesheet" href="{% static 'foundation/css/foundation.min.css' %}" />
+	<link rel="stylesheet" href="{% static 'hyperion.css' %}" />
 
 	<script src="{% static 'foundation/js/vendor/custom.modernizr.js' %}"></script>
 </head>
@@ -48,18 +47,6 @@
 						</li>
 						<li class="divider"></li>
 					{% endif %}
-					
-					<!--<li class="has-form">
-						<div class="row collapse">
-							<div class="large-10 columns">
-								<input type="text" placeholder="Search...">
-							</div>
-							<div class="large-2 columns">
-								<a href="#" class="button">Search</a>
-							</div>
-						</div>
-					</li>
-					<li class="divider"></li>-->
 				</ul>
 				<ul class="right">
 					<li class="divider"></li>
@@ -68,7 +55,7 @@
 							<a>{{ user.email }}</a>
 							<ul class="dropdown">
 								<li>
-									<a href="#" onclick="document.getElementById('logout_form').submit();">Logout</a>
+									<a href="#" onclick="$('#logout_form').submit();">Logout</a>
 									<form display="none" id="logout_form" method="post" action="{% url 'account_logout' %}" class="custom">
 									{% csrf_token %}
 									</form>
@@ -90,28 +77,14 @@
 	{% endblock %}
 	</div>
 	
-	<script>
-		document.write('<script src=' + ('__proto__' in {} ? "{% static 'foundation/js/vendor/zepto' %}" : "{% static 'foundation/js/vendor/jquery' %}") + '.js><\/script>')
-	</script>
-	<script src="{% static 'foundation/js/foundation/foundation.js' %}"></script>
-	<script src="{% static 'foundation/js/foundation/foundation.alerts.js' %}"></script>
-	<script src="{% static 'foundation/js/foundation/foundation.clearing.js' %}"></script>
-	<script src="{% static 'foundation/js/foundation/foundation.cookie.js' %}"></script>
-	<script src="{% static 'foundation/js/foundation/foundation.dropdown.js' %}"></script>
-	<script src="{% static 'foundation/js/foundation/foundation.forms.js' %}"></script>
-	<script src="{% static 'foundation/js/foundation/foundation.joyride.js' %}"></script>
-	<script src="{% static 'foundation/js/foundation/foundation.magellan.js' %}"></script>
-	<script src="{% static 'foundation/js/foundation/foundation.orbit.js' %}"></script>
-	<script src="{% static 'foundation/js/foundation/foundation.placeholder.js' %}"></script>
-	<script src="{% static 'foundation/js/foundation/foundation.reveal.js' %}"></script>
-	<script src="{% static 'foundation/js/foundation/foundation.section.js' %}"></script>
-	<script src="{% static 'foundation/js/foundation/foundation.tooltips.js' %}"></script>
-	<script src="{% static 'foundation/js/foundation/foundation.topbar.js' %}"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="{% static 'foundation/js/foundation.min.js' %}"></script>
 	<script>
 		$(function(){
 			$(document).foundation();
 		})
 	</script>
+	{% block javascript %}{% endblock %}
 </body>
 
 </html>

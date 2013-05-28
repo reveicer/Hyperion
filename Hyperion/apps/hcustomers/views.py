@@ -9,9 +9,11 @@ from django.template import RequestContext, Context, loader
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
 from django.shortcuts import render, render_to_response
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_GET, require_POST
+from django.core import serializers
 
 # python imports
-import sys
+import sys, json
 
 @login_required
 def company_profile(request, company_id):
@@ -25,9 +27,25 @@ def company_profile(request, company_id):
 	template = loader.get_template('company_profile.html')
 	context = RequestContext(request, {
 		'company' : company,
-		'company_industries': company.get_industries(),
-		'company_categories': company.get_grouped_categories(),
-		'contacts': company.get_contacts(),
+		'company_industries' : company.get_industries(),
+		'company_categories' : company.get_grouped_categories(),
+		'contacts' : company.get_contacts(),
+	})
+	return HttpResponse(template.render(context))
+
+@login_required
+def contact_profile(request, contact_id):
+	try:
+		contact = ContactProfile.objects.get(id=contact_id, is_active=True)
+	except ContactProfile.DoesNotExist:
+		return HttpResponseNotFound('<h1>404: Cannot find contact.</h1>')
+
+	template = loader.get_template('contact_profile.html')
+	context = RequestContext(request, {
+		'contact' : contact,
+		'contact_industries' : contact.get_industries(),
+		'contact_categories' : contact.get_grouped_categories(),
+		'contact_correspondences' : contact.get_correspondences(),
 	})
 	return HttpResponse(template.render(context))
 
@@ -68,10 +86,6 @@ def register_company(request):
 		'form' : form,
 		'grouped_category_models' : Category.objects.get_grouped_categories(),
 	})
-
-@login_required
-def contact_profile(request, contact_id):
-	pass
 
 @login_required
 def register_contact(request, company_id):
@@ -128,3 +142,14 @@ def register_contact(request, company_id):
 		'grouped_category_models' : grouped_category_models,
 		'company': company,
 	})
+
+@login_required
+@require_POST
+def register_correspondence(request, contact_id):
+	content = request.POST.get('content')
+	if content == '':
+		return HttpResponse(status=500)
+	else:
+		correspondence = Correspondence(contact_id=contact_id, trader=request.user.get_profile(), message=content)
+		correspondence.save()
+		return HttpResponse(correspondence.to_json(), content_type="application/json")

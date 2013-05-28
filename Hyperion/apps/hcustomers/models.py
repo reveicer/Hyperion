@@ -1,5 +1,8 @@
 from django.db import models
-import sys
+from Hyperion.apps.htraders.models import TraderProfile
+
+# python imports
+import json, datetime
 
 class CategoryManager(models.Manager):
 	def get_grouped_categories(self):
@@ -25,6 +28,13 @@ class CompanyInIndustryManager(models.Manager):
 	def get_industries_of_expertise(self, company):
 		return Industry.objects.filter(companies_in_industry__is_active=True, companies_in_industry__company=company, companies_in_industry__expertise=True)		
 
+class ContactInIndustryManager(models.Manager):
+	def get_industries(self, contact):
+		return Industry.objects.filter(contacts_in_industry__is_active=True, contacts_in_industry__contact=contact)
+
+	def get_industries_of_expertise(self, contact):
+		return Industry.objects.filter(contacts_in_industry__is_active=True, contacts_in_industry__contact=contact, contacts_in_industry__expertise=True)		
+
 class CompanyInCategoryManager(models.Manager):
 	def get_categories(self, company):
 		return Category.objects.filter(companies_in_category__is_active=True, companies_in_category__company=company)
@@ -38,6 +48,30 @@ class CompanyInCategoryManager(models.Manager):
 		active_company_categories = self.filter(is_active=True, company=company)
 		for active_company_category in active_company_categories:
 			category = active_company_category.category
+			category_name = category.category_name
+			existing_list = grouped_dict.get(category_name)
+
+			if existing_list is None:
+				grouped_dict[category_name] = [category]
+			else:
+				existing_list.append(category)
+				grouped_dict[category_name] = existing_list
+
+		return grouped_dict
+
+class ContactInCategoryManager(models.Manager):
+	def get_categories(self, contact):
+		return Category.objects.filter(contacts_in_category__is_active=True, contacts_in_category__contact=contact)
+
+	def get_categories_of_expertise(self, contact):
+		return Category.objects.filter(contacts_in_category__is_active=True, contacts_in_category__contact=contact, contacts_in_category__expertise=True)
+
+	def get_grouped_categories(self, contact):
+		grouped_dict = {}
+
+		active_contact_categories = self.filter(is_active=True, contact=contact)
+		for active_contact_category in active_contact_categories:
+			category = active_contact_category.category
 			category_name = category.category_name
 			existing_list = grouped_dict.get(category_name)
 
@@ -165,11 +199,20 @@ class ContactProfile(models.Model):
 	core_expertise = models.ManyToManyField('hinventory.EquipmentCore', related_name='expert_contact_profiles')
 	notes = models.TextField('Notes', blank=True)
 
+	def __unicode__(self):
+		return self.get_full_name()
+
 	def get_full_name(self):        
 		return '%s %s' % (self.first_name, self.last_name)
 
-	def __unicode__(self):
-		return self.get_full_name()
+	def get_industries(self):
+		return ContactInIndustry.objects.get_industries(self)
+
+	def get_grouped_categories(self):
+		return ContactInCategory.objects.get_grouped_categories(self)
+
+	def get_correspondences(self):
+		return Correspondence.objects.filter(is_active=True, contact=self)
 
 class CompanyInIndustry(models.Model):
 	is_active = models.BooleanField(default=True)
@@ -194,8 +237,9 @@ class CompanyInCategory(models.Model):
 class ContactInIndustry(models.Model):
 	is_active = models.BooleanField(default=True)
 	contact = models.ForeignKey(ContactProfile)
-	industry = models.ForeignKey(Industry)
+	industry = models.ForeignKey(Industry, related_name='contacts_in_industry')
 	expertise = models.BooleanField(default=False)
+	objects = ContactInIndustryManager()
 
 	class Meta:
 		ordering = ['contact', 'expertise']
@@ -203,8 +247,30 @@ class ContactInIndustry(models.Model):
 class ContactInCategory(models.Model):
 	is_active = models.BooleanField(default=True)
 	contact = models.ForeignKey(ContactProfile)
-	category = models.ForeignKey(Category)
+	category = models.ForeignKey(Category, related_name='contacts_in_category')
 	expertise = models.BooleanField(default=False)
+	objects = ContactInCategoryManager()
 
 	class Meta:
 		ordering = ['contact', 'expertise']
+
+class Correspondence(models.Model):
+	is_active = models.BooleanField(default=True)
+	contact = models.ForeignKey(ContactProfile)
+	trader = models.ForeignKey(TraderProfile)
+	message = models.TextField(blank=False)
+	timestamp = models.DateTimeField(auto_now_add=True)
+
+	class Meta:
+		ordering = ['contact', '-timestamp']
+
+	def get_timestamp(self):
+		return self.timestamp.strftime("%Y-%m-%d %H:%M")
+
+	def to_json(self):
+		json_response = {}
+		json_response['contact'] = self.contact.get_full_name()
+		json_response['trader'] = self.trader.get_full_name()
+		json_response['message'] = self.message
+		json_response['timestamp'] = self.get_timestamp()
+		return json.dumps(json_response)

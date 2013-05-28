@@ -16,11 +16,14 @@ urlpatterns = patterns('',
  	url(r'^account/', include('account.urls')),
 
  	# profile urls
-	url(r'^profile/company/(?P<company_id>\d+)/$', 'Hyperion.apps.hcustomers.views.company_profile'),
-	url(r'^profile/contact/(?P<contact_id>\d+)/$', 'Hyperion.apps.hcustomers.views.contact_profile'),
+	url(r'^profile/company/(?P<company_id>\d+)/$', 'Hyperion.apps.hcustomers.views.company_profile', name='company_profile'),
+	url(r'^profile/contact/(?P<contact_id>\d+)/$', 'Hyperion.apps.hcustomers.views.contact_profile', name='contact_profile'),
 	url(r'^register/company/$', 'Hyperion.apps.hcustomers.views.register_company', name='register_company'),
 	url(r'^register/contact/(?P<company_id>\d+)/$', 'Hyperion.apps.hcustomers.views.register_contact', name='register_contact'),
 	#url(r'^profile/equipment/(?P<equipment_id>\d+)/$', 'Hyperion.apps.hinventory.views.equipment_profile'),
+
+	# POST request urls
+	url(r'^profile/contact/(?P<contact_id>\d+)/register/correspondence/$', 'Hyperion.apps.hcustomers.views.register_correspondence', name='register_correspondence'),
 
 	# admin urls
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

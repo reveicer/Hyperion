@@ -1,7 +1,7 @@
 {% extends "site_base.html" %}
 
 {% block title %}
-Company Profile
+{{ company }}
 {% endblock %}
 
 {% block content %}
@@ -11,7 +11,7 @@ Company Profile
 	</div>
 	<div class="large-4 columns text-right">
 
-		<a href="{% url 'Hyperion.apps.hcustomers.views.register_contact' company.id %}" class="small button">+ Contact</a>		
+		<a href="{% url 'register_contact' company.id %}" class="small button">+ Contact</a>		
 		<!--<a href="{{ equipment_registration_url }}" class="small button">+ Equipment</a>-->
 		<a href="#" class="small button alert">Delete</a>
 	</div>
@@ -19,8 +19,8 @@ Company Profile
 <div class="row">
 	<div data-magellan-expedition="fixed">
 		<dl class="sub-nav">
-			<dd data-magellan-arrival="overview">
-				<a href="#overview">Overview</a>
+			<dd data-magellan-arrival="profile">
+				<a href="#profile">Profile</a>
 			</dd>
 			<dd data-magellan-arrival="contacts">
 				<a href="#contacts">Contacts</a>
@@ -35,12 +35,12 @@ Company Profile
 <div class="row">
 	<hr />
 
-	<a name="overview"></a>
-	<div class="large-12 columns" data-magellan-destination="overview">
+	<a name="profile"></a>
+	<div class="large-12 columns" data-magellan-destination="profile">
 		<!--Basic Info-->
 		<div class="row">
 			<div class="large-8 columns">
-				<h3>Overview</h3>
+				<h3>Profile</h3>
 				<blockquote>
 					{{ company.notes }}
 				</blockquote>
@@ -76,7 +76,7 @@ Company Profile
 					<p>{{ company.fax }}</p>
 				</div>
 			</div>
-			<!--Email-->				
+			<!--Email-->
 			<div class="row">
 				<div class="large-3 columns">
 					<p>Email:</p>
@@ -129,7 +129,7 @@ Company Profile
 					</ul>
 				</div>
 			</div>
-			<!--Region-->				
+			<!--Region-->
 			<div class="row">
 				<div class="large-3 columns">
 					<p>Region:</p>
@@ -236,7 +236,7 @@ Company Profile
 				</blockquote>
 			</div>			
 			<div class="large-4 columns text-right">
-				<a href="{% url 'Hyperion.apps.hcustomers.views.register_contact' company.id %}" class="small button">+ Contact</a>
+				<a href="{% url 'register_contact' company.id %}" class="small button">+ Contact</a>
 			</div>
 		</div>
 
@@ -244,7 +244,7 @@ Company Profile
 			<div class="large-4 columns">
 				<div class="panel">
 					<ul class="no-bullet">
-						<li><strong><a href="#">{{ contact.first_name }} {{ contact.last_name }}</a></strong></li>
+						<li><strong><a href="{% url 'contact_profile' contact.id %}">{{ contact.first_name }} {{ contact.last_name }}</a></strong></li>
 						<li>{{ contact.title }}</li>
 						<li>{{ contact.phone }}</li>
 						<li><a href="#">{{ contact.email }}</a></li>

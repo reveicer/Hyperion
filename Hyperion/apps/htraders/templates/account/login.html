@@ -26,7 +26,7 @@ Login
 							{{ form.password }}
 		            	</div>
             			<div class="large-4 columns">
-	            			<label for='id_remember'><h6 class="subheader">Remember Me:</h4></label>
+	            			<label for='id_remember'><h6 class="subheader">Remember Me:</h6></label>
 	            		</div>
 	            		<div class="large-8 columns">
 	            			{{ form.remember }}
@@ -37,12 +37,9 @@ Login
 	            		</div>
 	            		<div class="large-6 columns text-right">
 	            			<ul class="no-bullet">
-	            				<li><a href="{% url "account_password_reset" %}">Forgot your password?</a></li>
-	            				<li><a href="{% url "account_signup" %}">Sign up</a></li>
+	            				<li><a href="{% url 'account_password_reset' %}">Forgot your password?</a></li>
+	            				<li><a href="{% url 'account_signup' %}">Sign up</a></li>
 	            			</ul>
-			                
-		            		
-		            		
 	            		</div>
 	            	</fieldset>
                 </div>

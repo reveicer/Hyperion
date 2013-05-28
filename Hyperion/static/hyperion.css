@@ -1,0 +1,10 @@
+.scroll-vertical
+{
+	height: 380px;
+	overflow: auto;
+}
+
+#correspondence_content
+{
+	height: 285px;
+}

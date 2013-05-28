@@ -10,10 +10,10 @@ import account.forms
 class SignupForm(account.forms.SignupForm):
 	first_name = forms.CharField(
 		max_length=TraderProfile._meta.get_field('first_name').max_length,
-		required=not TraderProfile._meta.get_field('first_name').blank)
+		required=True)
 	last_name = forms.CharField(
 		max_length=TraderProfile._meta.get_field('last_name').max_length,
-		required=not TraderProfile._meta.get_field('last_name').blank)
+		required=True)
 	title = forms.CharField(
 		max_length=TraderProfile._meta.get_field('title').max_length, 
 		required=not TraderProfile._meta.get_field('title').blank)

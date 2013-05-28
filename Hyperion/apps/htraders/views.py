@@ -27,18 +27,18 @@ class SignupView(account.views.SignupView):
 		self.create_trader_profile(form)
 		super(SignupView, self).after_signup(form)
 
-	def create_trader_profile(self, form):
-		profile = TraderProfile(user=self.created_user)
-		profile.first_name = form.cleaned_data['first_name']
-		profile.last_name = form.cleaned_data['last_name']
-		profile.title = form.cleaned_data['title']
-		profile.phone = form.cleaned_data['phone']
-		profile.fax = form.cleaned_data['fax']
-		profile.save()
-
 	def generate_username(self, form):
 		username = form.cleaned_data['email']
 		return username
+
+	def create_trader_profile(self, form):
+		profile = TraderProfile(user=self.created_user)
+		profile.title = form.cleaned_data['title']
+		profile.phone = form.cleaned_data['phone']
+		profile.fax = form.cleaned_data['fax']
+		profile.first_name = form.cleaned_data['first_name']
+		profile.last_name = form.cleaned_data['last_name']
+		profile.save()
 
 class LoginView(account.views.LoginView):
     form_class = LoginEmailForm
