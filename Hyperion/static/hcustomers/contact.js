@@ -48,7 +48,7 @@ $(document).ready(function() {
 // Submits the id=correspondence_creation_form form.
 // Creates a new correspondence record
 function upload_correspondence() {
-    content = $("#correspondence_content").val();
+    var content = $("#correspondence_content").val();
     if (content) {
         $.ajax({
             type: "POST",
@@ -73,7 +73,7 @@ function upload_correspondence() {
 }
 
 function insert_correspondence(record) {
-    record_html = ["<div class='row'>", 
+    var record_html = ["<div class='row'>", 
                     "<div class='large-6 columns'><p>From: <a href='#'>", record.trader, "</a></p></div>", 
                     "<div class='large-6 columns text-right'>", record.timestamp, "</div>",
                     "<div class='large-12 columns'><p>", record.message, "</p></div>",
@@ -82,13 +82,13 @@ function insert_correspondence(record) {
 }
 
 function show_correspondence_error(message) {
-    error = $("#correspondence_content_error");
+    var error = $("#correspondence_content_error");
     error.html(message);
     error.show();
 }
 
 function hide_correspondence_error() {
-    error = $("#correspondence_content_error");
+    var error = $("#correspondence_content_error");
     error.html("");
     error.hide();
 }

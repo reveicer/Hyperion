@@ -180,6 +180,14 @@ class CompanyProfile(models.Model):
 	def get_grouped_categories(self):
 		return CompanyInCategory.objects.get_grouped_categories(self)
 
+	def to_dict(self):
+		dict_response = {}
+		dict_response['id'] = self.id
+		dict_response['name'] = self.name
+		dict_response['phone'] = self.phone
+		dict_response['email'] = self.email
+		return dict_response
+
 class ContactProfile(models.Model):
 	is_active = models.BooleanField(default=True)
 	first_name = models.CharField('First Name', max_length=30, blank=True)
@@ -216,7 +224,7 @@ class ContactProfile(models.Model):
 
 class CompanyInIndustry(models.Model):
 	is_active = models.BooleanField(default=True)
-	company = models.ForeignKey(CompanyProfile)
+	company = models.ForeignKey(CompanyProfile, related_name='industries')
 	industry = models.ForeignKey(Industry, related_name='companies_in_industry')
 	expertise = models.BooleanField(default=False)
 	objects = CompanyInIndustryManager()
@@ -226,7 +234,7 @@ class CompanyInIndustry(models.Model):
 
 class CompanyInCategory(models.Model):
 	is_active = models.BooleanField(default=True)
-	company = models.ForeignKey(CompanyProfile)
+	company = models.ForeignKey(CompanyProfile, related_name='categories')
 	category = models.ForeignKey(Category, related_name='companies_in_category')
 	expertise = models.BooleanField(default=False)
 	objects = CompanyInCategoryManager()

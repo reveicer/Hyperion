@@ -203,13 +203,13 @@
 					<p>Buyer:</p>
 				</div>
 				<div class="large-9 columns">
-					<p>{{ contact.buyer }}</p>
+					<p>{{ contact.buy }}</p>
 				</div>
 				<div class="large-3 columns">
 					<p>Seller:</p>
 				</div>
 				<div class="large-9 columns">
-					<p>{{ contact.seller }}</p>
+					<p>{{ contact.sell }}</p>
 				</div>
 			</div>
 
@@ -307,8 +307,8 @@
 				</div>
 				<div class="large-9 columns">
 					<ul class="inline-list">
-						{% for industry in contact_industries %}
-							<li>{{ industry.industry }}</li>
+						{% for contact_industry in contact_industries %}
+							<li>{{ contact_industry }}</li>
 						{% endfor %}
 					</ul>
 				</div>

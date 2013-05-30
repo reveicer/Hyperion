@@ -10,6 +10,7 @@ from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
 from django.shortcuts import render, render_to_response
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_GET, require_POST
+from django.db.models import Q
 from django.core import serializers
 
 # python imports
@@ -160,7 +161,29 @@ def search_companies(request):
 	key = request.GET.get('key')
 	if key == '':
 		return HttpResponse(status=500)
-	return HttpResponse(status=200)
+	companies = CompanyProfile.objects.filter(
+		# name
+		Q(name__contains=key) | 
+		# address
+		Q(city__contains=key) | Q(state_province__contains=key) | Q(country__contains=key) |
+		# industries
+		Q(industries__industry__name__contains=key) |
+		# type
+		Q(all_types__name__contains=key) |
+		#region
+		Q(region__contains=key) |
+		# categories
+		Q(categories__category__name__contains=key)
+	)
+
+	# construct array of dicts
+	json_response = []
+	for company in companies:
+		json_response.append(company.to_dict())
+
+	print >> sys.stderr, "reach here: %d" % len(companies)
+	# return json of companies
+	return HttpResponse(json.dumps(json_response), content_type="application/json")
 
 @login_required
 @require_GET
