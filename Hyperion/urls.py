@@ -3,8 +3,8 @@ import Hyperion.apps.htraders.views
 import Hyperion.apps.hcustomers.views
 import Hyperion.apps.hinventory.views
 
-from django.contrib import admin
-admin.autodiscover()
+#from django.contrib import admin
+#admin.autodiscover()
 
 urlpatterns = patterns('',
 	url(r'^$', 'Hyperion.views.home', name='home'),
@@ -28,6 +28,6 @@ urlpatterns = patterns('',
 	url(r'^search/contact/$', 'Hyperion.apps.hcustomers.views.search_contacts', name='search_contacts'),
 
 	# admin urls
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    url(r'^admin/', include(admin.site.urls)),
+    #url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    #url(r'^admin/', include(admin.site.urls)),
 )

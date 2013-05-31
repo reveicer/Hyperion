@@ -9,9 +9,12 @@ import sys
 # django imports
 from django.core.urlresolvers import reverse
 
+# heroku postgresql
+import dj_database_url
+
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -21,15 +24,17 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'hyperiondb',                      # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
-        'USER': 'hyperiondev',
-        'PASSWORD': 'hyperionkey',
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
-    }
+    'default': dj_database_url.config(default='postgres://hyperiondev:hyperionkey@localhost:5432/hyperiondb')
+
+    #'default': {
+    #    'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+    #    'NAME': 'hyperiondb',                      # Or path to database file if using sqlite3.
+    #    # The following settings are not used with sqlite3:
+    #    'USER': 'hyperiondev',
+    #    'PASSWORD': 'hyperionkey',
+    #    'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+    #    'PORT': '',                      # Set to empty string for default.
+    #}
 }
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
@@ -145,12 +150,14 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.admin',
-    'django.contrib.admindocs',
+    'django.contrib.humanize',
+    #'django.contrib.admin',
+    #'django.contrib.admindocs',
 
     # external
     'gunicorn',
     'account',
+    'storages',
 
     # project
     'Hyperion.apps.htraders',
@@ -210,3 +217,9 @@ LOGGING = {
         },
     }
 }
+
+if not DEBUG:
+    # Amazon S3 Storage
+    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    STATIC_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
