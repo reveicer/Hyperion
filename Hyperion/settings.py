@@ -14,7 +14,7 @@ import dj_database_url
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -170,7 +170,7 @@ INSTALLED_APPS = (
 ACCOUNT_EMAIL_UNIQUE = True
 ACCOUNT_EMAIL_CONFIRMATION_EMAIL = False
 ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = False
-ACCOUNT_OPEN_SIGNUP = True
+ACCOUNT_OPEN_SIGNUP = False
 ACCOUNT_CREATE_ON_SAVE = True
 ACCOUNT_SIGNUP_REDIRECT_URL = reverse('account_login')
 ACCOUNT_LOGIN_REDIRECT_URL = reverse('search')
