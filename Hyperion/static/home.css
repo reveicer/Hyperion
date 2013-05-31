@@ -1,0 +1,104 @@
+html, body
+{
+	background: #000000;
+}
+
+.vertical-space-50
+{
+	margin-top: 50px;
+}
+
+.vertical-space-60
+{
+	margin-top: 60px;
+}
+
+.vertical-space-80
+{
+	margin-top: 80px;
+}
+
+.vertical-space-100
+{
+	margin-top: 100px;
+}
+
+.vertical-space-150
+{
+	margin-top: 150px;
+}
+
+.vertical-space-200
+{
+	margin-top: 200px;
+}
+
+.vertical-space-250
+{
+	margin-top: 250px;
+}
+
+.inherent-height
+{
+	height: 100%;
+}
+
+.home-container
+{
+	width: 960px;
+	height: 260px;
+}
+
+.border-right
+{
+	border-right: 1px solid #CCCCCC;
+}
+
+.text-color-silver
+{
+	color: #CCCCCC;
+}
+
+.text-color-white
+{
+	color: #FFFFFF;
+}
+
+.title-font
+{
+	font-family: 'Playfair Display SC', serif;
+	font-weight: 400;
+	font-size: 64px;
+}
+
+.subtitle-font
+{
+	font-family: 'Economica', sans-serif;
+	font-size: 20px;
+}
+
+.note-font
+{
+	font-family: 'Noto Sans', sans-serif;
+	font-size: 12px;
+}
+
+.email {
+	font-size: 16px;
+}
+
+a.email:link {
+	color: #99CCFF;
+}
+
+a.email:visited {
+	color: #99CCFF;
+}
+
+a.email:hover {
+	color: #0099FF;
+}
+
+a.email:active {
+	color: #FF0000;
+}

@@ -7,7 +7,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-	#url(r'^$', 'Hyperion.apps.htraders.views.search', name='search'),
+	url(r'^$', 'Hyperion.views.home', name='home'),
 	url(r'^search/$', 'Hyperion.apps.htraders.views.search', name='search'),
 	
 	# account urls

@@ -10,11 +10,10 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
-	<title>Hyperion-{% block title %}{% endblock %}</title>
+	<title>Hyperion -{% block title %}{% endblock %}</title>
 
 	<link rel="stylesheet" href="{% static 'foundation/css/normalize.css' %}" />
 	<link rel="stylesheet" href="{% static 'foundation/css/foundation.min.css' %}" />
-	<link rel="stylesheet" href="{% static 'hyperion.css' %}" />
 	{% block css %}{% endblock %}
 	<script src="{% static 'foundation/js/vendor/custom.modernizr.js' %}"></script>
 </head>
@@ -23,15 +22,15 @@
 <body>
 	<!-- body content here -->
 	{% block header %}
-	<!--<div class="fixed">-->
-		<div class="container top-bar">
-			<ul class="title-area">
-				<li class="name">
-					<h1><a href="#">Hyperion</a></h1>
-				</li>
-			</ul>
-			<section class="top-bar-section">
-				<ul class="left">
+	<div class="container top-bar">
+		<ul class="title-area">
+			<li class="name">
+				<h1><a href="#">Hyperion</a></h1>
+			</li>
+		</ul>
+		<section class="top-bar-section">
+			<ul class="left">
+				{% if user.is_authenticated %}
 					<li class="divider"></li>
 					<li class="{% active request 'search' %}">
 						<a href="{% url 'search' %}">Search</a>
@@ -47,29 +46,29 @@
 						</li>
 						<li class="divider"></li>
 					{% endif %}
-				</ul>
-				<ul class="right">
-					<li class="divider"></li>
-					{% if user.is_authenticated %}
-						<li class="has-dropdown {% active request 'account_logout' %}">
-							<a>{{ user.email }}</a>
-							<ul class="dropdown">
-								<li>
-									<a href="#" onclick="$('#logout_form').submit();">Logout</a>
-									<form display="none" id="logout_form" method="post" action="{% url 'account_logout' %}" class="custom">
-									{% csrf_token %}
-									</form>
-								</li>
-							</ul>
-						</li>
-					{% else %}
-						<li class="{% active request 'account_login' %}"><a href="{% url 'account_login' %}">Login</a></li>
-					{% endif %}
-					<li class="divider"></li>
-				</ul>
-			</section>
-		</div>
-	<!--</div>-->
+				{% endif %}
+			</ul>
+			<ul class="right">
+				<li class="divider"></li>
+				{% if user.is_authenticated %}
+					<li class="has-dropdown {% active request 'account_logout' %}">
+						<a>{{ user.email }}</a>
+						<ul class="dropdown">
+							<li>
+								<a href="#" onclick="$('#logout_form').submit();">Logout</a>
+								<form display="none" id="logout_form" method="post" action="{% url 'account_logout' %}" class="custom">
+								{% csrf_token %}
+								</form>
+							</li>
+						</ul>
+					</li>
+				{% else %}
+					<li class="{% active request 'account_login' %}"><a href="{% url 'account_login' %}">Login</a></li>
+				{% endif %}
+				<li class="divider"></li>
+			</ul>
+		</section>
+	</div>
 	{% endblock %}
 	
 	<div class="container">

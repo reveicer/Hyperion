@@ -5,6 +5,13 @@
 {% endblock %}
 
 {% load staticfiles %}
+{% block css %}
+	<link rel="stylesheet" href="{% static 'hcustomers/contact.css' %}" />
+{% endblock %}
+{% block javascript %}
+	<script src="{% static 'hcustomers/contact.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 <!-- Title -->
 <div class="row">
@@ -371,8 +378,4 @@
 	<hr/>
 
 </div>
-{% endblock %}
-
-{% block javascript %}
-	<script src="{% static 'hcustomers/contact.js' %}"></script>
 {% endblock %}

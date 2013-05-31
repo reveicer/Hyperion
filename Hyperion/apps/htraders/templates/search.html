@@ -1,6 +1,16 @@
 {% extends "site_base.html" %}
 
-{% block title %}Search{% endblock %}
+{% block title %}
+Search
+{% endblock %}
+
+{% load staticfiles %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'htraders/search.css' %}" />
+{% endblock %}
+{% block javascript %}
+    <script src="{% static 'htraders/search.js' %}"></script>
+{% endblock %}
 
 {% block content %}
 <div class="row collapse">
@@ -38,9 +48,4 @@
         </section>
     </div>
 </div>
-{% endblock %}
-
-{% load staticfiles %}
-{% block javascript %}
-    <script src="{% static 'htraders/search.js' %}"></script>
 {% endblock %}
