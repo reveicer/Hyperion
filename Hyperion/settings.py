@@ -169,7 +169,7 @@ INSTALLED_APPS = (
 # django-user-accounts
 
 # allow new traders to sign up
-ACCOUNT_OPEN_SIGNUP = True
+ACCOUNT_OPEN_SIGNUP = False
 
 ACCOUNT_EMAIL_UNIQUE = True
 ACCOUNT_EMAIL_CONFIRMATION_EMAIL = False
