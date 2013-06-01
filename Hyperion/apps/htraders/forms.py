@@ -27,7 +27,7 @@ class SignupForm(account.forms.SignupForm):
 	def __init__(self, *args, **kwargs):
 		super(SignupForm, self).__init__(*args, **kwargs)
 		del self.fields['username']
-		self.fields['email'].widget.attrs = { 'placeholder':'trader@hyperionmarkets.net' }
+		self.fields['email'].widget.attrs = { 'placeholder':'you@hyperionmarkets.net' }
 		self.fields['password'].widget.attrs = { 'placeholder':'password' }
 		self.fields['password_confirm'].widget.attrs = { 'placeholder':'password again' }
 		self.fields['first_name'].widget.attrs = { 'placeholder':'First Name' }
@@ -39,5 +39,5 @@ class SignupForm(account.forms.SignupForm):
 class LoginEmailForm(account.forms.LoginEmailForm):
 	def __init__(self, *args, **kwargs):
 		super(LoginEmailForm, self).__init__(*args, **kwargs)
-		self.fields['email'].widget.attrs = { 'placeholder':'trader@hyperionmarkets.net' }
+		self.fields['email'].widget.attrs = { 'placeholder':'you@hyperionmarkets.net' }
 		self.fields['password'].widget.attrs = { 'placeholder':'password' }
