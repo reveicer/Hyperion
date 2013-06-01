@@ -175,6 +175,10 @@ ACCOUNT_CREATE_ON_SAVE = True
 ACCOUNT_SIGNUP_REDIRECT_URL = reverse('account_login')
 ACCOUNT_LOGIN_REDIRECT_URL = reverse('search')
 ACCOUNT_LOGOUT_REDIRECT_URL = reverse('account_login')
+ACCOUNT_PASSWORD_CHANGE_REDIRECT_URL = reverse('search')
+
+# email user when password changes
+ACCOUNT_NOTIFY_ON_PASSWORD_CHANGE = False
 
 LOGIN_URL = reverse('account_login')
 LOGOUT_URL = reverse('account_logout')
