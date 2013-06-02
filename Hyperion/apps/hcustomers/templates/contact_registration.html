@@ -42,34 +42,52 @@ Register Contact
 					<div class="large-3 columns">
 						<label for="id_first_name"><h4 class="subheader">First Name:</h4></label>
 						{{ form.first_name }}
+						{% if form.first_name.errors %}
+                            <small class="error">{{ form.first_name.errors|first }}</small>
+                        {% endif %}
 					</div>
 					<div class="large-3 columns">
 						<label for="id_last_name"><h4 class="subheader">Last Name:</h4></label>
 						{{ form.last_name }}
+						{% if form.last_name.errors %}
+                            <small class="error">{{ form.last_name.errors|first }}</small>
+                        {% endif %}
 					</div>
 
 					<!--Region-->
 					<div class="large-2 large-offset-1 columns">
 						<label for="id_region"><h4 class="subheader">Region:</h4></label>
 						{{ form.region }}
+						{% if form.region.errors %}
+                            <small class="error">{{ form.region.errors|first }}</small>
+                        {% endif %}
 					</div>
 
 					<!--Primary Type-->
 					<div class="large-3 columns">
 						<label for="id_primary_type"><h4 class="subheader">Primary Type:</h4></label>
 						{{ form.primary_type }}
+						{% if form.primary_type.errors %}
+                            <small class="error">{{ form.primary_type.errors|first }}</small>
+                        {% endif %}
 					</div>
 
 					<!--Title-->
 					<div class="large-3 columns">
 						<label for="id_title"><h4 class="subheader">Title:</h4></label>
 						{{ form.title }}
+						{% if form.title.errors %}
+                            <small class="error">{{ form.title.errors|first }}</small>
+                        {% endif %}
 					</div>
 
 					<!--Department-->
 					<div class="large-4 columns">
 						<label for="id_department"><h4 class="subheader">Department:</h4></label>
 						{{ form.department }}
+						{% if form.department.errors %}
+                            <small class="error">{{ form.department.errors|first }}</small>
+                        {% endif %}
 					</div>
 
 					<!--Buy-->
@@ -100,18 +118,27 @@ Register Contact
 					<div class="large-4 columns">
 						<label for="id_email"><h4 class="subheader">E-mail:</h4></label>
 						{{ form.email }}
+						{% if form.email.errors %}
+                            <small class="error">{{ form.email.errors|first }}</small>
+                        {% endif %}
 					</div>
 
 					<!--Phone-->
 					<div class="large-4 columns">
 						<label for="id_phone"><h4 class="subheader">Phone:</h4></label>
 						{{ form.phone }}
+						{% if form.phone.errors %}
+                            <small class="error">{{ form.phone.errors|first }}</small>
+                        {% endif %}
 					</div>
 
 					<!--Fax-->
 					<div class="large-4 columns">
 						<label for="id_fax"><h4 class="subheader">Fax:</h4></label>
 						{{ form.fax }}
+						{% if form.fax.errors %}
+                            <small class="error">{{ form.fax.errors|first }}</small>
+                        {% endif %}
 					</div>
 				</div>
 				<hr />
@@ -317,6 +344,9 @@ Register Contact
 					<div class="large-12 columns">
 						<h4 class="subheader">Expertise</h4>
 						{{ form.expertise_description }}
+						{% if form.expertise_description.errors %}
+                            <small class="error">{{ form.expertise_description.errors|first }}</small>
+                        {% endif %}
 					</div>
 				</div>
 
@@ -327,6 +357,9 @@ Register Contact
 					<div class="large-12 columns">
 						<h4 class="subheader">Notes:</h4>
 						{{ form.notes }}
+						{% if form.notes.errors %}
+                            <small class="error">{{ form.notes.errors|first }}</small>
+                        {% endif %}
 					</div>
 				</div>
 

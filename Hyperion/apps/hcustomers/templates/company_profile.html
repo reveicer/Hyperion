@@ -7,12 +7,12 @@
 {% block content %}
 <div class="row">
 	<div class="large-8 columns">
-		<h2>{{ company.name }}</h2>
+		<h2>{{ company }}</h2>
 	</div>
 	<div class="large-4 columns text-right">
 
 		<a href="{% url 'register_contact' company.id %}" class="small button">+ Contact</a>		
-		<!--<a href="{{ equipment_registration_url }}" class="small button">+ Equipment</a>-->
+		<a href="{% url 'register_equipment' company.id %}" class="small button">+ Equipment</a>
 		<a href="#" class="small button alert">Delete</a>
 	</div>
 </div>
@@ -34,9 +34,9 @@
 
 <div class="row">
 	<hr />
-
 	<a name="profile"></a>
 	<div class="large-12 columns" data-magellan-destination="profile">
+		
 		<!--Basic Info-->
 		<div class="row">
 			<div class="large-8 columns">
@@ -58,6 +58,7 @@
 					<h4 class="subheader">Basic Information</h4>
 				</div>
 			</div>
+
 			<!--Phone-->
 			<div class="row">
 				<div class="large-3 columns">
@@ -67,6 +68,7 @@
 					<p>{{ company.phone }}</p>
 				</div>
 			</div>
+
 			<!--Fax-->
 			<div class="row">
 				<div class="large-3 columns">
@@ -76,6 +78,7 @@
 					<p>{{ company.fax }}</p>
 				</div>
 			</div>
+
 			<!--Email-->
 			<div class="row">
 				<div class="large-3 columns">
@@ -85,6 +88,7 @@
 					<a href="#">{{ company.email }}</a>
 				</div>
 			</div>
+
 			<!--Website-->
 			<div class="row">
 				<div class="large-3 columns">
@@ -94,6 +98,7 @@
 					<a href="#">{{ company.website }}</a>
 				</div>
 			</div>
+
 			<!--Address-->
 			<div class="row">
 				<div class="large-3 columns">
@@ -112,7 +117,8 @@
 						<li>{{ company.country }}</li>
 					</ul>
 				</div>
-			</div>		
+			</div>
+
 			<!--Type-->
 			<div class="row">
 				<div class="large-3 columns">
@@ -129,6 +135,7 @@
 					</ul>
 				</div>
 			</div>
+
 			<!--Region-->
 			<div class="row">
 				<div class="large-3 columns">
@@ -138,6 +145,7 @@
 					<p>{{ company.region }}</p>
 				</div>
 			</div>
+
 			<!--About Us-->
 			<div class="row">
 				<div class="large-3 columns">
@@ -151,12 +159,14 @@
 
 		<!--Company Panel Right-->
 		<div class="large-6 large-offset-1 columns">
+
 			<!--S&C-->
 			<div class="row">
 				<div class="large-12 columns">
 					<h4 class="subheader">Specialization &amp; Classification</h4>
 				</div>
 			</div>
+
 			<!--Industries-->
 			<div class="row">
 				<div class="large-3 columns">
@@ -170,6 +180,7 @@
 					</ul>
 				</div>
 			</div>
+
 			<!--Categories-->
 			<div class="row">
 				<div class="large-3 columns">
@@ -190,6 +201,7 @@
 					</dl>
 				</div>
 			</div>
+
 			<!--Make/Model-->
 			<div class="row">
 				<div class="large-3 columns">
@@ -210,6 +222,7 @@
 					</dl>
 				</div>
 			</div>
+
 			<!--Expertise Description-->
 			<div class="row">
 				<div class="large-3 columns">
@@ -221,7 +234,6 @@
 			</div>
 		</div>
 	</div>
-	
 
 	<hr />
 

@@ -40,63 +40,81 @@ Register Company
 				<div class="row" data-magellan-destination="basic">
 					<!--Company Name-->
 					<div class="large-7 columns">
-						{{ form.name.errors }}
 						<label for="id_name"><h4 class="subheader">Name:</h4></label>
 						{{ form.name }}
+						{% if form.name.errors %}
+                            <small class="error">{{ form.name.errors|first }}</small>
+                        {% endif %}
 					</div>
 
 					<!--Website-->
 					<div class="large-5 columns">
-						{{ form.website.errors }}
 						<label for="id_name"><h4 class="subheader">Website:</h4></label>
 						<div class="row collapse">
 							<div class="large-3 columns">
 								<span class="prefix">http://</span>
 							</div>
-							<div class="large-9 columns">{{ form.website }}</div>
+							<div class="large-9 columns">
+								{{ form.website }}
+								{% if form.website.errors %}
+		                            <small class="error">{{ form.website.errors|first }}</small>
+		                        {% endif %}
+							</div>
 						</div>
 					</div>
 
 					<!--Region-->
 					<div class="large-2 columns">
-						{{ form.region.errors }}
 						<label for="id_region"><h4 class="subheader">Region:</h4></label>
 						{{ form.region }}
+						{% if form.region.errors %}
+                            <small class="error">{{ form.region.errors|first }}</small>
+                        {% endif %}
 					</div>
 
 					<!--Primary Type-->
 					<div class="large-3 columns">
-						{{ form.primary_type.errors }}
 						<label for="id_primary_type"><h4 class="subheader">Primary Type:</h4></label>
 						{{ form.primary_type }}
+						{% if form.primary_type.errors %}
+                            <small class="error">{{ form.primary_type.errors|first }}</small>
+                        {% endif %}
 					</div>
 
 					<!--About-->
 					<div class="large-7 columns">
-						{{ form.about.errors }}
 						<label for="id_about"><h4 class="subheader">About:</h4></label>
 						{{ form.about }}
+						{% if form.about.errors %}
+                            <small class="error">{{ form.about.errors|first }}</small>
+                        {% endif %}
 					</div>
 
 					<!--Email-->
 					<div class="large-4 columns">
-						{{ form.email.errors }}
 						<label for="id_email"><h4 class="subheader">E-mail:</h4></label>
 						{{ form.email }}
+						{% if form.email.errors %}
+                            <small class="error">{{ form.email.errors|first }}</small>
+                        {% endif %}
 					</div>
 
 					<!--Phone-->
 					<div class="large-4 columns">
-						{{ form.phone.errors }}
 						<label for="id_phone"><h4 class="subheader">Phone:</h4></label>
 						{{ form.phone }}
+						{% if form.phone.errors %}
+                            <small class="error">{{ form.phone.errors|first }}</small>
+                        {% endif %}
 					</div>
 
 					<!--Fax-->
 					<div class="large-4 columns">
-						{{ form.fax.errors }}
 						<label for="id_fax"><h4 class="subheader">Fax:</h4></label>
 						{{ form.fax }}
+						{% if form.fax.errors %}
+                            <small class="error">{{ form.fax.errors|first }}</small>
+                        {% endif %}
 					</div>
 
 				</div>
@@ -112,72 +130,85 @@ Register Company
 					<!--left address-->
 					<div class="large-6 columns">
 						<div class="row collapse">
-							{{ form.street_line1.errors }}
 							<div class="large-2 columns">
 								<span class="prefix">Line 1:</span>
 							</div>
 							<div class="large-10 columns">
 								{{ form.street_line1 }}
+								{% if form.street_line1.errors %}
+		                            <small class="error">{{ form.street_line1.errors|first }}</small>
+		                        {% endif %}
 							</div>
 						</div>
 						<div class="row collapse">
-							{{ form.street_line2.errors }}
 							<div class="large-2 columns">
 								<span class="prefix">Line 2:</span>
 							</div>
 							<div class="large-10 columns">
 								{{ form.street_line2 }}
+								{% if form.street_line2.errors %}
+		                            <small class="error">{{ form.street_line2.errors|first }}</small>
+		                        {% endif %}
 							</div>
 						</div>
 						<div class="row collapse">
-							{{ form.street_line3.errors }}
 							<div class="large-2 columns">
 								<span class="prefix">Line 3:</span>
 							</div>
 							<div class="large-10 columns">
 								{{ form.street_line3 }}
+								{% if form.street_line3.errors %}
+		                            <small class="error">{{ form.street_line3.errors|first }}</small>
+		                        {% endif %}
 							</div>
 						</div>
 					</div>
 					<!--right address-->
 					<div class="large-6 columns">
 						<div class="row collapse">
-							{{ form.city.errors }}
 							<div class="large-2 columns">
 								<span class="prefix">City:</span>
 							</div>
 							<div class="large-10 columns">
 								{{ form.city }}
+								{% if form.city.errors %}
+		                            <small class="error">{{ form.city.errors|first }}</small>
+		                        {% endif %}
 							</div>
 						</div>
 						<div class="row collapse">
-							{{ form.state_province.errors }}
 							<div class="large-4 columns">
 								<span class="prefix">State/Province:</span>
 							</div>
 							<div class="large-8 columns">
 								{{ form.state_province }}
+								{% if form.state_province.errors %}
+		                            <small class="error">{{ form.state_province.errors|first }}</small>
+		                        {% endif %}
 							</div>
 						</div>
 						<div class="row collapse">
-							{{ form.country.errors }}
 							<div class="large-2 columns">
 								<span class="prefix">Country:</span>
 							</div>
 							<div class="large-4 columns">
 								{{ form.country }}
+								{% if form.country.errors %}
+		                            <small class="error">{{ form.country.errors|first }}</small>
+		                        {% endif %}
 							</div>
-							{{ form.zip_code.errors }}
 							<div class="large-2 large-offset-1 columns">
 								<span class="prefix">Zip:</span>
 							</div>
 							<div class="large-3 columns">
 								{{ form.zip_code }}
+								{% if form.zip_code.errors %}
+		                            <small class="error">{{ form.zip_code.errors|first }}</small>
+		                        {% endif %}
 							</div>
 						</div>
 					</div>
 				</div>
-
 
 				<hr />
 
@@ -185,7 +216,6 @@ Register Company
 				<div class="row" data-magellan-destination="types_industries">
 					<!--All Types-->
 					<div class="large-4 columns">
-						{{ form.all_types.errors }}
 						<label for="id_all_types">
 							<h4 class="subheader">All Types:</h4>
 						</label>
@@ -347,6 +377,9 @@ Register Company
 					<div class="large-12 columns">
 						<h4 class="subheader">Expertise</h4>
 						{{ form.expertise_description }}
+						{% if form.expertise_description.errors %}
+                            <small class="error">{{ form.expertise_description.errors|first }}</small>
+                        {% endif %}
 					</div>
 				</div>
 
@@ -357,6 +390,9 @@ Register Company
 					<div class="large-12 columns">
 						<h4 class="subheader">Notes:</h4>
 						{{ form.notes }}
+						{% if form.notes.errors %}
+                            <small class="error">{{ form.notes.errors|first }}</small>
+                        {% endif %}
 					</div>
 				</div>
 
