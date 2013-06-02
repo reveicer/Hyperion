@@ -4,6 +4,12 @@
 Register Company
 {% endblock %}
 
+{% load staticfiles %}
+{% block javascript %}
+	<script src="{% static 'hcustomers/type.js' %}"></script>
+	<script src="{% static 'hcustomers/expertise.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 <div class="row">
 	<!--Magellan-->
