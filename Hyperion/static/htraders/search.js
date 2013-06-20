@@ -2,7 +2,7 @@
 $(document).ready(function(){
 	$("#search-button").click(search);
 	company_results_container = $("#company-results");
-	company_results_list = $("#company-results ul")
+	company_results_list = $("#company-results ol")
 	contact_results_container = $("#contact-results");
 	contact_results_list = $("#contact-results ul")
 });
@@ -42,8 +42,8 @@ function load_company_results(companies) {
 	company_results_list.html("");
 	$.each(companies, function(i) {
 		company = companies[i];
-		var item = $("<a/>").attr("href", "/profile/company/"+company.id+"/").html(company.name).appendTo($("<li/>"));
-		company_results_list.append(item);
+		var item = $("<a/>").attr("href", "/profile/company/"+company.id+"/").html(company.name);
+		company_results_list.append($("<li>").html(item));
 	});
 }
 

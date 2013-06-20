@@ -14,7 +14,7 @@ import dj_database_url
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -170,6 +170,7 @@ INSTALLED_APPS = (
 
 # allow new traders to sign up
 ACCOUNT_OPEN_SIGNUP = False
+#ACCOUNT_OPEN_SIGNUP = True
 
 ACCOUNT_EMAIL_UNIQUE = True
 ACCOUNT_EMAIL_CONFIRMATION_EMAIL = False

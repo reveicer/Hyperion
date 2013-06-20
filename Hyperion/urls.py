@@ -22,6 +22,7 @@ urlpatterns = patterns('',
 	url(r'^register/contact/(?P<company_id>\d+)/$', 'Hyperion.apps.hcustomers.views.register_contact', name='register_contact'),
 	#url(r'^profile/equipment/(?P<equipment_id>\d+)/$', 'Hyperion.apps.hinventory.views.equipment_profile'),
 
+
 	# POST request urls
 	url(r'^profile/contact/(?P<contact_id>\d+)/register/correspondence/$', 'Hyperion.apps.hcustomers.views.register_correspondence', name='register_correspondence'),
 	url(r'^search/company/$', 'Hyperion.apps.hcustomers.views.search_companies', name='search_companies'),

@@ -158,6 +158,7 @@ def register_correspondence(request, contact_id):
 @login_required
 @require_GET
 def search_companies(request):
+	print >> sys.stderr, "Here in search company"
 	key = request.GET.get('key')
 	if key == '':
 		return HttpResponse(status=500)
@@ -171,9 +172,9 @@ def search_companies(request):
 		# type
 		Q(all_types__name__contains=key) |
 		#region
-		Q(region__contains=key) |
+		Q(region__name__contains=key) #|
 		# categories
-		Q(categories__category__name__contains=key)
+		#Q(categories__category__name__contains=key)
 	)
 
 	# construct array of dicts
@@ -181,7 +182,6 @@ def search_companies(request):
 	for company in companies:
 		json_response.append(company.to_dict())
 
-	print >> sys.stderr, "reach here: %d" % len(companies)
 	# return json of companies
 	return HttpResponse(json.dumps(json_response), content_type="application/json")
 
