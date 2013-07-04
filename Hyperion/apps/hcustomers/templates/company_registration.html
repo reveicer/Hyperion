@@ -41,6 +41,9 @@ Register Company
 	<div class="large-12 columns">
 		<form action="{% url 'Hyperion.apps.hcustomers.views.register_company' %}" method="post" class="custom">
 			{% csrf_token %}
+			{% if form.errors %}
+                <div class="row error">{{ form.errors }}</div>
+            {% endif %}
 			<fieldset>
 				<a name="basic"></a>
 				<div class="row" data-magellan-destination="basic">

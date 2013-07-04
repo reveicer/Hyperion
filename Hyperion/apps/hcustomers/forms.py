@@ -45,6 +45,7 @@ class CompanyRegistrationForm(ModelForm):
 		self.fields['primary_type'].empty_label = None
 		self.fields['expertise_description'].widget.attrs = { 'placeholder':'Optional' }
 		self.fields['notes'].widget.attrs = { 'placeholder':'Miscellaneous Comments'}
+		self.fields['all_types'].required = False
 
 class ContactRegistrationForm(ModelForm):
 	# db calls for models
