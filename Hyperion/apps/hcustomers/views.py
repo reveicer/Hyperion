@@ -192,12 +192,26 @@ def search_contacts(request):
 	key = request.GET.get('key')
 	if key == '':
 		return HttpResponse(status=500)
-	contacts = ContactProfile.objects.filter(
-		# name
-		Q(first_name__contains=key) |
-		Q(last_name__contains=key)
-	)
-	
+
+	key_words = key.split()
+	if len(key_words) == 1:
+		contacts = ContactProfile.objects.filter(
+			# name
+			Q(first_name__contains=key) |
+			Q(last_name__contains=key)
+		)
+	else:
+		contacts = ContactProfile.objects.filter(
+			# name
+			(
+				Q(first_name__contains=key_words[0]) & Q(last_name__contains=key_words[1])
+			)
+			|
+			(
+				Q(first_name__contains=key_words[1]) & Q(last_name__contains=key_words[0])
+			)
+		)
+
 	json_response = []
 	for contact in contacts:
 		json_response.append(contact.to_dict())
