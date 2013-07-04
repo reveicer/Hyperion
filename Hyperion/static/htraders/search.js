@@ -47,11 +47,11 @@ function load_company_results(companies) {
 	});
 }
 
-function load_contact_results(data) {
+function load_contact_results(contacts) {
 	contact_results_list.html("");
 	$.each(contacts, function(i) {
 		contact = contacts[i];
-		var item = $("<a/>").attr("href", "/profile/contact/"+contact.id+"/").html(contact.name).appendTo($("<li/>"));
+		var item = $("<a/>").attr("href", "/profile/contact/"+contact.id+"/").html(contact.first_name + " " + contact.last_name).appendTo($("<li/>"));
 		contact_results_list.append(item);
 	});
 }

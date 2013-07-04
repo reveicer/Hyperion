@@ -222,6 +222,15 @@ class ContactProfile(models.Model):
 	def get_correspondences(self):
 		return Correspondence.objects.filter(is_active=True, contact=self)
 
+	def to_dict(self):
+		dict_response = {}
+		dict_response['id'] = self.id
+		dict_response['first_name'] = self.first_name
+		dict_response['last_name'] = self.last_name
+		dict_response['phone'] = self.phone
+		dict_response['email'] = self.email
+		return dict_response
+
 class CompanyInIndustry(models.Model):
 	is_active = models.BooleanField(default=True)
 	company = models.ForeignKey(CompanyProfile, related_name='industries')

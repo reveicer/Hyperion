@@ -188,7 +188,18 @@ def search_companies(request):
 @login_required
 @require_GET
 def search_contacts(request):
+	print >> sys.stderr, "Here in search contact"
 	key = request.GET.get('key')
 	if key == '':
 		return HttpResponse(status=500)
-	return HttpResponse(status=200)
+	contacts = ContactProfile.objects.filter(
+		# name
+		Q(first_name__contains=key) |
+		Q(last_name__contains=key)
+	)
+	
+	json_response = []
+	for contact in contacts:
+		json_response.append(contact.to_dict())
+	
+	return HttpResponse(json.dumps(json_response), content_type="application/json")
