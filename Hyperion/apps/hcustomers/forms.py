@@ -83,3 +83,4 @@ class ContactRegistrationForm(ModelForm):
 		self.fields['primary_type'].empty_label = None # preselect
 		self.fields['expertise_description'].widget.attrs = { 'placeholder':'Optional' }
 		self.fields['notes'].widget.attrs = { 'placeholder':'Optional' }
+		self.fields['all_types'].required = False

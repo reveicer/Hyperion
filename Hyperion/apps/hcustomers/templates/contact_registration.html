@@ -40,6 +40,12 @@ Register Contact
 	<div class="large-12 columns">
 		<form action="{% url 'Hyperion.apps.hcustomers.views.register_contact' company.id %}" method="post" class="custom">
 			{% csrf_token %}
+			{% if form.errors %}
+                <div class="row">
+                	<h5 class="subheader">Submission Errors</h5>
+                	{{ form.errors }}
+                </div>
+            {% endif %}
 			<fieldset>
 				<!--Basic-->
 				<a name="basic"></a>

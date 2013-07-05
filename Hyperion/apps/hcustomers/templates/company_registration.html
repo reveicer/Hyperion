@@ -42,7 +42,10 @@ Register Company
 		<form action="{% url 'Hyperion.apps.hcustomers.views.register_company' %}" method="post" class="custom">
 			{% csrf_token %}
 			{% if form.errors %}
-                <div class="row error">{{ form.errors }}</div>
+                <div class="row">
+                	<h5 class="subheader">Submission Errors</h5>
+                	{{ form.errors }}
+                </div>
             {% endif %}
 			<fieldset>
 				<a name="basic"></a>
